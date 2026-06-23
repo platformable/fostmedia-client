@@ -1,15 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #0b0f1c;
   --foreground: #171717;
+  --main-orange: #ff863f;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-main-dark: #0b0f1c;
+  --brand-main-color: var(--main-orange);
+}
+
+@utility main-bg {
+  background-color: var(--color-main-dark);
+}
+@utility brand-bg {
+  background-color: var(--brand-main-color);
+}
+
+@utility main-color {
+  color: var(--brand-main-color);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +31,334 @@
   }
 }
 
+h1 {
+  font-size: 3rem; /* 48px */
+}
+
+h2 {
+  font-size: 2.25rem; /* 36px */
+}
+
+h3 {
+  font-size: 1.875rem; /* 30px */
+}
+
+h4 {
+  font-size: 1.5rem; /* 24px */
+}
+
+h5 {
+  font-size: 1.25rem; /* 20px */
+}
+
+h6 {
+  font-size: 1.125rem; /* 18px */
+}
+
+p {
+  margin-bottom: 1.5em;
+  margin-top: 0;
+}
+p,
+span,
+a {
+  font-size: 1rem; /* 16px */
+}
+
+small {
+  font-size: 0.875rem; /* 14px */
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  font-size: 1rem;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+input::placeholder {
+  font-size: 14px;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 14px;
+}
+input::-moz-placeholder {
+  font-size: 14px;
+}
+input::-ms-input-placeholder {
+  font-size: 14px;
+}
+
+.main-orange {
+  color: var(--main-orange);
+}
+
+.buttonGradientBg {
+  background: linear-gradient(90deg, #fc6200, #dd312a);
+  color: white;
+  /*   padding: 10px 20px; */
+  border-radius: 9999px; /* Rounded full */
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.buttonGradientBg:hover {
+  background: linear-gradient(90deg, #dd312a, #fc6200);
+}
+
+.clainOfferBtn {
+  background: linear-gradient(90deg, #fc6200, #dd312a);
+  border-radius: 50px;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.clainOfferBtn:hover {
+  background: linear-gradient(90deg, #dd312a, #fc6200);
+  border-radius: 50px;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.clainOfferBtn:active {
+  background: linear-gradient(90deg, #dd312a, #fc6200);
+  border-radius: 50px;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.bgGradient {
+  background: linear-gradient(90deg, #fc6200, #dd312a);
+}
+
+.glow-card {
+  /* Normal State */
+  background: #131929;
+  border: 1px solid #2a2f45;
+  border-radius: 16px;
+
+  /* Transition goes here for smooth hover in AND out */
+  transition: all 0.3s ease;
+
+  /* Optional: Makes it clear the element is interactive */
+  cursor: pointer;
+}
+
+/* Hover State */
+.glow-card:hover {
+  border-color: #fc6200;
+  box-shadow: 0 0 20px rgba(252, 98, 0, 0.15);
+}
+
+/* Click / Active State */
+.glow-card:active {
+  border-color: #ff7a1a;
+  box-shadow: 0 0 30px rgba(252, 98, 0, 0.25);
+}
+
+.btn-claim-offer {
+  background: linear-gradient(90deg, #fc6200, #dd312a);
+  border-radius: 50px;
+  color: #ffffff;
+
+  padding: 12px 28px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-claim-offer:hover {
+  background: linear-gradient(90deg, #ff7a1a, #e8382f);
+  box-shadow: 0 4px 12px rgba(252, 98, 0, 0.3);
+}
+
+.btn-claim-offer:active {
+  background: linear-gradient(90deg, #dd312a, #fc6200);
+  transform: scale(0.97);
+  box-shadow: 0 2px 4px rgba(252, 98, 0, 0.2); /* Reduced shadow to simulate pressing down */
+}
+
+.btn-claim-offer {
+  background: linear-gradient(90deg, #fc6200, #dd312a);
+  border-radius: 50px;
+  color: #ffffff;
+
+  padding: 12px 28px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-claim-offer:hover {
+  background: linear-gradient(90deg, #ff7a1a, #e8382f);
+  box-shadow: 0 4px 12px rgba(252, 98, 0, 0.3);
+}
+
+.btn-claim-offer:active {
+  background: linear-gradient(90deg, #dd312a, #fc6200);
+  transform: scale(0.97);
+  box-shadow: 0 2px 4px rgba(252, 98, 0, 0.2); /* Reduced shadow to simulate pressing down */
+}
+
+.btn-hero-cta {
+  background: linear-gradient(90deg, #fc6200, #dd312a);
+  border-radius: 50px;
+  color: #ffffff;
+  padding: 16px 36px;
+  border: none;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-hero-cta:hover {
+  background: linear-gradient(90deg, #ff7a1a, #e8382f);
+  box-shadow: 0 4px 12px rgba(252, 98, 0, 0.3);
+  cursor: pointer;
+}
+
+.btn-hero-cta:active {
+  background: linear-gradient(90deg, #dd312a, #fc6200);
+  transform: scale(0.97);
+  box-shadow: none; /* Removes the hover shadow to emphasize the button being pressed down */
+}
+
+/* --- Estado Normal --- */
+.share-button {
+  background-color: transparent;
+  border: 1px solid #747271;
+  color: #ffffff;
+  border-radius: 50px;
+
+  /* Propiedades extra recomendadas para que se vea y funcione como botón */
+  padding: 10px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Transición suave para el hover y el click */
+  transition: all 0.2s ease-in-out;
+}
+
+/* --- Estado Hover (al pasar el ratón) --- */
+.share-button:hover {
+  border-color: #fc6200;
+  color: #ffffff; /* Se mantiene blanco */
+}
+
+/* --- Estado Click (active) --- */
+.share-button:active {
+  background-color: rgba(252, 98, 0, 0.1);
+  border-color: #fc6200;
+  transform: scale(0.97);
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* Subtle base glow effect mimicking the design's lighting */
+.bg-glow-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glow-teal {
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(
+    circle,
+    rgba(20, 184, 166, 0.06) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+.glow-orange {
+  position: absolute;
+  top: 10%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(
+    circle,
+    rgba(249, 115, 22, 0.06) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+.become-sponsor-button-cta {
+  background-color: transparent;
+  border: 1px solid #fc6200;
+  color: #fc6200;
+  border-radius: 50px;
+
+  /* Propiedades extra recomendadas para que se vea y funcione como botón */
+  padding: 10px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Transición suave para el hover y el click */
+  transition: all 0.2s ease-in-out;
+}
+
+.become-sponsor-button-cta:hover {
+  border-color: #fc6200;
+  color: #ffffff; /* Se mantiene blanco */
+}
+
+.become-sponsor-button-cta:active {
+  background-color: rgba(252, 98, 0, 0.1);
+  border-color: #fc6200;
+  transform: scale(0.97);
+}
+
+.bg-about-cta {
+  border: 1px solid var(--unnamed-color-f56515);
+  background: transparent linear-gradient(0deg, #111525 0%, #b14d1a 400%) 0% 0%
+    no-repeat padding-box;
+  box-shadow: 0px 10px 30px #f4651357;
+  border: 1px solid #f56515;
+  border-radius: 20px;
+  opacity: 1;
+}
+
+.bg-metrics-about {
+  border: 1px solid var(--unnamed-color-f56515);
+  background: transparent linear-gradient(0deg, #111525 0%, #b14d1a 400%) 0% 0%
+    no-repeat padding-box;
+
+  border: 1px solid #f56515;
+  border-radius: 20px;
+  opacity: 1;
 }
