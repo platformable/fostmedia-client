@@ -6,8 +6,8 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
   return (
-    <nav className="bg-[#111525]  w-full z-20 top-0 start-0 border-b border-[#393939]">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 gap-3 md:gap-0">
+    <nav className="bg-[#111525]   z-20 top-0 start-0 border-b border-[#393939]">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 gap-3 md:gap-0">
         <Link
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -70,7 +70,7 @@ export default function Navbar() {
           <ul className="flex flex-col py-4 px-7 md:p-0 mt-4 font-medium border border-default rounded-base bg-neutral-secondary-soft md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-neutral-primary">
             <li>
               <Link
-                href="/about"
+                href="/blog"
                 className="block py-2 px-3 text-heading  text-[#BABABA] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 Blog

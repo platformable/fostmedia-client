@@ -1,5 +1,8 @@
+"use client"
 import Link from "next/link"
 import Image from "next/image"
+import getPosts from "@/utils/getPosts"
+import { useQuery } from "@tanstack/react-query"
 
 type MainPageFeaturedPostProps = {
   title?: string
@@ -16,10 +19,31 @@ export default function MainPageFeaturedPost({
   ctaLabel = "Read story →",
   imageUrl = "https://dummyimage.com/600x400/000/fff",
 }: MainPageFeaturedPostProps) {
+  const {
+    data: posts,
+    isPending,
+    isError,
+  } = useQuery({
+    queryKey: ["posts"],
+    queryFn: getPosts,
+  })
+
+  console.log(posts, "posts")
+  /*   console.log(posts, "posts") */
+  if (isPending) {
+    return <div>Loading...</div>
+  }
+  if (isError || !posts) {
+    return <div className="text-white">Failed to load posts.</div>
+  }
+  if (posts.length === 0) {
+    return <div className="text-white">No posts found.</div>
+  }
+
   return (
-    <section className="px-4 py-12 md:py-16">
+    <section className="mx-auto max-w-screen-xl py-12 md:py-16 ">
       <div
-        className="mx-auto w-full max-w-screen-xl rounded-3xl p-8 md:p-12"
+        className="rounded-3xl p-8 md:p-12"
         style={{
           background:
             "transparent linear-gradient(89deg, #161A29 80%, #FF863F 160%) 0% 0% no-repeat padding-box",
@@ -29,8 +53,8 @@ export default function MainPageFeaturedPost({
           {/* Left side - Image */}
           <div className="relative h-64 w-full overflow-hidden rounded-2xl md:h-80">
             <Image
-              src={imageUrl}
-              alt={title}
+              src={posts[0]?.Featured_Image?.url || imageUrl}
+              alt={posts[0]?.Title || title}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -46,20 +70,28 @@ export default function MainPageFeaturedPost({
                 color: "#FF863F",
               }}
             >
-              Innovation
+              {posts[0]?.categories[0]?.Title || "Innovation"}
             </div>
 
             <h2 className="mb-4 font-semibold leading-tight text-white md:text-4xl lg:text-3xl">
-              {title}
+              {posts[0]?.Title || title}
             </h2>
 
-            <p className="mb-2 text-base leading-relaxed text-white md:text-lg">
-              {description}
+            <p className="mb-4  text-[#F5F5F5]">
+              {new Date(posts[0]?.createdAt).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }) ||
+                new Date().toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
             </p>
-            <p className="mb-4  text-[#F5F5F5]">Mark Boyd - 8 min read</p>
 
             <Link
-              href={href}
+              href={`/blog/${posts[0]?.Slug || href}`}
               className="inline-flex items-center justify-center px-7 py-3  font-semibold text-white transition-opacity hover:opacity-90"
               style={{
                 background:
