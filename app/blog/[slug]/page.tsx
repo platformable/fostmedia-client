@@ -64,7 +64,10 @@ export default function page({
         <div className="text-[#D6DAE0] border-r border-[#30323B] px-4">
           <BackToBlogBtn />
 
-          <div dangerouslySetInnerHTML={{ __html: posts[0]?.Content || "" }} />
+          <div
+            dangerouslySetInnerHTML={{ __html: posts[0]?.Content || "" }}
+            id="post-content"
+          />
 
           <BackToBlogFooter />
         </div>

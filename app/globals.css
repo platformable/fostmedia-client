@@ -59,6 +59,9 @@ p {
   margin-bottom: 1.5em;
   margin-top: 0;
 }
+#post-content p {
+  color: #d6dae0;
+}
 p,
 span,
 a {
