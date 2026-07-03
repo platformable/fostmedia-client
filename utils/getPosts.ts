@@ -11,7 +11,7 @@ const getPostsBySlug = async (slug: string) => {
     `${process.env.NEXT_PUBLIC_API_URL}/posts?filters=[slug]=${slug}&populate[0]=Featured_Image&populate[1]=categories`,
   )
   const posts = await response.json()
-  console.log(posts, "post")
+
   return posts?.data
 }
 

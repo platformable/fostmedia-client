@@ -9,7 +9,13 @@ const handleSearch = async (
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/search?question=${encodeURIComponent(question)}`,
-      { method: "POST", cache: "no-store" },
+      {
+        method: "POST",
+        cache: "no-store",
+        headers: {
+          Authorization: `Bearer ${process.env.API_TOKEN}`,
+        },
+      },
     )
     if (!response.ok) {
       throw new Error("Network response was not ok")
