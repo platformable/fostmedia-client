@@ -28,7 +28,6 @@ export default function MainPageFeaturedPost({
     queryFn: getPosts,
   })
 
-  console.log(posts, "posts")
   /*   console.log(posts, "posts") */
   if (isPending) {
     return <div>Loading...</div>

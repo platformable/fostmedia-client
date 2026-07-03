@@ -32,7 +32,6 @@ export default function LatestArticles({
     queryFn: getPosts,
   })
 
-  console.log(posts, "latest posts")
   /*   console.log(posts, "posts") */
   if (isPending) {
     return <div>Loading...</div>

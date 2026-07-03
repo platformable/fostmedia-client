@@ -365,3 +365,18 @@ input::-ms-input-placeholder {
   border-radius: 20px;
   opacity: 1;
 }
+
+.bg-tech-pulse {
+  background: transparent
+    radial-gradient(
+      closest-side at 50% 50%,
+      rgba(124, 130, 244, 0.2) 0%,
+      rgba(124, 130, 244, 0) 100%
+    )
+    0% 0% no-repeat padding-box;
+}
+
+.ask-btn {
+  background: transparent linear-gradient(270deg, #624cd8 0%, #be8eff 100%) 0%
+    0% no-repeat padding-box;
+}
