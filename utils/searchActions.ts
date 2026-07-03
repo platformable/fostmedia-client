@@ -16,7 +16,7 @@ const handleSearch = async (
     }
 
     const data = await response.json()
-    console.log("Search results:", data)
+
     return { query: question, results: data }
   } catch (error) {
     console.error("Error fetching search results:", error)

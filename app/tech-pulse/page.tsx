@@ -2,6 +2,7 @@
 import React, { useActionState } from "react"
 import LatestArticles from "../components/LatestArticles"
 import handleSearch from "@/utils/searchActions"
+import Loader from "../components/Loader"
 
 // import ShareModal from "../components/SharePost"
 // import BackToBlogFooter from "../components/BackToBlogFooter"
@@ -43,37 +44,39 @@ export default function TechPulsePage() {
         />
         <button
           type="submit"
-          className="ask-btn py-2 px-4 rounded-full text-white bg-purple-300 cursor-pointer hover:opacity-90 transition-opacity duration-300"
+          className={`ask-btn py-2 px-4 rounded-full text-white bg-purple-300 cursor-pointer hover:opacity-90 transition-opacity duration-300`}
+          disabled={isPending}
         >
-          Ask →{isPending && <span className="ml-2">Loading...</span>}
+          {isPending ? "Searching..." : "Ask →"}
         </button>
       </form>
 
-      <section className="grid grid-cols-1 md:grid-cols-[8fr_4fr] gap-8 mt-5 ">
-        <div className="text-[#D6DAE0] border-r border-[#30323B] px-4">
-          {/* {state.results.length > 0 ? (
-            state.results.map((result: string, index: number) => (
-              <div key={index}>{result}</div>
-            ))
+      <section className="grid grid-cols-1 md:grid-cols-[8fr_4fr] gap-8 mt-5  ">
+        <div className="text-[#D6DAE0] border-r border-[#30323B] px-4 pb-20">
+          {state.results.length !== 0 ? (
+            <div className="flex items-center gap-2 mb-5">
+              <img src="/file.svg" width={20} height={20} alt="File Icon" />
+              <h6 className="text-[#A18EFF] uppercase">QUOTES</h6>
+            </div>
           ) : (
-            <p>No results found.</p>
-          )} */}
-          {/*    {state.results.length > 0 ? (
-            state.results.map((result: any, index: number) => (
-              <div key={index} className="mb-4">
-                <p className="text-white">{result.query}</p>{" "}
-                <p className="text-[#BCBCBC] text-sm mt-1">{result.answer}</p>
-              </div>
-            ))
-          ) : (
-            <p>No results found.</p>
-          )} */}
-
-          {state.results.answer ? (
-            state.results.answer
-          ) : (
-            <p>No results found.</p>
+            ""
           )}
+
+          {isPending && (
+            <div className="flex justify-center py-5">
+              <Loader />
+            </div>
+          )}
+          {state.results.answer &&
+            Array.isArray(state.results.answer) &&
+            state.results.answer.map((answer: string, index: number) => (
+              <div
+                key={index}
+                className="mb-4 bg-[#161A29] p-4 rounded-lg border border-[#A18EFF]"
+              >
+                <p className="text-[#BCBCBC] text-sm mt-1">{answer}</p>
+              </div>
+            ))}
         </div>
         <aside>
           <div className="flex items-center gap-2">
@@ -81,7 +84,9 @@ export default function TechPulsePage() {
             <h6 className="main-color uppercase">On this page</h6> */}
             {/* <ShareModal /> */}
           </div>
-          <LatestArticles description={false} textSize={"LARGE"} />
+          <div className="pb-20">
+            <LatestArticles description={false} textSize={"LARGE"} />
+          </div>
         </aside>
       </section>
     </div>
