@@ -3,7 +3,16 @@ import React, { useActionState } from "react"
 import LatestArticles from "../components/LatestArticles"
 import handleSearch from "@/utils/searchActions"
 import Loader from "../components/Loader"
-
+import ReactPDF from "@react-pdf/renderer"
+import {
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+  PDFDownloadLink,
+  Image,
+} from "@react-pdf/renderer"
 // import ShareModal from "../components/SharePost"
 // import BackToBlogFooter from "../components/BackToBlogFooter"
 // import BackToBlogBtn from "../components/BackToBlogBtn"
@@ -17,6 +26,56 @@ export default function TechPulsePage() {
   const [state, dispatchAction, isPending] = useActionState(
     handleSearch,
     initialState,
+  )
+  const styles = StyleSheet.create({
+    page: {
+      /*       flexDirection: "row", */
+      backgroundColor: "#0b0f1c",
+      color: "#ffffff",
+    },
+    section: {
+      margin: 10,
+      padding: 10,
+      flexGrow: 1,
+    },
+    box: {
+      backgroundColor: "#161A29",
+      padding: 10,
+      borderRadius: 5,
+      border: "1px solid #A18EFF",
+      marginBottom: 10,
+    },
+    conference: {
+      fontSize: 12,
+      marginBottom: 10,
+    },
+  })
+
+  const MyDocument = () => (
+    <Document>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.section}>
+          <Image
+            src={`${window.location.origin}/logo_fost.png`}
+            style={{
+              width: 120,
+              height: 40,
+            }}
+          />
+          <Text style={styles.conference}>
+            {state.results.sources[0].conference}
+          </Text>
+
+          {state?.results?.answer &&
+            Array.isArray(state?.results?.answer) &&
+            state?.results?.answer.map((answer: string, index: number) => (
+              <View key={index} style={styles.box}>
+                <Text>{answer}</Text>
+              </View>
+            ))}
+        </View>
+      </Page>
+    </Document>
   )
 
   console.log(" state:", state)
@@ -51,8 +110,8 @@ export default function TechPulsePage() {
         </button>
       </form>
 
-      <section className="grid grid-cols-1 md:grid-cols-[8fr_4fr] gap-8 mt-5  ">
-        <div className="text-[#D6DAE0] border-r border-[#30323B] px-4 pb-20">
+      <section className="grid grid-cols-1 md:grid-cols-[12fr] gap-8 mt-5  ">
+        <div className="text-[#D6DAE0]  px-4 pb-20">
           {state.results.length !== 0 ? (
             <div className="flex items-center gap-2 mb-5">
               <img src="/file.svg" width={20} height={20} alt="File Icon" />
@@ -77,17 +136,29 @@ export default function TechPulsePage() {
                 <p className="text-[#BCBCBC] text-sm mt-1">{answer}</p>
               </div>
             ))}
+          {/* {Array.isArray(state.results.answer) &&
+            state.results.answer.length > 0 && (
+              <PDFDownloadLink
+                document={<MyDocument />}
+                fileName="somename.pdf"
+                className="ask-btn py-2 px-4 rounded-full text-white bg-purple-300 cursor-pointer hover:opacity-90 transition-opacity duration-300"
+              >
+                {({ blob, url, loading, error }) =>
+                  loading ? "Loading document..." : "Download .pdf"
+                }
+              </PDFDownloadLink>
+            )} */}
         </div>
-        <aside>
+        {/*      <aside>
           <div className="flex items-center gap-2">
-            {/* <img src="/file.svg" width={20} height={20} alt="File Icon" />
-            <h6 className="main-color uppercase">On this page</h6> */}
-            {/* <ShareModal /> */}
+            <img src="/file.svg" width={20} height={20} alt="File Icon" />
+            <h6 className="main-color uppercase">On this page</h6>
+            <ShareModal />
           </div>
           <div className="pb-20">
             <LatestArticles description={false} textSize={"LARGE"} />
           </div>
-        </aside>
+        </aside> */}
       </section>
     </div>
   )

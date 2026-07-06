@@ -28,46 +28,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div></div>
             <div></div>
-            {/*  <div>
-              <h2 className="mb-6 text-sm font-semibold text-heading uppercase">
-                Resources
-              </h2>
-              <ul className="text-body font-medium">
-                <li className="mb-4">
-                  <a href="https://joinfost.io/" className="hover:underline">
-                    FOST Ecosystem
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://platformable.io/"
-                    className="hover:underline"
-                  >
-                    Platformable
-                  </a>
-                </li>
-              </ul>
-            </div> */}
-            {/*   <div>
-              <h2 className="mb-6 text-sm font-semibold text-heading uppercase">
-                Follow us
-              </h2>
-              <ul className="text-body font-medium">
-                <li className="mb-4">
-                  <a
-                    href="https://github.com/fost-io"
-                    className="hover:underline "
-                  >
-                    Github
-                  </a>
-                </li>
-                <li>
-                  <a href="https://discord.gg/fost" className="hover:underline">
-                    Discord
-                  </a>
-                </li>
-              </ul>
-            </div> */}
+
             <div>
               <Link
                 href="https://joinfost.io"

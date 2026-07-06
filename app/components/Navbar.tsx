@@ -31,7 +31,7 @@ export default function Navbar() {
             Sponsor
           </Link>
           <Link
-            href="https://docs.google.com/presentation/d/1uDo8zgdkozcezAHq_CLHIjulrm9GMHddgt38RXj82h4/edit?slide=id.g329b9af018a_1_0#slide=id.g329b9af018a_1_0"
+            href="https://joinfost.io/events/"
             target="_blank"
             className="hidden sm:inline-flex text-white brand-bg hover:ring-3 ring-[#fc60004d] focus:ring-3 focus:ring-[#fc60004d]  font-medium leading-5 rounded-lg text-md px-5 py-2 focus:outline-none hover:shadow-md cursor-pointer"
           >
@@ -68,23 +68,23 @@ export default function Navbar() {
           id="navbar-sticky"
         >
           <ul className="flex flex-col py-4 px-7 md:p-0 mt-4 font-medium border border-default rounded-base bg-neutral-secondary-soft md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-neutral-primary">
-            <li>
+            {/*    <li>
               <Link
                 href="/blog"
                 className="block py-2 px-3 text-heading  text-[#BABABA] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 Blog
               </Link>
-            </li>
-            <li>
+            </li> */}
+            {/*  <li>
               <Link
                 href="/"
-                /* target="_blank" */
+         
                 className="block py-2 px-3 text-heading text-[#BABABA]  rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 Industry
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 href="/tech-pulse"
@@ -95,7 +95,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href="https://joinfost.io"
+                href="https://digitalswag.joinfost.io"
                 target="_blank"
                 className="block py-2 px-3 text-heading text-[#BABABA] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
