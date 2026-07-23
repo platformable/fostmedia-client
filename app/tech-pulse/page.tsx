@@ -1,5 +1,5 @@
 "use client"
-import React, { useActionState } from "react"
+import React, { useActionState, useState } from "react"
 import LatestArticles from "../components/LatestArticles"
 import handleSearch from "@/utils/searchActions"
 import Loader from "../components/Loader"
@@ -49,6 +49,16 @@ export default function TechPulsePage() {
       fontSize: 12,
       marginBottom: 10,
     },
+    authors: {
+      color: "#B2B2B2",
+      fontSize: 10,
+      marginTop: 10,
+      /* marginBottom: 3,  */
+    },
+    companyInfo: {
+      color: "#B2B2B2",
+      fontSize: 10,
+    },
   })
 
   const MyDocument = () => (
@@ -60,25 +70,46 @@ export default function TechPulsePage() {
             style={{
               width: 120,
               height: 40,
+              marginBottom: 20,
             }}
           />
-          <Text style={styles.conference}>
+          {/* <Text style={styles.conference}>
             {state.results.sources[0].conference}
-          </Text>
+          </Text> */}
 
           {state?.results?.answer &&
             Array.isArray(state?.results?.answer) &&
-            state?.results?.answer.map((answer: string, index: number) => (
-              <View key={index} style={styles.box}>
-                <Text>{answer}</Text>
-              </View>
-            ))}
+            state?.results?.answer.map(
+              (
+                answer: {
+                  quote: string
+                  firstName: string
+                  lastName: string
+                  conference: string
+                  role: string
+                  company: string
+                },
+                index: number,
+              ) => (
+                <View key={index} style={styles.box}>
+                  <Text>{answer.quote}</Text>
+                  <Text style={styles.authors}>
+                    {answer.firstName} {answer.lastName}
+                  </Text>
+                  <Text style={styles.companyInfo}>
+                    {answer.role} at {answer.company} - {answer.conference}
+                  </Text>
+                </View>
+              ),
+            )}
         </View>
       </Page>
     </Document>
   )
 
-  console.log(" state:", state)
+  const [question, setQuestion] = useState("")
+
+  //console.log(" state:", state)
 
   return (
     <div className="mx-auto max-w-screen-xl px-4 pt-10 bg-tech-pulse">
@@ -98,6 +129,8 @@ export default function TechPulsePage() {
         <input
           type="text"
           name="question"
+          defaultValue={question}
+          onChange={(e) => setQuestion(e.target.value)}
           placeholder="e.g., What did speakers say about agent reliability?"
           className="w-full p-5 rounded-xl bg-[#0B0F1C] text-white border border-[#747271] focus:outline-none focus:ring-2 focus:ring-[#FC6200]"
         />
@@ -111,8 +144,8 @@ export default function TechPulsePage() {
       </form>
 
       <section className="grid grid-cols-1 md:grid-cols-[12fr] gap-8 mt-5  ">
-        <div className="text-[#D6DAE0]  px-4 pb-20">
-          {state.results.length !== 0 ? (
+        <div className="text-[#D6DAE0]  px-4 md:px-0 pb-20">
+          {state.results?.answer?.length > 0 ? (
             <div className="flex items-center gap-2 mb-5">
               <img src="/file.svg" width={20} height={20} alt="File Icon" />
               <h6 className="text-[#A18EFF] uppercase">QUOTES</h6>
@@ -128,15 +161,40 @@ export default function TechPulsePage() {
           )}
           {state.results.answer &&
             Array.isArray(state.results.answer) &&
-            state.results.answer.map((answer: string, index: number) => (
-              <div
-                key={index}
-                className="mb-4 bg-[#161A29] p-4 rounded-lg border border-[#A18EFF]"
-              >
-                <p className="text-[#BCBCBC] text-sm mt-1">{answer}</p>
-              </div>
-            ))}
-          {/* {Array.isArray(state.results.answer) &&
+            state.results.answer.map(
+              (
+                answer: {
+                  quote: string
+                  firstName: string
+                  lastName: string
+                  conference: string
+                  role: string
+                  company: string
+                },
+                index: number,
+              ) => (
+                <div
+                  key={index}
+                  className="mb-4 bg-[#161A29] p-4 rounded-lg border border-[#A18EFF]"
+                >
+                  <p className="text-white text-sm mt-1">{answer.quote}</p>
+                  <span className="text-[#B2B2B2]  mt-2 block">
+                    {answer.firstName} {answer.lastName}
+                  </span>
+                  <span className="text-[#B2B2B2]  mt-1 block">
+                    {answer.role} at {answer.company} - {answer.conference}
+                  </span>
+                </div>
+              ),
+            )}
+          {state.results.answer && state.results.answer.length === 0 && (
+            <div className="mb-4 bg-[#161A29] p-4 rounded-lg border border-[#A18EFF]">
+              <p className="text-white text-sm mt-1">
+                No quotes found for this question.
+              </p>
+            </div>
+          )}
+          {Array.isArray(state.results.answer) &&
             state.results.answer.length > 0 && (
               <PDFDownloadLink
                 document={<MyDocument />}
@@ -147,7 +205,7 @@ export default function TechPulsePage() {
                   loading ? "Loading document..." : "Download .pdf"
                 }
               </PDFDownloadLink>
-            )} */}
+            )}
         </div>
         {/*      <aside>
           <div className="flex items-center gap-2">
