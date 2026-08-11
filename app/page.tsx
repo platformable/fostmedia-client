@@ -24,7 +24,7 @@ export default async function Home() {
     <section>
       {" "}
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <MainPageFeaturedPost />
+        <MainPageFeaturedPost section="blog" />
 
         <section>
           <div className="mx-auto  max-w-screen-xl  px-4 md:px-0 py-6 lg:py-4  gap-8  grid grid-cols-1 md:grid-cols-[8fr_4fr]">
