@@ -68,14 +68,14 @@ export default function Navbar() {
           id="navbar-sticky"
         >
           <ul className="flex flex-col py-4 px-7 md:p-0 mt-4 font-medium border border-default rounded-base bg-neutral-secondary-soft md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-neutral-primary">
-            {/*    <li>
+            <li>
               <Link
                 href="/blog"
                 className="block py-2 px-3 text-heading  text-[#BABABA] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 Blog
               </Link>
-            </li> */}
+            </li>
             {/*  <li>
               <Link
                 href="/"

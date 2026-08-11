@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "datasetstorage.ams3.digitaloceanspaces.com",
       },
+      {
+        protocol: "https",
+        hostname: "assets.website-files.com",
+      },
     ],
   },
 }
