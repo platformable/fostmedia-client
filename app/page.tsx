@@ -28,7 +28,7 @@ export default async function Home() {
 
         <section>
           <div className="mx-auto  max-w-screen-xl  px-4 md:px-0 py-6 lg:py-4  gap-8  grid grid-cols-1 md:grid-cols-[8fr_4fr]">
-            <LatestArticles />
+            <LatestArticles section="blog" />
 
             <div
               className="p-8 rounded-xl flex flex-col gap-4 border-[1px] border-[#30323B]"

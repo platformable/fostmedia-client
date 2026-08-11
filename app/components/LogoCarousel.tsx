@@ -96,7 +96,7 @@ export default function SponsorCarousel({ section }: SponsorCarouselProps) {
         <a
           href="#sponsor-us"
           target="_blank"
-          className={`${section === "industry" ? "main-color-industry" : "main-color-blog"} hover:text-[#fb8a5d] text-sm md:text-base transition-colors flex items-center gap-2 group pb-1 border-b border-[#f16f3d] hover:border-[#fb8a5d]`}
+          className={`${section === "industry" ? "main-color-industry" : "main-color-blog"} hover:text-[#fb8a5d] text-sm md:text-base transition-colors flex items-center gap-2 group pb-1  hover:border-[#fb8a5d]`}
         >
           Find out more about being a sponsor
           <svg

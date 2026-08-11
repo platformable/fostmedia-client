@@ -106,6 +106,7 @@ export default function page({
               description={false}
               textSize={"LARGE"}
               text="More from this creator"
+              section="industry"
             />
           </aside>
         </section>

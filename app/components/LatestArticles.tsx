@@ -21,7 +21,7 @@ export default function LatestArticles({
   description = true,
   textSize = "MEDIUM",
   text = "",
-  section = "blog",
+  section = null,
 }: {
   description?: boolean
   textSize?: FontSize
@@ -51,7 +51,11 @@ export default function LatestArticles({
     <div className="">
       <div className="flex items-center gap-2">
         <img src="/file.svg" width={20} height={20} alt="File Icon" />
-        <h6 className="main-orange uppercase">{text || "Latest Articles"}</h6>
+        <h6
+          className={`uppercase ${section === "industry" ? "text-[#40D2FF]" : "main-color"}`}
+        >
+          {text || "Latest Articles"}
+        </h6>
       </div>
       <div className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2">
         <Tag text={posts[0]?.categories[0]?.Title || ""} section={section} />
