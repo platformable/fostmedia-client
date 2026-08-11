@@ -108,7 +108,7 @@ export default function page({
         </section>
       </div>
       <section>
-        <SponsorCarousel />
+        <SponsorCarousel section="blog" />
       </section>
     </section>
   )
