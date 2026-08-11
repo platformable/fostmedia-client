@@ -54,7 +54,7 @@ export default function LatestArticles({
         <h6 className="main-orange uppercase">{text || "Latest Articles"}</h6>
       </div>
       <div className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2">
-        <Tag text={posts[0]?.categories[0]?.Title || ""} type={section} />
+        <Tag text={posts[0]?.categories[0]?.Title || ""} section={section} />
         <h4 className={`${fontSizeMap[textSize]}  text-white`}>
           {posts[0]?.Title || "APIs as the backbone of modern AI systems"}
         </h4>

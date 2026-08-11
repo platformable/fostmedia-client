@@ -76,7 +76,7 @@ export default function MainPageFeaturedPost({
             </div> */}
             <Tag
               text={posts[0]?.categories?.[0]?.Title || "Innovation"}
-              type={section}
+              section={section}
             />
 
             <h2 className="mb-4 mt-3 font-semibold leading-tight text-white md:text-4xl lg:text-3xl">

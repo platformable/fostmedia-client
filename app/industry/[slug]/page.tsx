@@ -46,7 +46,7 @@ export default function page({
           <div>
             <Tag
               text={posts[0]?.categories?.[0]?.Title || ""}
-              type="industry"
+              section="industry"
             />
             <h1 className="text-white text-base leading-10 my-5">
               {posts[0]?.Title ||

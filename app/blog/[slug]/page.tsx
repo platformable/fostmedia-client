@@ -44,7 +44,7 @@ export default function page({
       <div className="mx-auto max-w-screen-xl px-4 pt-10">
         <div className="grid grid-cols-1 md:grid-cols-[8fr_4fr]">
           <div>
-            <Tag text={posts[0]?.categories?.[0]?.Title || ""} type="blog" />
+            <Tag text={posts[0]?.categories?.[0]?.Title || ""} section="blog" />
             <h1 className="text-white text-base leading-10 my-5">
               {posts[0]?.Title ||
                 "FOST launches a New Era for Conference Intelligence and Knowledge Discovery"}

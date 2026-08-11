@@ -11,7 +11,7 @@ export default function IndustryTrends() {
       </div>
       <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
         <div className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2">
-          <Tag text="API" />
+          <Tag text="API" section="industry" />
           <h4 className="text-white">
             APIs as the backbone of modern AI systems
           </h4>
@@ -28,7 +28,7 @@ export default function IndustryTrends() {
           </Link>
         </div>
         <div className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2">
-          <Tag text="AI" />
+          <Tag text="AI" section="industry" />
           <h4 className="text-white">
             APIs as the backbone of modern AI systems
           </h4>
