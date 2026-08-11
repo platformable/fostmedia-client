@@ -44,7 +44,10 @@ export default function page({
       <div className="mx-auto max-w-screen-xl px-4 pt-10">
         <div className="grid grid-cols-1 md:grid-cols-[8fr_4fr]">
           <div>
-            <Tag text={posts[0]?.categories?.[0]?.Title || ""} type="blog" />
+            <Tag
+              text={posts[0]?.categories?.[0]?.Title || ""}
+              type="industry"
+            />
             <h1 className="text-white text-base leading-10 my-5">
               {posts[0]?.Title ||
                 "FOST launches a New Era for Conference Intelligence and Knowledge Discovery"}
@@ -58,11 +61,11 @@ export default function page({
               <img
                 src="/avatar.jpg"
                 alt=""
-                className="w-10 h-10 rounded-full border border-[#ff863f]"
+                className="w-10 h-10 rounded-full border border-[#40D2FF]"
               />
               <div className="">
                 <span className=" text-[#BCBCBC]">Mark Boyd </span> <br />
-                <Link href="#" className="main-color">
+                <Link href="#" className="text-[#40D2FF]">
                   View profile →
                 </Link>
               </div>
@@ -84,7 +87,7 @@ export default function page({
 
         <section className="grid grid-cols-1 md:grid-cols-[8fr_4fr] gap-8 mt-5 ">
           <div className="text-[#D6DAE0] border-r border-[#30323B] px-4">
-            <BackToBlogBtn section="blog" />
+            <BackToBlogBtn section="industry" />
 
             <div
               dangerouslySetInnerHTML={{ __html: posts[0]?.Content || "" }}
@@ -108,7 +111,7 @@ export default function page({
         </section>
       </div>
       <section>
-        <SponsorCarousel />
+        <SponsorCarousel section="industry" />
       </section>
     </section>
   )

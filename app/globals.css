@@ -380,3 +380,35 @@ input::-ms-input-placeholder {
   background: transparent linear-gradient(270deg, #624cd8 0%, #be8eff 100%) 0%
     0% no-repeat padding-box;
 }
+
+.read-story-btn-blog-bg {
+  background: linear-gradient(90deg, #dd312a 0%, #f56515 100%) 0% 0% no-repeat
+    padding-box;
+  border-radius: 28px;
+}
+
+.read-story-btn-industry-bg {
+  background: linear-gradient(90deg, #006c8e 0%, #1eb1de 100%) 0% 0% no-repeat
+    padding-box;
+  border-radius: 28px;
+}
+
+.featured-post-blog-bg {
+  background: transparent linear-gradient(89deg, #161a29 80%, #ff863f 160%) 0%
+    0% no-repeat padding-box;
+  border-radius: 28px;
+}
+
+.featured-post-industry-bg {
+  background: transparent linear-gradient(89deg, #161a29 80%, #40d2ff 160%) 0%
+    0% no-repeat padding-box;
+  border-radius: 28px;
+}
+
+.main-color-blog {
+  color: #ff863f;
+}
+
+.main-color-industry {
+  color: #40d2ff;
+}

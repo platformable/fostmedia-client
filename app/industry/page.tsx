@@ -7,11 +7,11 @@ export default function page() {
   return (
     <>
       <div className="mx-auto  max-w-screen-xl ">
-        <MainPageFeaturedPost section="blog" />
-        <LatestArticles section="blog" />
-        <BackToBlogBtn section="blog" />
+        <MainPageFeaturedPost section="industry" />
+        <LatestArticles section="industry" />
+        <BackToBlogBtn section="industry" />
       </div>
-      <LogoCarousel section="blog" />
+      <LogoCarousel section="industry" />
     </>
   )
 }

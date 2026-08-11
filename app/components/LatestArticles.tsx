@@ -14,16 +14,19 @@ type MainPageFeaturedPostProps = {
   href?: string
   ctaLabel?: string
   imageUrl?: string
+  section: "blog" | "industry" | null
 }
 
 export default function LatestArticles({
   description = true,
   textSize = "MEDIUM",
   text = "",
+  section = "blog",
 }: {
   description?: boolean
   textSize?: FontSize
   text?: string
+  section?: "blog" | "industry" | null
 }) {
   const {
     data: posts,
@@ -51,7 +54,7 @@ export default function LatestArticles({
         <h6 className="main-orange uppercase">{text || "Latest Articles"}</h6>
       </div>
       <div className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2">
-        <Tag text={posts[0]?.categories[0]?.Title || ""} />
+        <Tag text={posts[0]?.categories[0]?.Title || ""} type={section} />
         <h4 className={`${fontSizeMap[textSize]}  text-white`}>
           {posts[0]?.Title || "APIs as the backbone of modern AI systems"}
         </h4>
@@ -62,8 +65,10 @@ export default function LatestArticles({
           </p>
         )}
         <Link
-          href={`/blog/${posts[0]?.Slug || "#"}`}
-          className=" py-2 flex items-center main-color rounded-md mt-2"
+          href={`/${section}/${posts[0]?.Slug || "#"}`}
+          className={`py-2 flex items-center  rounded-md mt-2 ${
+            section === "industry" ? "text-[#40D2FF]" : "main-color"
+          }`}
         >
           Read story →
         </Link>

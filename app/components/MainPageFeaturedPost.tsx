@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import getPosts from "@/utils/getPosts"
 import { useQuery } from "@tanstack/react-query"
+import Tag from "./Tag"
 
 type MainPageFeaturedPostProps = {
   title?: string
@@ -10,6 +11,7 @@ type MainPageFeaturedPostProps = {
   href?: string
   ctaLabel?: string
   imageUrl?: string
+  section: "blog" | "industry" | null
 }
 
 export default function MainPageFeaturedPost({
@@ -18,6 +20,7 @@ export default function MainPageFeaturedPost({
   href = "/",
   ctaLabel = "Read story →",
   imageUrl = "https://dummyimage.com/600x400/000/fff",
+  section = null,
 }: MainPageFeaturedPostProps) {
   const {
     data: posts,
@@ -42,11 +45,11 @@ export default function MainPageFeaturedPost({
   return (
     <section className="mx-auto max-w-screen-xl py-12 md:py-16 ">
       <div
-        className="rounded-3xl p-8 md:p-12"
-        style={{
+        className={`rounded-3xl p-8 md:p-12 ${section === "industry" ? "featured-post-industry-bg" : "featured-post-blog-bg"}`}
+        /* style={{
           background:
             "transparent linear-gradient(89deg, #161A29 80%, #FF863F 160%) 0% 0% no-repeat padding-box",
-        }}
+        }} */
       >
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
           {/* Left side - Image */}
@@ -62,17 +65,21 @@ export default function MainPageFeaturedPost({
 
           {/* Right side - Content */}
           <div>
-            <div
-              className="mb-3 inline-block rounded-full px-4 py-1.5 text-sm  uppercase tracking-[0.18em]"
+            {/* <div
+              className=" inline-block rounded-full px-4 py-1.5 text-sm  uppercase tracking-[0.18em]"
               style={{
                 background: "#FFFFFF0D",
                 color: "#FF863F",
               }}
             >
               {posts[0]?.categories[0]?.Title || "Innovation"}
-            </div>
+            </div> */}
+            <Tag
+              text={posts[0]?.categories?.[0]?.Title || "Innovation"}
+              type={section}
+            />
 
-            <h2 className="mb-4 font-semibold leading-tight text-white md:text-4xl lg:text-3xl">
+            <h2 className="mb-4 mt-3 font-semibold leading-tight text-white md:text-4xl lg:text-3xl">
               {posts[0]?.Title || title}
             </h2>
 
@@ -90,13 +97,13 @@ export default function MainPageFeaturedPost({
             </p>
 
             <Link
-              href={`/blog/${posts[0]?.Slug || href}`}
-              className="inline-flex items-center justify-center px-7 py-3  font-semibold text-white transition-opacity hover:opacity-90"
-              style={{
+              href={`/${section}/${posts[0]?.Slug || href}`}
+              className={`inline-flex items-center justify-center px-7 py-3  font-semibold text-white transition-opacity hover:opacity-90 ${section === "industry" ? "read-story-btn-industry-bg" : "read-story-btn-blog-bg"}`}
+              /* style={{
                 background:
                   "linear-gradient(90deg, #DD312A 0%, #F56515 100%) 0% 0% no-repeat padding-box",
                 borderRadius: "28px",
-              }}
+              }} */
             >
               {ctaLabel}
             </Link>

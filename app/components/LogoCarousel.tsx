@@ -8,7 +8,10 @@ const sponsors = Array.from({ length: 15 }, (_, i) => ({
   name: `Sponsor ${i + 1}`,
 }))
 
-export default function SponsorCarousel() {
+type SponsorCarouselProps = {
+  section: "blog" | "industry" | null
+}
+export default function SponsorCarousel({ section }: SponsorCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const itemsPerPage = 5
@@ -35,7 +38,9 @@ export default function SponsorCarousel() {
     <div className="w-full  bg-[#0e1224] py-5 px-8 flex flex-col items-center justify-center ">
       {/* Encabezado */}
       <div className="text-center mb-12">
-        <h3 className="main-color text-xs md:text-sm   uppercase mb-4">
+        <h3
+          className={`${section === "industry" ? "main-color-industry" : "main-color-blog"} text-xs md:text-sm   uppercase mb-4`}
+        >
           Our Sponsors
         </h3>
         <h2 className="text-white text-3xl md:text-4xl font-medium tracking-wide">
@@ -90,7 +95,8 @@ export default function SponsorCarousel() {
       <div className="mt-12">
         <a
           href="#sponsor-us"
-          className="main-color hover:text-[#fb8a5d] text-sm md:text-base transition-colors flex items-center gap-2 group pb-1 border-b border-[#f16f3d] hover:border-[#fb8a5d]"
+          target="_blank"
+          className={`${section === "industry" ? "main-color-industry" : "main-color-blog"} hover:text-[#fb8a5d] text-sm md:text-base transition-colors flex items-center gap-2 group pb-1 border-b border-[#f16f3d] hover:border-[#fb8a5d]`}
         >
           Find out more about being a sponsor
           <svg
