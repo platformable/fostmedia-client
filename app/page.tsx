@@ -12,6 +12,17 @@ import {
 } from "@tanstack/react-query"
 import getPosts from "@/utils/getPosts"
 import Posts from "./components/Posts"
+import { Metadata } from "next"
+
+export async function generateMetadata(): Promise<Metadata> {
+  return createShareMetadata({
+    title: "FOST Media - Your Source for Industry Insights and Trends",
+    description:
+      "FOST Media is the leading source for conference intelligence and knowledge discovery. We provide insights, analysis, and commentary on the latest trends and developments in the conference industry.",
+    url: "https://joinfost.io",
+    image: "/social.png",
+  })
+}
 
 export default async function Home() {
   const queryClient = new QueryClient()
