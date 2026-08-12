@@ -12,6 +12,8 @@ import calculateReadTime from "@/utils/calculateReadTime"
 import ShareModal from "@/app/components/ShareModal"
 import EventCarousel from "@/app/components/Blogcarousel"
 import SponsorCarousel from "@/app/components/LogoCarousel"
+import ShareWidget from "@/app/components/Share"
+import createShareMetadata from "@/lib/metadata"
 
 export default function page({
   params,
@@ -38,6 +40,13 @@ export default function page({
   if (posts.length === 0) {
     return <div className="text-white">No posts found.</div>
   }
+
+  const metadata = createShareMetadata({
+    title: posts[0]?.Title,
+    description: posts[0]?.excerpt || "",
+    url: `/industry/${slug}`,
+    image: posts[0]?.Featured_Image?.url,
+  })
 
   return (
     <section>
@@ -91,13 +100,13 @@ export default function page({
               id="post-content"
             />
 
-            <BackToBlogFooter />
+            <BackToBlogFooter section="blog" />
           </div>
           <aside>
             <div className="flex items-center gap-2 mb-5">
               {/* <img src="/file.svg" width={20} height={20} alt="File Icon" />
             <h6 className="main-color uppercase">On this page</h6> */}
-              <ShareModal />
+              <ShareWidget section="blog" />
             </div>
             <LatestArticles
               description={false}

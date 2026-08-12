@@ -133,7 +133,7 @@ const PLATFORMS: SharePlatform[] = [
     hoverColor: "hover:bg-zinc-800",
     icon: <FaXTwitter />,
     getUrl: (url, title) =>
-      `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+      `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${title}`,
   },
   /*   {
     id: "slack",

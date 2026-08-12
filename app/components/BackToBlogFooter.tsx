@@ -1,7 +1,11 @@
 import Link from "next/link"
 import React from "react"
 
-export default function BackToBlogFooter() {
+export default function BackToBlogFooter({
+  section,
+}: {
+  section: "blog" | "industry"
+}) {
   return (
     <div className="mb-10 grid grid-cols-1 md:grid-cols-2 justify-between gap-4 flex items-center justify-center">
       <Link
@@ -17,8 +21,11 @@ export default function BackToBlogFooter() {
           <span className="main-color text-sm md:text-xl">Media</span> Platform
         </span>
       </Link>
-      <Link href="/blog" className="main-color flex justify-end">
-        ← Back to Blog
+      <Link
+        href={section === "blog" ? "/blog" : "/industry"}
+        className={`${section === "blog" ? "main-color" : "main-color-industry"} flex justify-end`}
+      >
+        ← Back to {section === "blog" ? "Blog" : "Industry"}
       </Link>
     </div>
   )
