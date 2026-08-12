@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "FOST Media - Your Source for Industry Insights and Trends",
     description:
       "FOST Media is the leading source for conference intelligence and knowledge discovery. We provide insights, analysis, and commentary on the latest trends and developments in the conference industry.",
-    url: "https://joinfost.io",
+    url: "/",
     image: "/social.png",
   })
 }
