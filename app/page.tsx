@@ -3,6 +3,7 @@ import MainPageFeaturedPost from "./components/MainPageFeaturedPost"
 import Link from "next/link"
 import LatestArticles from "./components/LatestArticles"
 import IndustryTrends from "./components/IndustryTrends"
+import createShareMetadata from "@/lib/metadata"
 
 import {
   dehydrate,
@@ -18,6 +19,14 @@ export default async function Home() {
   await queryClient.prefetchQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
+  })
+
+  const metadata = createShareMetadata({
+    title: "FOST Media - Your Source for Industry Insights and Trends",
+    description:
+      "FOST Media is the leading source for conference intelligence and knowledge discovery. We provide insights, analysis, and commentary on the latest trends and developments in the conference industry.",
+    url: "https://joinfost.io",
+    image: "/social.png",
   })
 
   return (
