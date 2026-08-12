@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { FaLinkedinIn, FaBluesky } from "react-icons/fa6"
 import { FiShare2, FiCopy, FiMail, FiCheck } from "react-icons/fi"
 
@@ -10,14 +10,11 @@ interface ShareProps {
 }
 
 export default function ShareWidget({
-  url = window.location.href,
+  url = window!.location!.href!,
   title = document.title,
   section,
 }: ShareProps) {
   const [copied, setCopied] = useState(false)
-
-  const encodedUrl = encodeURIComponent(url)
-  const encodedTitle = encodeURIComponent(title)
 
   const shareToLinkedIn = () => {
     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
@@ -50,10 +47,35 @@ export default function ShareWidget({
   }
 
   const shareByEmail = () => {
-    window.location.href = `mailto:?subject=${encodedTitle}&body=${encodeURIComponent(
-      `${title}\n\n${url}`,
-    )}`
+    if (typeof window !== "undefined") {
+      window.location.href! = `mailto:?subject=${encodedTitle}&body=${encodeURIComponent(
+        `${title}\n\n${url}`,
+      )}`
+    }
   }
+
+  const currentUrl = useMemo(() => {
+    if (url) return url
+
+    if (typeof window !== "undefined") {
+      return window.location.href
+    }
+
+    return ""
+  }, [url])
+
+  const currentTitle = useMemo(() => {
+    if (title) return title
+
+    if (typeof document !== "undefined") {
+      return document.title
+    }
+
+    return ""
+  }, [title])
+
+  const encodedUrl = encodeURIComponent(currentUrl)
+  const encodedTitle = encodeURIComponent(currentTitle)
 
   return (
     <div className="share">

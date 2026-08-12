@@ -47,7 +47,7 @@ export default function BlogPosts({ params }: Props) {
 
   return (
     <section>
-      <div className="mx-auto max-w-screen-xl px-4 pt-10">
+      <div className="mx-auto max-w-screen-xl px-4 pt-10 my-10">
         <div className="grid grid-cols-1 md:grid-cols-[8fr_4fr]">
           <div>
             <Tag text={posts[0]?.categories?.[0]?.Title || ""} section="blog" />
@@ -68,7 +68,7 @@ export default function BlogPosts({ params }: Props) {
               />
               <div className="">
                 <span className=" text-[#BCBCBC]">Mark Boyd </span> <br />
-                <Link href="#" className="text-[#40D2FF]">
+                <Link href="/creator/mark-boyd" className="main-color-blog">
                   View profile →
                 </Link>
               </div>
