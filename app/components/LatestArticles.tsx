@@ -48,7 +48,7 @@ export default function LatestArticles({
     return <div className="text-white">No posts found.</div>
   }
   return (
-    <div className="">
+    <div className="my-10">
       <div className="flex items-center gap-2">
         <img src="/file.svg" width={20} height={20} alt="File Icon" />
         <h6

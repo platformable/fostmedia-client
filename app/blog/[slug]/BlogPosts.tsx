@@ -105,13 +105,15 @@ export default function BlogPosts({ params }: Props) {
             <h6 className="main-color uppercase">On this page</h6> */}
               {/*     <ShareModal /> */}
             </div>
-            {/* <LatestArticles
+
+            <ShareWidget section="blog" />
+
+            <LatestArticles
               description={false}
               textSize={"LARGE"}
               text="More from this creator"
               section="blog"
-            /> */}
-            <ShareWidget section="blog" />
+            />
             {/* <ShareModal /> */}
           </aside>
         </section>
