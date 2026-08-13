@@ -7,8 +7,8 @@ export default function BackToBlogFooter({
   section: "blog" | "industry"
 }) {
   return (
-    <div className="mb-10 grid grid-cols-1 md:grid-cols-2 justify-between gap-4 flex items-center justify-center">
-      <Link
+    <div className="mb-10 grid grid-cols-1 md:grid-cols-1  gap-4 flex items-center ">
+      {/*     <Link
         href="/"
         className="flex items-center justify-center space-x-3 rtl:space-x-reverse bg-[#161A29]  p-10 rounded-xl"
       >
@@ -20,10 +20,10 @@ export default function BackToBlogFooter({
         <span className="self-center text-sm md:text-xl text-heading font-semibold whitespace-nowrap text-white">
           <span className="main-color text-sm md:text-xl">Media</span> Platform
         </span>
-      </Link>
+      </Link> */}
       <Link
         href={section === "blog" ? "/blog" : "/industry"}
-        className={`${section === "blog" ? "main-color" : "main-color-industry"} flex justify-end`}
+        className={`${section === "blog" ? "main-color" : "main-color-industry"} flex justify-start`}
       >
         ← Back to {section === "blog" ? "Blog" : "Industry"}
       </Link>
