@@ -17,6 +17,7 @@ import { Metadata } from "next"
 import EventCarousel from "./components/Blogcarousel"
 import EventsCarousel from "./components/EventCarousel"
 import NewsletterSection from "./components/NewsletterSection"
+import VideoCarousel from "./components/VideoCarousel"
 
 export async function generateMetadata(): Promise<Metadata> {
   return createShareMetadata({
@@ -111,6 +112,8 @@ export default async function Home() {
           <LogoCarousel section="blog" />
           <EventsCarousel />
           <NewsletterSection />
+          <LogoCarousel section="blog" />
+          <VideoCarousel />
         </section>
       </HydrationBoundary>
     </section>
