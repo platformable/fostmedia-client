@@ -39,7 +39,7 @@ const events = [
   // Add more events here to test the sliding functionality
 ]
 
-export default function EventCarousel() {
+export default function EventCarousel2() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const itemsPerPage = 4
   const totalPages = Math.ceil(events.length / itemsPerPage)

@@ -375,7 +375,10 @@ input::-ms-input-placeholder {
     )
     0% 0% no-repeat padding-box;
 }
-
+.subscribe-btn {
+  background: linear-gradient(90deg, #dd312a 0%, #f56515 100%) 0% 0% no-repeat
+    padding-box;
+}
 .ask-btn {
   background: transparent linear-gradient(270deg, #624cd8 0%, #be8eff 100%) 0%
     0% no-repeat padding-box;
@@ -473,4 +476,19 @@ input::-ms-input-placeholder {
 .share__button:focus-visible {
   outline: 2px solid #18b9f4;
   outline-offset: 3px;
+}
+
+/* event carousel */
+
+@layer utilities {
+  .hide-scrollbar {
+    /* IE and Edge */
+    -ms-overflow-style: none;
+    /* Firefox */
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    /* Chrome, Safari and Opera */
+    display: none;
+  }
 }

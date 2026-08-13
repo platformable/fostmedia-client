@@ -4,6 +4,7 @@ import Link from "next/link"
 import LatestArticles from "./components/LatestArticles"
 import IndustryTrends from "./components/IndustryTrends"
 import createShareMetadata from "@/lib/metadata"
+import LogoCarousel from "./components/LogoCarousel"
 
 import {
   dehydrate,
@@ -13,6 +14,9 @@ import {
 import getPosts from "@/utils/getPosts"
 import Posts from "./components/Posts"
 import { Metadata } from "next"
+import EventCarousel from "./components/Blogcarousel"
+import EventsCarousel from "./components/EventCarousel"
+import NewsletterSection from "./components/NewsletterSection"
 
 export async function generateMetadata(): Promise<Metadata> {
   return createShareMetadata({
@@ -104,6 +108,9 @@ export default async function Home() {
           <div className="mx-auto  max-w-screen-xl p-4 py-6 lg:py-4 mb-7 ">
             <IndustryTrends />
           </div>
+          <LogoCarousel section="blog" />
+          <EventsCarousel />
+          <NewsletterSection />
         </section>
       </HydrationBoundary>
     </section>
