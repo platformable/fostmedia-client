@@ -1,5 +1,6 @@
 "use client"
 import React, { useRef, useState } from "react"
+import { getVideos } from "@/utils/getPosts"
 
 import { getYouTubeId } from "@/utils/getYTIds"
 
@@ -55,6 +56,16 @@ const mockVideos = [
 ]
 
 export default function VideoCarousel() {
+  const [videos, setVideos] = useState<any[]>([])
+
+  React.useEffect(() => {
+    const fetchVideos = async () => {
+      const videosData = await getVideos()
+      setVideos(videosData)
+    }
+    fetchVideos()
+  }, [])
+  console.log(videos, "videos")
   const scrollRef = useRef<HTMLDivElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -102,7 +113,12 @@ export default function VideoCarousel() {
     }
   }
 
-  const totalDots = mockVideos.length
+  const totalDots = videos.length
+
+  const makeThumbnailUrl = (videoUrl: string) => {
+    const videoId = getYouTubeId(videoUrl)
+    return getThumbnailUrl(videoId)
+  }
 
   return (
     <section className="bg-black py-12 md:py-20 px-4 md:px-8 lg:px-16">
@@ -175,18 +191,18 @@ export default function VideoCarousel() {
               onScroll={handleScroll}
               className="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4"
             >
-              {mockVideos.map((video) => (
+              {videos.map((video) => (
                 <a
                   key={video.id}
-                  href={video.url}
+                  href={video.Video_url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group block snap-start shrink-0 w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[calc(25%-12px)] bg-[#171e2e] border border-gray-800 rounded-2xl p-3 hover:bg-[#1f293d] transition-colors duration-300"
                 >
                   <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gray-900 mb-4">
                     <img
-                      src={video.thumbnail!}
-                      alt={video.title}
+                      src={makeThumbnailUrl(video.Video_url)!}
+                      alt={video.Title}
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-300"
                     />
 
@@ -204,7 +220,7 @@ export default function VideoCarousel() {
                   </div>
 
                   <p className="text-gray-200 font-medium text-[15px] leading-snug px-1 pb-2">
-                    {video.title}
+                    {video.Title}
                   </p>
                 </a>
               ))}

@@ -15,6 +15,22 @@ const getPostsBySlug = async (slug: string) => {
   return posts?.data
 }
 
-export { getPostsBySlug }
+const getVideos = async () => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/videos`)
+  const posts = await response.json()
+
+  return posts?.data
+}
+
+const getEvents = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/events?populate=*`,
+  )
+  const posts = await response.json()
+
+  return posts?.data
+}
+
+export { getPostsBySlug, getVideos, getEvents }
 
 export default getPosts

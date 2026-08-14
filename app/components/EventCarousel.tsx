@@ -1,18 +1,19 @@
 "use client"
 
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
+import { getEvents } from "@/utils/getPosts"
 
 // --- MOCK API DATA ---
 // In your real application, you would fetch this from your backend.
 
 type EventData = {
   id: number
-  dateDays: string
+  Date: string
   dateMonths: string
-  eventName: string
+  Title: string
   eventLocation: string
-  skylineImage: string // URL to the skyline image
-  link: string // Link to the event page
+  Background_image: { formats: { medium: { url: string } } }
+  Event_url: string
 }
 
 const apiData = [
@@ -101,27 +102,31 @@ const EventCard = ({ event }: { event: EventData }) => {
       {/* Background Image */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-bottom bg-no-repeat z-0"
-        style={{ backgroundImage: `url(${event.skylineImage})` }}
+        style={{
+          backgroundImage: `url(${event.Background_image?.formats?.medium?.url})`,
+        }}
       />
 
       {/* Top Section: Date & Title */}
       <div className="relative z-10 flex items-start gap-4 p-6 pointer-events-none">
         <div className="flex flex-col text-[#F4F4F5] font-light tracking-wide">
-          <span className="text-xl leading-tight">{event.dateDays}</span>
+          <span className="text-xl leading-tight">{event.Date}</span>
           <span className="text-sm leading-tight mt-1">{event.dateMonths}</span>
         </div>
 
         <div className="w-[1px] h-10 bg-white/20 mt-1"></div>
 
         <div className="flex flex-col main-color font-semibold tracking-wide">
-          <span className="text-lg leading-tight">{event.eventName}</span>
+          <span className="text-lg leading-tight">{event.Title}</span>
           <span className="text-lg leading-tight">{event.eventLocation}</span>
         </div>
       </div>
 
       {/* Bottom Footer */}
       <a
-        href={event.link}
+        href={event.Event_url}
+        target="_blank"
+        rel="noopener noreferrer"
         className="absolute bottom-0 left-0 w-full p-6 flex justify-between items-center text-white/90 z-10 hover:text-white transition-colors"
       >
         <span className="text-sm font-medium tracking-wide">Event Info</span>
@@ -146,6 +151,17 @@ const EventCard = ({ event }: { event: EventData }) => {
 
 // --- MAIN CAROUSEL COMPONENT ---
 export default function EventCarousel() {
+  const [events, setEvents] = useState<any[]>([])
+
+  React.useEffect(() => {
+    const fetchEvents = async () => {
+      const eventsData = await getEvents()
+      setEvents(eventsData)
+    }
+    fetchEvents()
+  }, [])
+  console.log(events, "events")
+
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   // Scroll function for arrows
@@ -203,7 +219,7 @@ export default function EventCarousel() {
             ref={scrollContainerRef}
             className="flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4"
           >
-            {apiData.map((event) => (
+            {events.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
           </div>
