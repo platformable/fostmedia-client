@@ -11,7 +11,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query"
-import getPosts from "@/utils/getPosts"
+import getPosts, { getIndustryPosts } from "@/utils/getPosts"
 import Posts from "./components/Posts"
 import { Metadata } from "next"
 import EventCarousel from "./components/Blogcarousel"
@@ -37,6 +37,11 @@ export default async function Home() {
     queryFn: getPosts,
   })
 
+  await queryClient.prefetchQuery({
+    queryKey: ["industryPosts"],
+    queryFn: getIndustryPosts,
+  })
+
   const metadata = createShareMetadata({
     title: "FOST Media - Your Source for Industry Insights and Trends",
     description:
@@ -45,6 +50,7 @@ export default async function Home() {
     image: "/social.png",
   })
 
+  console.log(queryClient.getQueryData(["industryPosts"]), "industryPosts")
   return (
     <section>
       {" "}

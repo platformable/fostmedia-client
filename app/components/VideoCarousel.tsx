@@ -57,6 +57,7 @@ const mockVideos = [
 
 export default function VideoCarousel() {
   const [videos, setVideos] = useState<any[]>([])
+  const [activePage, setActivePage] = useState(0)
 
   React.useEffect(() => {
     const fetchVideos = async () => {
@@ -113,7 +114,8 @@ export default function VideoCarousel() {
     }
   }
 
-  const totalDots = videos.length
+  const itemsPerPage = 4
+  const totalDots = Math.ceil(videos.length / itemsPerPage)
 
   const makeThumbnailUrl = (videoUrl: string) => {
     const videoId = getYouTubeId(videoUrl)
@@ -234,11 +236,11 @@ export default function VideoCarousel() {
                 key={idx}
                 onClick={() => scrollTo(idx)}
                 className={`rounded-full transition-all duration-300 ${
-                  activeIndex === idx
+                  activePage === idx
                     ? "w-2.5 h-2.5 bg-white"
                     : "w-2 h-2 bg-gray-600 hover:bg-gray-400"
                 }`}
-                aria-label={`Go to slide ${idx + 1}`}
+                aria-label={`Go to page ${idx + 1}`}
               />
             ))}
           </div>

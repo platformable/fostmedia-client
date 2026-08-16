@@ -1,8 +1,20 @@
+"use client"
 import Link from "next/link"
 import React from "react"
 import Tag from "./Tag"
+import getPosts, { getIndustryPosts } from "@/utils/getPosts"
+import { useQuery } from "@tanstack/react-query"
 
 export default function IndustryTrends() {
+  const {
+    data: industryPosts,
+    isPending,
+    isError,
+  } = useQuery({
+    queryKey: ["industryPosts"],
+    queryFn: getIndustryPosts,
+  })
+
   return (
     <div className="">
       <div className="flex items-center gap-2">
@@ -11,34 +23,14 @@ export default function IndustryTrends() {
       </div>
       <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
         <div className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2">
-          <Tag text="API" section="industry" />
-          <h4 className="text-white">
-            APIs as the backbone of modern AI systems
-          </h4>
-          <p className="text-[#BCC4D0]">
-            A short overview of how APIs enable AI models to access, share, and
-            process data across platforms. It explains why APIs are essential
-            for scaling AI applications.
-          </p>
+          <Tag
+            text={industryPosts?.[0]?.categories[0].Title}
+            section="industry"
+          />
+          <h4 className="text-white">{industryPosts?.[0]?.title}</h4>
+          <p className="text-[#BCC4D0]">{industryPosts?.[0]?.Excerpt}</p>
           <Link
-            href="#"
-            className=" py-2 flex items-center text-[#40D2FF] rounded-md mt-2"
-          >
-            Read story →
-          </Link>
-        </div>
-        <div className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2">
-          <Tag text="AI" section="industry" />
-          <h4 className="text-white">
-            APIs as the backbone of modern AI systems
-          </h4>
-          <p className="text-[#BCC4D0]">
-            A short overview of how APIs enable AI models to access, share, and
-            process data across platforms. It explains why APIs are essential
-            for scaling AI applications.
-          </p>
-          <Link
-            href="#"
+            href={`/industry/${industryPosts?.[0]?.Slug}`}
             className=" py-2 flex items-center text-[#40D2FF] rounded-md mt-2"
           >
             Read story →

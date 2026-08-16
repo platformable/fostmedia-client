@@ -5,7 +5,7 @@ import BackToBlogBtn from "@/app/components/BackToBlogBtn"
 import BackToBlogFooter from "@/app/components/BackToBlogFooter"
 import LatestArticles from "@/app/components/LatestArticles"
 import Tag from "@/app/components/Tag"
-import getPostsBySlug from "@/utils/getPosts"
+import { getIndustryBySlug } from "@/utils/getPosts"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
 import Link from "next/link"
@@ -15,21 +15,25 @@ import SponsorCarousel from "@/app/components/LogoCarousel"
 
 interface Props {
   params: Promise<{
-    slug: string
+    Slug: string
   }>
 }
 
 export default function BlogPosts({ params }: Props) {
-  const { slug } = React.use(params)
+  const { Slug } = React.use(params)
+
+  console.log(" slug dentro [slug]:", Slug)
 
   const {
     data: posts,
     isPending,
     isError,
   } = useQuery({
-    queryKey: ["postsBySlug", slug],
-    queryFn: () => getPostsBySlug(),
+    queryKey: ["IndustryBySlug", Slug],
+    queryFn: () => getIndustryBySlug(Slug),
   })
+
+  console.log(posts, "posts dentro [slug]")
 
   if (isPending) {
     return <div>Loading...</div>
@@ -50,23 +54,20 @@ export default function BlogPosts({ params }: Props) {
       <div className="mx-auto max-w-screen-xl px-4 pt-10">
         <div className="grid grid-cols-1 md:grid-cols-[8fr_4fr]">
           <div>
-            <Tag
-              text={posts[0]?.categories?.[0]?.Title || ""}
-              section="industry"
-            />
+            <Tag text={post?.categories?.[0]?.Title || ""} section="industry" />
             <h1 className="text-white text-base leading-10 my-5">
-              {posts[0]?.Title ||
+              {post?.title ||
                 "FOST launches a New Era for Conference Intelligence and Knowledge Discovery"}
             </h1>
             <span className="text-[#BCBCBC] text-sm">
-              {calculateReadTime(posts[0]?.Content || "")}
+              {calculateReadTime(post?.Content || "")}
             </span>
           </div>
           <div className="flex items-center justify-end gap-2 ">
             <div className="flex gap-x-2 items-center">
               <img
                 src="/avatar.jpg"
-                alt=""
+                alt={post?.author || "Author"}
                 className="w-10 h-10 rounded-full border border-[#40D2FF]"
               />
               <div className="">
@@ -81,10 +82,10 @@ export default function BlogPosts({ params }: Props) {
         <div className="relative h-64 w-full overflow-hidden rounded-2xl md:h-80 mt-10 mb-3">
           <Image
             src={
-              posts[0]?.Featured_Image?.url ||
+              post?.Featured_Image?.url ||
               "https://dummyimage.com/1920x1080/fff"
             }
-            alt={slug}
+            alt={"Image"}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -96,7 +97,7 @@ export default function BlogPosts({ params }: Props) {
             <BackToBlogBtn section="industry" />
 
             <div
-              dangerouslySetInnerHTML={{ __html: posts[0]?.Content || "" }}
+              dangerouslySetInnerHTML={{ __html: post?.Content || "" }}
               id="post-content"
             />
 

@@ -20,7 +20,7 @@ export async function generateMetadata({
   if (!post) {
     return {}
   }
-
+  console.log(slug, "post dentro [slug]")
   return createShareMetadata({
     title: post.Title,
     description: post.excerpt || "",

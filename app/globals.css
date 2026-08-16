@@ -64,6 +64,10 @@ p {
   color: #d6dae0;
   font-family: "Inter", sans-serif;
 }
+
+#post-content h2 {
+  line-height: 1;
+}
 p,
 span,
 a {
