@@ -15,12 +15,14 @@ export async function generateMetadata({
   const { slug } = await params
 
   const posts = await getPostsBySlug(slug)
-  const post = posts?.[0]
+  const post = posts[posts.length - 1] || posts[0]
+
+  console.log("post desde generateMetadata", post)
 
   if (!post) {
     return {}
   }
-  console.log(slug, "post dentro [slug]")
+
   return createShareMetadata({
     title: post.Title,
     description: post.excerpt || "",

@@ -15,25 +15,21 @@ import SponsorCarousel from "@/app/components/LogoCarousel"
 
 interface Props {
   params: Promise<{
-    Slug: string
+    slug: string
   }>
 }
 
-export default function BlogPosts({ params }: Props) {
-  const { Slug } = React.use(params)
-
-  console.log(" slug dentro [slug]:", Slug)
+export default function IndustryPost({ params }: Props) {
+  const { slug } = React.use(params)
 
   const {
     data: posts,
     isPending,
     isError,
   } = useQuery({
-    queryKey: ["IndustryBySlug", Slug],
-    queryFn: () => getIndustryBySlug(Slug),
+    queryKey: ["IndustryBySlug", slug],
+    queryFn: () => getIndustryBySlug(slug),
   })
-
-  console.log(posts, "posts dentro [slug]")
 
   if (isPending) {
     return <div>Loading...</div>
@@ -48,6 +44,8 @@ export default function BlogPosts({ params }: Props) {
   }
 
   const post = posts[0]
+
+  console.log("post dentro [slug]:", post)
 
   return (
     <section>

@@ -5,7 +5,7 @@ import Tag from "./Tag"
 
 import { FontSize, fontSizeMap } from "../fontTypes"
 
-import getPosts from "@/utils/getPosts"
+import getPosts, { getIndustryPosts } from "@/utils/getPosts"
 import { useQuery } from "@tanstack/react-query"
 
 type MainPageFeaturedPostProps = {
@@ -33,8 +33,8 @@ export default function LatestArticles({
     isPending,
     isError,
   } = useQuery({
-    queryKey: ["posts"],
-    queryFn: getPosts,
+    queryKey: [section === "industry" ? "industryPosts" : "posts"],
+    queryFn: section === "industry" ? getIndustryPosts : getPosts,
   })
 
   /*   console.log(posts, "posts") */
@@ -57,26 +57,35 @@ export default function LatestArticles({
           {text || "Latest Articles"}
         </h6>
       </div>
-      <div className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2">
-        <Tag text={posts[0]?.categories[0]?.Title || ""} section={section} />
-        <h4 className={`${fontSizeMap[textSize]}  text-white`}>
-          {posts[0]?.Title || "APIs as the backbone of modern AI systems"}
-        </h4>
-        {description && (
-          <p className="text-[#BCC4D0]">
-            {posts[0]?.Description ||
-              "A short overview of how APIs enable AI models to access, share, and process data across platforms. It explains why APIs are essential for scaling AI applications."}
-          </p>
-        )}
-        <Link
-          href={`/${section}/${posts[0]?.Slug || "#"}`}
-          className={`py-2 flex items-center  rounded-md mt-2 ${
-            section === "industry" ? "text-[#40D2FF]" : "main-color"
-          }`}
-        >
-          Read story →
-        </Link>
-      </div>
+      {posts.map((post: any, index: number) => {
+        return (
+          <div
+            key={index}
+            className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2"
+          >
+            <Tag text={post?.categories[0]?.Title || ""} section={section} />
+            <h4 className={`${fontSizeMap[textSize]}  text-white`}>
+              {post?.Title ||
+                post?.title ||
+                "APIs as the backbone of modern AI systems"}
+            </h4>
+            {description && (
+              <p className="text-[#BCC4D0]">
+                {post?.Excerpt ||
+                  "A short overview of how APIs enable AI models to access, share, and process data across platforms. It explains why APIs are essential for scaling AI applications."}
+              </p>
+            )}
+            <Link
+              href={`/${section}/${post?.Slug || "#"}`}
+              className={`py-2 flex items-center  rounded-md mt-2 ${
+                section === "industry" ? "text-[#40D2FF]" : "main-color"
+              }`}
+            >
+              Read story →
+            </Link>
+          </div>
+        )
+      })}
     </div>
   )
 }

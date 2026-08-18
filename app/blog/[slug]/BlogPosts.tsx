@@ -5,7 +5,7 @@ import BackToBlogBtn from "@/app/components/BackToBlogBtn"
 import BackToBlogFooter from "@/app/components/BackToBlogFooter"
 import LatestArticles from "@/app/components/LatestArticles"
 import Tag from "@/app/components/Tag"
-import getPostsBySlug from "@/utils/getPosts"
+import { getPostsBySlug } from "@/utils/getPosts"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
 import Link from "next/link"
@@ -23,40 +23,44 @@ export default function BlogPosts({ params }: Props) {
   const { slug } = React.use(params)
 
   const {
-    data: posts,
+    data: postsBySlug,
     isPending,
     isError,
   } = useQuery({
     queryKey: ["postsBySlug", slug],
-    queryFn: () => getPostsBySlug(),
+    queryFn: () => getPostsBySlug(slug),
+    staleTime: 0,
+    gcTime: 0,
+    refetchOnMount: "always",
   })
 
   if (isPending) {
     return <div>Loading...</div>
   }
 
-  if (isError || !posts) {
+  if (isError || !postsBySlug) {
     return <div className="text-white">Failed to load posts.</div>
   }
 
-  if (posts.length === 0) {
+  if (postsBySlug.length === 0) {
     return <div className="text-white">No posts found.</div>
   }
 
-  const post = posts[0]
+  const post = postsBySlug[0]
+
+  console.log("POST", post)
 
   return (
     <section>
       <div className="mx-auto max-w-screen-xl px-4 pt-10 my-10">
         <div className="grid grid-cols-1 md:grid-cols-[8fr_4fr]">
           <div>
-            <Tag text={posts[0]?.categories?.[0]?.Title || ""} section="blog" />
+            <Tag text={post?.categories?.[0]?.Title || ""} section="blog" />
             <h1 className="text-white text-base leading-10 my-5">
-              {posts[0]?.Title ||
-                "FOST launches a New Era for Conference Intelligence and Knowledge Discovery"}
+              {post?.Title || "FOST "}
             </h1>
             <span className="text-[#BCBCBC] text-sm">
-              {calculateReadTime(posts[0]?.Content || "")}
+              {calculateReadTime(post?.Content || "")}
             </span>
           </div>
           <div className="flex items-center justify-end gap-2 ">
@@ -67,7 +71,11 @@ export default function BlogPosts({ params }: Props) {
                 className="w-10 h-10 rounded-full border border-[#40D2FF]"
               />
               <div className="">
-                <span className=" text-[#BCBCBC]">Mark Boyd </span> <br />
+                <span className=" text-[#BCBCBC]">
+                  {post?.authors?.Name || "Author"}{" "}
+                  {post?.authors?.Lastname || "Author"}{" "}
+                </span>{" "}
+                <br />
                 <Link href="/creator/mark-boyd" className="main-color-blog">
                   View profile →
                 </Link>
@@ -78,13 +86,14 @@ export default function BlogPosts({ params }: Props) {
         <div className="relative h-64 w-full overflow-hidden rounded-2xl md:h-80 mt-10 mb-3">
           <Image
             src={
-              posts[0]?.Featured_Image?.url ||
-              "https://dummyimage.com/1920x1080/fff"
+              post?.Featured_Image?.url ||
+              `https://dummyimage.com/1920x1080/000/fff&text=FOST`
             }
             alt={slug}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
+            loading="eager"
           />
         </div>
 
@@ -93,7 +102,7 @@ export default function BlogPosts({ params }: Props) {
             <BackToBlogBtn section="blog" />
 
             <div
-              dangerouslySetInnerHTML={{ __html: posts[0]?.Content || "" }}
+              dangerouslySetInnerHTML={{ __html: post?.Content || "" }}
               id="post-content"
             />
 

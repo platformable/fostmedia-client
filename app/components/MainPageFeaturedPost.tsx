@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
-import getPosts from "@/utils/getPosts"
+import getPosts, { getIndustryPosts } from "@/utils/getPosts"
 import { useQuery } from "@tanstack/react-query"
 import Tag from "./Tag"
 
@@ -27,9 +27,11 @@ export default function MainPageFeaturedPost({
     isPending,
     isError,
   } = useQuery({
-    queryKey: ["posts"],
-    queryFn: getPosts,
+    queryKey: [section === "industry" ? "industryPosts" : "posts"],
+    queryFn: section === "industry" ? getIndustryPosts : getPosts,
   })
+
+  const post = posts?.length > 0 ? posts[posts.length - 1] : posts?.[0]
 
   /*   console.log(posts, "posts") */
   if (isPending) {
@@ -55,8 +57,8 @@ export default function MainPageFeaturedPost({
           {/* Left side - Image */}
           <div className="relative h-64 w-full overflow-hidden rounded-2xl md:h-80">
             <Image
-              src={posts[0]?.Featured_Image?.url || imageUrl}
-              alt={posts[0]?.Title || title}
+              src={post?.Featured_Image?.url || imageUrl}
+              alt={post?.Title || post?.title || title}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -72,19 +74,19 @@ export default function MainPageFeaturedPost({
                 color: "#FF863F",
               }}
             >
-              {posts[0]?.categories[0]?.Title || "Innovation"}
+              {post?.categories?.[0]?.Title || "Innovation"}
             </div> */}
             <Tag
-              text={posts[0]?.categories?.[0]?.Title || "Innovation"}
+              text={post?.categories?.[0]?.Title || "Innovation"}
               section={section}
             />
 
             <h2 className="mb-4 mt-3 font-semibold leading-tight text-white md:text-4xl lg:text-3xl">
-              {posts[0]?.Title || title}
+              {post?.Title || post?.title || title}
             </h2>
 
             <p className="mb-4  text-[#F5F5F5]">
-              {new Date(posts[0]?.createdAt).toLocaleDateString("en-US", {
+              {new Date(post?.createdAt).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
@@ -97,13 +99,8 @@ export default function MainPageFeaturedPost({
             </p>
 
             <Link
-              href={`/${section}/${posts[0]?.Slug || href}`}
+              href={`/${section}/${post?.Slug || href}`}
               className={`inline-flex items-center justify-center px-7 py-3  font-semibold text-white transition-opacity hover:opacity-90 ${section === "industry" ? "read-story-btn-industry-bg" : "read-story-btn-blog-bg"}`}
-              /* style={{
-                background:
-                  "linear-gradient(90deg, #DD312A 0%, #F56515 100%) 0% 0% no-repeat padding-box",
-                borderRadius: "28px",
-              }} */
             >
               {ctaLabel}
             </Link>

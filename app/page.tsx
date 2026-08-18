@@ -50,7 +50,6 @@ export default async function Home() {
     image: "/social.png",
   })
 
-  console.log(queryClient.getQueryData(["industryPosts"]), "industryPosts")
   return (
     <section>
       {" "}
