@@ -56,7 +56,7 @@ export default function BlogPosts({ params }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-[8fr_4fr]">
           <div>
             <Tag text={post?.categories?.[0]?.Title || ""} section="blog" />
-            <h1 className="text-white text-base leading-10 my-5">
+            <h1 className="text-white text-base  my-5">
               {post?.Title || "FOST "}
             </h1>
             <span className="text-[#BCBCBC] text-sm">

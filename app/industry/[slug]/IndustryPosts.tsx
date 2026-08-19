@@ -53,7 +53,7 @@ export default function IndustryPost({ params }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-[8fr_4fr]">
           <div>
             <Tag text={post?.categories?.[0]?.Title || ""} section="industry" />
-            <h1 className="text-white text-base leading-10 my-5">
+            <h1 className="text-white text-base  my-5">
               {post?.title ||
                 "FOST launches a New Era for Conference Intelligence and Knowledge Discovery"}
             </h1>
@@ -70,7 +70,7 @@ export default function IndustryPost({ params }: Props) {
               />
               <div className="">
                 <span className=" text-[#BCBCBC]">Mark Boyd </span> <br />
-                <Link href="#" className="text-[#40D2FF]">
+                <Link href="/creator/mark-boyd" className="text-[#40D2FF]">
                   View profile →
                 </Link>
               </div>
