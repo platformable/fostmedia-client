@@ -13,6 +13,7 @@ import {
   PDFDownloadLink,
   Image,
 } from "@react-pdf/renderer"
+import { LoadingMessages } from "../components/LoaderTextAnimation"
 // import ShareModal from "../components/SharePost"
 // import BackToBlogFooter from "../components/BackToBlogFooter"
 // import BackToBlogBtn from "../components/BackToBlogBtn"
@@ -159,6 +160,13 @@ export default function TechPulsePage() {
               <Loader />
             </div>
           )}
+
+          {isPending && (
+            <div className="flex justify-center py-5">
+              <LoadingMessages />
+            </div>
+          )}
+
           {state.results.answer &&
             Array.isArray(state.results.answer) &&
             state.results.answer.map(
@@ -179,7 +187,10 @@ export default function TechPulsePage() {
                 >
                   <p className="text-white text-sm mt-1">{answer.quote}</p>
                   <span className="text-[#B2B2B2]  mt-2 block">
-                    {answer.firstName} {answer.lastName}
+                    {answer.firstName}{" "}
+                    {answer.lastName === null || answer.lastName === "Unknown"
+                      ? ""
+                      : answer.lastName}
                   </span>
                   <span className="text-[#B2B2B2]  mt-1 block">
                     {answer.role} at {answer.company} - {answer.conference}
