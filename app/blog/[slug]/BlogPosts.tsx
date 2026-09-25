@@ -66,7 +66,7 @@ export default function BlogPosts({ params }: Props) {
           <div className="flex items-center justify-end gap-2 ">
             <div className="flex gap-x-2 items-center">
               <img
-                src="/avatar.jpg"
+                src={`${post?.authors?.Avatar?.url || "/avatar.jpg"}`}
                 alt=""
                 className="w-10 h-10 rounded-full border border-[#40D2FF]"
               />
@@ -76,9 +76,9 @@ export default function BlogPosts({ params }: Props) {
                   {post?.authors?.Lastname || "Author"}{" "}
                 </span>{" "}
                 <br />
-                <Link href="/creator/mark-boyd" className="main-color-blog">
+                {/* <Link href="/creator/mark-boyd" className="main-color-blog">
                   View profile →
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
