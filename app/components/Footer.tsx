@@ -58,7 +58,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li className="mb-4 mt-4">
-                  <Link href="/tech-pulse" className="">
+                  <Link href="/pulse" className="">
                     Tech Pulse
                   </Link>
                 </li>

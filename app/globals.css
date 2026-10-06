@@ -32,30 +32,6 @@
   }
 }
 
-h1 {
-  font-size: 3rem; /* 48px */
-}
-
-h2 {
-  font-size: 2.25rem; /* 36px */
-}
-
-h3 {
-  font-size: 1.875rem; /* 30px */
-}
-
-h4 {
-  font-size: 1.5rem; /* 24px */
-}
-
-h5 {
-  font-size: 1.25rem; /* 20px */
-}
-
-h6 {
-  font-size: 1.125rem; /* 18px */
-}
-
 p {
   margin-bottom: 1.5em;
   margin-top: 0;
@@ -68,9 +44,8 @@ p {
 #post-content h2 {
   line-height: 1.5rem; /* 24px */
 p,
-span,
-a {
-  font-size: 1.3rem; /* 16px */
+span {
+  font-size: 1.05rem;
 }
 
 small {

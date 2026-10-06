@@ -97,7 +97,7 @@ export default async function Home() {
                 </button>
 
                 <Link
-                  href="/tech-pulse"
+                  href="/pulse"
                   className=" py-2  text-white rounded-full mt-2 self-start flex items-center gap-2 px-5"
                   style={{
                     background:
