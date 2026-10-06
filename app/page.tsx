@@ -104,7 +104,7 @@ export default async function Home() {
                       "transparent linear-gradient(270deg, #624CD8 0%, #BE8EFF 100%) 0% 0% no-repeat padding-box",
                   }}
                 >
-                  Open Tech Pulse →
+                  Open Pulse →
                 </Link>
               </div>
             </div>
