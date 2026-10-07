@@ -1,9 +1,14 @@
 "use client"
 import Link from "next/link"
 import React from "react"
+import { usePathname } from "next/navigation"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+  const pathname = usePathname()
+  const isTechPulse = pathname.includes("pulse")
+
+  console.log(isTechPulse)
 
   return (
     <nav className="bg-[#111525]   z-20 top-0 start-0 border-b border-[#393939]">
@@ -12,15 +17,29 @@ export default function Navbar() {
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img
-            src="/logo_fost.svg"
-            className="h-7 border-r border-[#FC6200] pr-3"
-            alt="FOSTBeat Logo"
-          />
-          <span className="self-center text-sm md:text-xl text-heading font-semibold whitespace-nowrap text-white">
-            <span className="main-color text-sm md:text-xl">FOST</span>
-            Beat
-          </span>
+          {!isTechPulse && (
+            <>
+              <img
+                src="/logo_fost.svg"
+                className="h-7 border-r border-[#FC6200] pr-3"
+                alt="FOSTBeat Logo"
+              />
+              <span className="self-center text-sm md:text-xl text-heading font-semibold whitespace-nowrap text-white">
+                <span className="main-color text-sm md:text-xl">FOST</span>
+                Beat
+              </span>
+            </>
+          )}
+
+          {isTechPulse && (
+            <>
+              <img
+                src="/FOSTPulse_logo.svg"
+                className="h-10 "
+                alt="FOSTPulse Logo"
+              />
+            </>
+          )}
         </Link>
         <div className="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
           <Link
