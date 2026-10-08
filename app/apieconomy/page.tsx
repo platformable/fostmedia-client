@@ -1,0 +1,224 @@
+"use client"
+import React, { useActionState, useState } from "react"
+import LatestArticles from "../components/LatestArticles"
+import { handleReportSearch } from "@/utils/searchActions"
+import Loader from "../components/Loader"
+import ReactPDF from "@react-pdf/renderer"
+import ReactMarkdown from "react-markdown"
+import {
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+  PDFDownloadLink,
+  Image,
+} from "@react-pdf/renderer"
+import { LoadingMessages } from "../components/LoaderTextAnimation"
+// import ShareModal from "../components/SharePost"
+// import BackToBlogFooter from "../components/BackToBlogFooter"
+// import BackToBlogBtn from "../components/BackToBlogBtn"
+
+export default function TechPulsePage() {
+  const initialState = {
+    query: "",
+    results: [],
+  }
+
+  const [state, dispatchAction, isPending] = useActionState(
+    handleReportSearch,
+    initialState,
+  )
+  const styles = StyleSheet.create({
+    page: {
+      /*       flexDirection: "row", */
+      backgroundColor: "#0b0f1c",
+      color: "#ffffff",
+    },
+    section: {
+      margin: 10,
+      padding: 10,
+      flexGrow: 1,
+    },
+    box: {
+      backgroundColor: "#161A29",
+      padding: 10,
+      borderRadius: 5,
+      border: "1px solid #A18EFF",
+      marginBottom: 10,
+    },
+    conference: {
+      fontSize: 12,
+      marginBottom: 10,
+    },
+    authors: {
+      color: "#B2B2B2",
+      fontSize: 10,
+      marginTop: 10,
+      /* marginBottom: 3,  */
+    },
+    companyInfo: {
+      color: "#B2B2B2",
+      fontSize: 10,
+    },
+  })
+
+  const MyDocument = () => (
+    <Document>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.section}>
+          <Image
+            src={`${window.location.origin}/logo_fost.png`}
+            style={{
+              width: 120,
+              height: 40,
+              marginBottom: 20,
+            }}
+          />
+          {/* <Text style={styles.conference}>
+            {state.results.sources[0].conference}
+          </Text> */}
+
+          {state?.results?.answer &&
+            Array.isArray(state?.results?.answer) &&
+            state?.results?.answer.map(
+              (
+                answer: {
+                  quote: string
+                  firstName: string
+                  lastName: string
+                  conference: string
+                  role: string
+                  company: string
+                },
+                index: number,
+              ) => (
+                <View key={index} style={styles.box}>
+                  <Text>{answer.quote}</Text>
+                  <Text style={styles.authors}>
+                    {answer.firstName} {answer.lastName}
+                  </Text>
+                  <Text style={styles.companyInfo}>
+                    {answer.role} at {answer.company} - {answer.conference}
+                  </Text>
+                </View>
+              ),
+            )}
+        </View>
+      </Page>
+    </Document>
+  )
+
+  const [question, setQuestion] = useState("")
+
+  console.log(" state:", state)
+
+  return (
+    <div className="mx-auto max-w-screen-xl px-4 pt-10 bg-tech-pulse">
+      <h1 className="text-white text-base leading-10 my-5">
+        {"Ask the report anything"}
+      </h1>
+      <p className=" text-[#BCBCBC]">An AI assistant trained on Reports</p>
+      {/*    <div className="relative h-64 w-full overflow-hidden rounded-2xl md:h-80 mt-10 mb-3"></div> */}
+
+      <form
+        action={dispatchAction}
+        className="mt-5 grid grid-cols-1 md:grid-cols-[10fr_2fr] gap-8"
+      >
+        <input
+          type="text"
+          name="question"
+          defaultValue={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          placeholder="e.g., What did speakers say about agent reliability?"
+          className="w-full p-5 rounded-xl bg-[#0B0F1C] text-white border border-[#747271] focus:outline-none focus:ring-2 focus:ring-[#FC6200]"
+        />
+        <button
+          type="submit"
+          className={`ask-btn py-2 px-4 rounded-full text-white bg-purple-300 cursor-pointer hover:opacity-90 transition-opacity duration-300`}
+          disabled={isPending}
+        >
+          {isPending ? "Searching..." : "Ask →"}
+        </button>
+      </form>
+
+      <section className="grid grid-cols-1 md:grid-cols-[12fr] gap-8 mt-5  ">
+        <div className="text-[#D6DAE0]  px-4 md:px-0 pb-20">
+          {/* {state.results?.answer?.length > 0 ? (
+            <div className="flex items-center gap-2 mb-5">
+              <img src="/file.svg" width={20} height={20} alt="File Icon" />
+              <h6 className="text-[#A18EFF] uppercase">QUOTES</h6>
+            </div>
+          ) : (
+            ""
+          )} */}
+
+          {isPending && (
+            <div className="flex justify-center py-5">
+              <Loader />
+            </div>
+          )}
+
+          {isPending && (
+            <div className="flex justify-center py-5">
+              <LoadingMessages />
+            </div>
+          )}
+
+          {/*     {state?.results?.answer?.map((answer: any, index: number) => {
+            console.log("Rendering answer:s", answer)
+            return (
+              <div
+                key={index}
+                className="mb-4 bg-[#161A29] p-4 rounded-lg border border-[#A18EFF]"
+              >
+                <p className="text-white text-sm mt-1">{answer.answer}</p>
+                <span className="text-[#B2B2B2]  mt-2 block">
+                  {answer.sources[0].page}{" "}
+                </span>
+              </div>
+            )
+          })} */}
+
+          {state.results.answer ? (
+            <div className="mb-4 bg-[#161A29] p-4 rounded-lg border border-[#A18EFF] reports-page-content">
+              <ReactMarkdown>{state.results.answer}</ReactMarkdown>
+            </div>
+          ) : (
+            ""
+          )}
+
+          {state.results.answer && state.results.answer.length === 0 && (
+            <div className="mb-4 bg-[#161A29] p-4 rounded-lg border border-[#A18EFF]">
+              <p className="text-white text-sm mt-1">
+                No answers found for this question.
+              </p>
+            </div>
+          )}
+          {/* {Array.isArray(state.results.answer) &&
+            state.results.answer.length > 0 && (
+              <PDFDownloadLink
+                document={<MyDocument />}
+                fileName="somename.pdf"
+                className="ask-btn py-2 px-4 rounded-full text-white bg-purple-300 cursor-pointer hover:opacity-90 transition-opacity duration-300"
+              >
+                {({ blob, url, loading, error }) =>
+                  loading ? "Loading document..." : "Download .pdf"
+                }
+              </PDFDownloadLink>
+            )} */}
+        </div>
+        {/*      <aside>
+          <div className="flex items-center gap-2">
+            <img src="/file.svg" width={20} height={20} alt="File Icon" />
+            <h6 className="main-color uppercase">On this page</h6>
+            <ShareModal />
+          </div>
+          <div className="pb-20">
+            <LatestArticles description={false} textSize={"LARGE"} />
+          </div>
+        </aside> */}
+      </section>
+    </div>
+  )
+}
