@@ -31,7 +31,7 @@ export default function MainPageFeaturedPost({
     queryFn: section === "industry" ? getIndustryPosts : getPosts,
   })
 
-  const post = posts?.length > 0 ? posts[posts.length - 1] : posts?.[0]
+  const post = posts?.[0]
 
   /*   console.log(posts, "posts") */
   if (isPending) {
@@ -55,12 +55,12 @@ export default function MainPageFeaturedPost({
       >
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
           {/* Left side - Image */}
-          <div className="relative h-64 w-full overflow-hidden rounded-2xl md:h-80">
+          <div className="relative h-64 w-full overflow-hidden rounded-2xl ">
             <Image
               src={post?.Featured_Image?.url || imageUrl}
               alt={post?.Title || post?.title || title}
               fill
-              className="object-cover"
+              className="object-contain"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>

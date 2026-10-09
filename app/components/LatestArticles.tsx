@@ -58,6 +58,7 @@ export default function LatestArticles({
         </h6>
       </div>
       {posts.map((post: any, index: number) => {
+        if (index === 0) return null
         return (
           <div
             key={index}
