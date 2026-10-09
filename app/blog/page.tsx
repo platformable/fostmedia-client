@@ -8,7 +8,7 @@ export default function page() {
     <>
       <div className="mx-auto  max-w-screen-xl ">
         <MainPageFeaturedPost section="blog" />
-        <LatestArticles section="blog" />
+        <LatestArticles section="blog" page="blog" />
         <BackToBlogBtn section="blog" />
       </div>
       <LogoCarousel section="blog" />

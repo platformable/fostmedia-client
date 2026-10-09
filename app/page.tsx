@@ -12,6 +12,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query"
 import getPosts, { getIndustryPosts } from "@/utils/getPosts"
+//import MainPageFeaturedPost from "./components/MainPageFeaturedPost"
 import Posts from "./components/Posts"
 import { Metadata } from "next"
 import EventCarousel from "./components/Blogcarousel"
@@ -34,7 +35,7 @@ export default async function Home() {
 
   await queryClient.prefetchQuery({
     queryKey: ["posts"],
-    queryFn: getPosts,
+    queryFn: () => getPosts("home"),
   })
 
   await queryClient.prefetchQuery({
@@ -54,11 +55,11 @@ export default async function Home() {
     <section>
       {" "}
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <MainPageFeaturedPost section="blog" />
+        <MainPageFeaturedPost section="blog" page="home" />
 
         <section>
           <div className="mx-auto  max-w-screen-xl  px-4 md:px-0 py-6 lg:py-4  gap-8  grid grid-cols-1 md:grid-cols-[8fr_4fr]">
-            <LatestArticles section="blog" />
+            <LatestArticles section="blog" page="home" />
 
             <div
               className="p-8 rounded-xl flex flex-col gap-4 border-[1px] border-[#30323B]"
@@ -117,7 +118,7 @@ export default async function Home() {
           <LogoCarousel section="blog" />
           <EventsCarousel />
           <NewsletterSection />
-          <LogoCarousel section="blog" />
+          {/*   <LogoCarousel section="blog" /> */}
           <VideoCarousel />
         </section>
       </HydrationBoundary>

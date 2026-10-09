@@ -12,6 +12,7 @@ type MainPageFeaturedPostProps = {
   ctaLabel?: string
   imageUrl?: string
   section: "blog" | "industry" | null
+  page?: "home" | ""
 }
 
 export default function MainPageFeaturedPost({
@@ -21,14 +22,15 @@ export default function MainPageFeaturedPost({
   ctaLabel = "Read story →",
   imageUrl = "https://dummyimage.com/600x400/000/fff",
   section = null,
+  page = "",
 }: MainPageFeaturedPostProps) {
   const {
     data: posts,
     isPending,
     isError,
   } = useQuery({
-    queryKey: [section === "industry" ? "industryPosts" : "posts"],
-    queryFn: section === "industry" ? getIndustryPosts : getPosts,
+    queryKey: [section === "industry" ? "industryPosts" : "posts", page],
+    queryFn: section === "industry" ? getIndustryPosts : () => getPosts("home"),
   })
 
   const post = posts?.[0]

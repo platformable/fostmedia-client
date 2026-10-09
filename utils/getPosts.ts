@@ -1,9 +1,10 @@
 import { cache } from "react"
 
-const getPosts = async () => {
+const getPosts = async (page: string) => {
+  console.log("getPosts called with page:", page)
   console.log("getPosts called")
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts?sort=publishedAt:desc&populate=*`,
+    `${process.env.NEXT_PUBLIC_API_URL}/posts?sort=publishedAt:desc${page === "home" ? "&pagination[pageSize]=3" : ""}&populate=*`,
   )
   const posts = await response.json()
   return posts?.data

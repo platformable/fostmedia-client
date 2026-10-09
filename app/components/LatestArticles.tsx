@@ -15,6 +15,7 @@ type MainPageFeaturedPostProps = {
   ctaLabel?: string
   imageUrl?: string
   section: "blog" | "industry" | null
+  page?: "blog" | "home"
 }
 
 export default function LatestArticles({
@@ -22,19 +23,21 @@ export default function LatestArticles({
   textSize = "MEDIUM",
   text = "",
   section = null,
+  page = "",
 }: {
   description?: boolean
   textSize?: FontSize
   text?: string
   section?: "blog" | "industry" | null
+  page?: "blog" | "home" | ""
 }) {
   const {
     data: posts,
     isPending,
     isError,
   } = useQuery({
-    queryKey: [section === "industry" ? "industryPosts" : "posts"],
-    queryFn: section === "industry" ? getIndustryPosts : getPosts,
+    queryKey: [section === "industry" ? "industryPosts" : "posts", page],
+    queryFn: section === "industry" ? getIndustryPosts : () => getPosts("blog"),
   })
 
   /*   console.log(posts, "posts") */
@@ -65,25 +68,34 @@ export default function LatestArticles({
             className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2"
           >
             <Tag text={post?.categories[0]?.Title || ""} section={section} />
-            <h4 className={`${fontSizeMap[textSize]}  text-white`}>
-              {post?.Title ||
-                post?.title ||
-                "APIs as the backbone of modern AI systems"}
-            </h4>
-            {description && (
-              <p className="text-[#BCC4D0]">
-                {post?.Excerpt ||
-                  "A short overview of how APIs enable AI models to access, share, and process data across platforms. It explains why APIs are essential for scaling AI applications."}
-              </p>
-            )}
-            <Link
-              href={`/${section}/${post?.Slug || "#"}`}
-              className={`py-2 flex items-center  rounded-md mt-2 ${
-                section === "industry" ? "text-[#40D2FF]" : "main-color"
-              }`}
-            >
-              Read story →
-            </Link>
+            <div className="grid md:grid-cols-[1fr_3fr] gap-4">
+              <img
+                src={post?.Featured_Image?.url || "/placeholder.png"}
+                alt={post?.Title || "Post Image"}
+                className=" h-auto rounded-md"
+              />
+              <div>
+                <h4 className={`${fontSizeMap[textSize]}  text-white`}>
+                  {post?.Title ||
+                    post?.title ||
+                    "APIs as the backbone of modern AI systems"}
+                </h4>
+                {description && (
+                  <p className="text-[#BCC4D0]">
+                    {post?.Excerpt.substring(0, 100) + "..." ||
+                      "A short overview of how APIs enable AI models to access, share, and process data across platforms. It explains why APIs are essential for scaling AI applications."}
+                  </p>
+                )}
+                <Link
+                  href={`/${section}/${post?.Slug || "#"}`}
+                  className={`py-2 flex items-center  rounded-md mt-2 ${
+                    section === "industry" ? "text-[#40D2FF]" : "main-color"
+                  }`}
+                >
+                  Read story →
+                </Link>
+              </div>
+            </div>
           </div>
         )
       })}
