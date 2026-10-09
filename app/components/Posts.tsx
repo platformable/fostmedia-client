@@ -9,7 +9,7 @@ export default function Posts() {
     isError,
   } = useQuery({
     queryKey: ["posts"],
-    queryFn: getPosts,
+    queryFn: () => getPosts("blog"),
   })
   /*   console.log(posts, "posts") */
   if (isPending) {
