@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import Providers from "./providers"
-
+import Script from "next/script"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -24,6 +24,11 @@ export default function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
         </Providers>
+        <Script
+          src="https://analytics.platformable.com/track.js"
+          data-site-id="fost-media-8ca21c6b"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
