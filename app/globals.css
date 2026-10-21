@@ -33,7 +33,6 @@
 }
 
 p {
-  margin-bottom: 1.5em;
   margin-top: 0;
 }
 /* #post-content p {
@@ -47,11 +46,9 @@ p {
 h1 {
   font-size: 3rem; /* 48px */
 }
-
 h2 {
   font-size: 2.25rem; /* 36px */
 }
-
 h3 {
   font-size: 1.875rem; /* 30px */
 }
@@ -68,8 +65,7 @@ h6 {
   font-size: 1.125rem; /* 18px */
 }
 
-p,
-span {
+p {
   font-size: 1.05rem;
 }
 
@@ -562,4 +558,52 @@ input::-ms-input-placeholder {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+}
+
+/* Webinars */
+
+.webinars-hero-bg {
+  background: transparent
+    linear-gradient(320deg, #004b8b 0%, #4e96d5 35%, #3f7ab0 61%, #001022 100%)
+    0% 0% no-repeat padding-box;
+}
+
+.webinars-hero-speakers-bg {
+  background: transparent linear-gradient(180deg, #ff5b00 0%, #fc620001 100%)
+    40% 0% no-repeat padding-box;
+}
+
+.webinars-hero-speakers-bg-bottom {
+  background: transparent
+    linear-gradient(111deg, #f7931e 0%, #fc6200 55%, #e8442a 100%) 0% 0%
+    no-repeat padding-box;
+}
+
+.webinars-hero-cta-bg {
+  background: transparent linear-gradient(180deg, #4382ba00 0%, #001939 100%) 0%
+    0% no-repeat padding-box;
+}
+
+.webinars-profit-bg {
+  background: transparent linear-gradient(180deg, #ffeee3 0%, #ffffff 100%) 0%
+    0% no-repeat padding-box;
+}
+.webinars-hero-speakers-bg-over {
+  background: transparent linear-gradient(180deg, #ffeee3 0%, #ffffff 100%) 0%
+    0% no-repeat padding-box;
+}
+
+.webinars-button {
+  background: transparent
+    linear-gradient(270deg, var(--unnamed-color-dd312a) 0%, #fc6200 100%) 0% 0%
+    no-repeat padding-box;
+  background: transparent linear-gradient(270deg, #dd312a 0%, #fc6200 100%) 0%
+    0% no-repeat padding-box;
+  box-shadow: 0px 10px 15px #e4542540;
+  border-radius: 80px;
+}
+
+.proof-in-the-market h2 {
+  font-size: 60px !important;
+  line-height: 1 !important;
 }
