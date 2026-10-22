@@ -160,7 +160,6 @@ export default function EventCarousel() {
     }
     fetchEvents()
   }, [])
-  console.log(events, "events")
 
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 

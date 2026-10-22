@@ -176,7 +176,6 @@ export default function ShareModal({
   const pathname = usePathname()
 
   const pageUrl = process.env.NEXT_PUBLIC_SITE_URL + pathname
-  console.log("Current page URL:", pageUrl)
 
   /*   useEffect(() => {
     if (!url) setShareUrl(pageUrl)
@@ -210,7 +209,6 @@ export default function ShareModal({
   }
 
   const handleCopy = async () => {
-    console.log("Copying URL:", shareUrl)
     try {
       await navigator.clipboard.writeText(pageUrl)
       setCopied(true)

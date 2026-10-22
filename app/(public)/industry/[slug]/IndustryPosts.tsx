@@ -45,8 +45,6 @@ export default function IndustryPost({ params }: Props) {
 
   const post = posts[0]
 
-  console.log("post dentro [slug]:", post)
-
   return (
     <section>
       <div className="mx-auto max-w-screen-xl px-4 pt-10">

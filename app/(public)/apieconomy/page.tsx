@@ -111,8 +111,6 @@ export default function TechPulsePage() {
 
   const [question, setQuestion] = useState("")
 
-  console.log(" state:", state)
-
   return (
     <div className="mx-auto max-w-screen-xl px-4 pt-10 bg-tech-pulse">
       <h1 className="text-white text-base leading-10 my-5">

@@ -5,7 +5,7 @@ const handleSearch = async (
   formData: FormData,
 ) => {
   const question = formData.get("question") as string
-  console.log("handleSearch called with question:", question)
+
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/search?question=${encodeURIComponent(question)}`,
@@ -35,7 +35,7 @@ const handleReportSearch = async (
   formData: FormData,
 ) => {
   const question = formData.get("question") as string
-  console.log("handleReportSearch called with question:", question)
+
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/ask-reports`,
@@ -54,7 +54,6 @@ const handleReportSearch = async (
     }
 
     const data = await response.json()
-    console.log("handleReportSearch received data:", data)
 
     return { query: question, results: data }
   } catch (error) {

@@ -17,8 +17,6 @@ export async function generateMetadata({
   const posts = await getPostsBySlug(slug)
   const post = posts[posts.length - 1] || posts[0]
 
-  console.log("post desde generateMetadata", post)
-
   if (!post) {
     return {}
   }
