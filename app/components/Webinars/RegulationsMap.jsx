@@ -129,7 +129,7 @@ const countries = [
   {
     name: "Australia",
     Flag: AustraliaFlag,
-    title: "Section 1033",
+    title: "CDR legislation",
     body: "API-based data sharing now extends to non-bank lenders in 2026.",
   },
   {
