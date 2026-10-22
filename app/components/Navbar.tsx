@@ -14,7 +14,7 @@ export default function Navbar() {
     <nav className="bg-[#111525]   z-20 top-0 start-0 border-b border-[#393939]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 gap-3 md:gap-0">
         <Link
-          href="/"
+          href="#"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           {!isTechPulse && (
