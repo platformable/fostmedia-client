@@ -1,5 +1,5 @@
 import React from "react"
-import BackToBlogBtn from "../components/BackToBlogBtn"
+import BackToBlogBtn from "../../components/BackToBlogBtn"
 
 export default function page() {
   return (
