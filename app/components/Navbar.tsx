@@ -8,8 +8,6 @@ export default function Navbar() {
   const pathname = usePathname()
   const isTechPulse = pathname.includes("pulse")
 
-  console.log(isTechPulse)
-
   return (
     <nav className="bg-[#111525]   z-20 top-0 start-0 border-b border-[#393939]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 gap-3 md:gap-0">

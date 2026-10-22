@@ -1,8 +1,8 @@
 import React from "react"
-import MainPageFeaturedPost from "../components/MainPageFeaturedPost"
-import LatestArticles from "../components/LatestArticles"
-import BackToBlogBtn from "../components/BackToBlogBtn"
-import LogoCarousel from "../components/LogoCarousel"
+import MainPageFeaturedPost from "../../components/MainPageFeaturedPost"
+import LatestArticles from "../../components/LatestArticles"
+import BackToBlogBtn from "../../components/BackToBlogBtn"
+import LogoCarousel from "../../components/LogoCarousel"
 export default function page() {
   return (
     <>

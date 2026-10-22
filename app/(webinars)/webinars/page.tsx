@@ -1,9 +1,9 @@
-import FostWebinarBanner from "../components/Webinars/FostWebinarsHero"
-import FostWebinarBannerBottom from "../components/Webinars/FostWebinarsHeroBottom"
-import RoadmapCards from "../components/Webinars/Roadmap"
-import ProofInTheMarket from "../components/Webinars/Proofinthemarket"
-import SevenSystems from "../components/Webinars/sevenSystems"
-import RegulationsMap from "../components/Webinars/RegulationsMap"
+import FostWebinarBanner from "../../components/Webinars/FostWebinarsHero"
+import FostWebinarBannerBottom from "../../components/Webinars/FostWebinarsHeroBottom"
+import RoadmapCards from "../../components/Webinars/Roadmap"
+import ProofInTheMarket from "../../components/Webinars/Proofinthemarket"
+import SevenSystems from "../../components/Webinars/sevenSystems"
+import RegulationsMap from "../../components/Webinars/RegulationsMap"
 export default function page() {
   return (
     <div>
