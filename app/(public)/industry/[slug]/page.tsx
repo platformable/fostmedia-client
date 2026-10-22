@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
-import { getPostsBySlug } from "@/utils/getPosts"
+import { getIndustryBySlug } from "@/utils/getPosts"
 import createShareMetadata from "@/lib/metadata"
-import BlogPosts from "@/app/blog/[slug]/BlogPosts"
+import IndustryPost from "./IndustryPosts"
 
 interface PageProps {
   params: Promise<{
@@ -14,10 +14,8 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params
 
-  const posts = await getPostsBySlug(slug)
-  const post = posts[posts.length - 1] || posts[0]
-
-  console.log("post desde generateMetadata", post)
+  const posts = await getIndustryBySlug(slug)
+  const post = posts?.[0]
 
   if (!post) {
     return {}
@@ -26,11 +24,11 @@ export async function generateMetadata({
   return createShareMetadata({
     title: post.Title,
     description: post.excerpt || "",
-    url: `/blog/${slug}`,
+    url: `/industry/${slug}`,
     image: post.Featured_Image?.url,
   })
 }
 
 export default function Page({ params }: PageProps) {
-  return <BlogPosts params={params} />
+  return <IndustryPost params={params} />
 }

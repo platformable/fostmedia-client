@@ -1,28 +1,29 @@
+"use client"
+
 import type { Metadata } from "next"
+import { usePathname } from "next/navigation"
 import Navbar from "./components/Navbar"
+import WebinarsNavbar from "./components/Webinars/WebinarsNavbar"
 import Footer from "./components/Footer"
 import Providers from "./providers"
 import Script from "next/script"
 import "./globals.css"
-
-export const metadata: Metadata = {
-  title: "FOST Media Platform",
-  description:
-    "FOST Media is a platform for sharing and discovering tech-related content.",
-}
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const pathname = usePathname()
+  const isWebinars = pathname.includes("webinars")
+
   return (
     <html lang="en" className={``}>
       <body className="min-h-screen flex flex-col ">
         <Providers>
-          <Navbar />
+          {!isWebinars ? <Navbar /> : <WebinarsNavbar />}
           <main className="flex-grow">{children}</main>
-          <Footer />
+          {!isWebinars && <Footer />}
         </Providers>
         <Script
           src="https://analytics.platformable.com/track.js"

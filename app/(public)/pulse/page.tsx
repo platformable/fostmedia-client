@@ -1,8 +1,8 @@
 "use client"
 import React, { useActionState, useState } from "react"
-import LatestArticles from "../components/LatestArticles"
+import LatestArticles from "../../components/LatestArticles"
 import handleSearch from "@/utils/searchActions"
-import Loader from "../components/Loader"
+import Loader from "../../components/Loader"
 import ReactPDF from "@react-pdf/renderer"
 import {
   Page,
@@ -13,7 +13,7 @@ import {
   PDFDownloadLink,
   Image,
 } from "@react-pdf/renderer"
-import { LoadingMessages } from "../components/LoaderTextAnimation"
+import { LoadingMessages } from "../../components/LoaderTextAnimation"
 // import ShareModal from "../components/SharePost"
 // import BackToBlogFooter from "../components/BackToBlogFooter"
 // import BackToBlogBtn from "../components/BackToBlogBtn"
