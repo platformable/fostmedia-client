@@ -48,8 +48,6 @@ export default function BlogPosts({ params }: Props) {
 
   const post = postsBySlug[0]
 
-  console.log("POST", post)
-
   return (
     <section>
       <div className="mx-auto max-w-screen-xl px-4 pt-10 my-10">

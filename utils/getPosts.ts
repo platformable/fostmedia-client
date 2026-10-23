@@ -1,16 +1,13 @@
 import { cache } from "react"
 
 const getPosts = async (page: string) => {
-  console.log("getPosts called with page:", page)
-  console.log("getPosts called")
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts?sort=publishedAt:desc${page === "home" ? "&pagination[pageSize]=3" : ""}&populate=*`,
+    `${process.env.NEXT_PUBLIC_API_URL}/posts?sort=publishedAt:desc${page === "home" || page === "blog-page" ? "&pagination[pageSize]=5" : ""}&populate=*`,
   )
   const posts = await response.json()
   return posts?.data
 }
 const getIndustryPosts = async () => {
-  console.log("getIndustryPosts called")
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/industries?populate=*`,
   )
@@ -19,7 +16,6 @@ const getIndustryPosts = async () => {
 }
 
 const getPostsBySlug = async (slug: string) => {
-  console.log("getPostsBySlug called")
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/posts?filters[Slug][$eq]=${slug}&populate[Featured_Image]=true&populate[categories]=true&populate[authors][populate]=Avatar`,
     {
@@ -32,7 +28,6 @@ const getPostsBySlug = async (slug: string) => {
 }
 
 const getIndustryBySlug = async (slug: string) => {
-  console.log("getIndustryBySlug called")
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/industries?filters[Slug][$eq]=${slug}&populate[Featured_Image]=true&populate[categories]=true&populate[authors][populate]=Avatar`,
     {

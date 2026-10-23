@@ -66,7 +66,7 @@ export default function VideoCarousel() {
     }
     fetchVideos()
   }, [])
-  console.log(videos, "videos")
+
   const scrollRef = useRef<HTMLDivElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
 

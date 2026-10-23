@@ -2,7 +2,7 @@ import React from "react"
 
 type TagProps = {
   text: string
-  section: "blog" | "industry" | null
+  section: "blog" | "industry" | null | "blog-page"
 }
 
 export default function Tag({ text, section }: TagProps) {
