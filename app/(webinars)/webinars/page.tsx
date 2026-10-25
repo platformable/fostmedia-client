@@ -1,9 +1,19 @@
+import type { Metadata } from "next"
 import FostWebinarBanner from "../../components/Webinars/FostWebinarsHero"
 import FostWebinarBannerBottom from "../../components/Webinars/FostWebinarsHeroBottom"
 import RoadmapCards from "../../components/Webinars/Roadmap"
 import ProofInTheMarket from "../../components/Webinars/Proofinthemarket"
 import SevenSystems from "../../components/Webinars/sevenSystems"
 import RegulationsMap from "../../components/Webinars/RegulationsMap"
+import createShareMetadata from "@/lib/metadata"
+
+export const metadata: Metadata = createShareMetadata({
+  title: "Webinars",
+  description:
+    "Join FOST Media webinars for conference intelligence, industry roadmaps, and expert discussions.",
+  url: "/webinars",
+})
+
 export default function page() {
   return (
     <div>

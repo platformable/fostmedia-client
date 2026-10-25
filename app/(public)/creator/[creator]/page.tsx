@@ -1,8 +1,26 @@
 import React from "react"
+import type { Metadata } from "next"
 import ShareWidget from "@/app/components/Share"
 import LatestArticles from "@/app/components/LatestArticles"
+import createShareMetadata from "@/lib/metadata"
 
-const AuthorProfile = async ({ params }: { params: { creator: string } }) => {
+interface PageProps {
+  params: Promise<{ creator: string }>
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { creator } = await params
+
+  return createShareMetadata({
+    title: creator,
+    description: `Articles and insights by ${creator} on FOST Media.`,
+    url: `/creator/${creator}`,
+  })
+}
+
+const AuthorProfile = async ({ params }: PageProps) => {
   const { creator } = await params
 
   return (

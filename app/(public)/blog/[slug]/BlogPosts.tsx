@@ -120,6 +120,7 @@ export default function BlogPosts({ params }: Props) {
               textSize={"LARGE"}
               text="More from this creator"
               section="blog"
+              limit={3}
             />
             {/* <ShareModal /> */}
           </aside>

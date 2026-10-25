@@ -22,8 +22,8 @@ export async function generateMetadata({
   }
 
   return createShareMetadata({
-    title: post.Title,
-    description: post.excerpt || "",
+    title: post.Title || post.title,
+    description: post.Excerpt || "",
     url: `/industry/${slug}`,
     image: post.Featured_Image?.url,
   })
