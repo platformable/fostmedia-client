@@ -23,7 +23,7 @@ export async function generateMetadata({
 
   return createShareMetadata({
     title: post.Title,
-    description: post.excerpt || "",
+    description: post.Excerpt || "",
     url: `/blog/${slug}`,
     image: post.Featured_Image?.url,
   })

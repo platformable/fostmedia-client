@@ -125,7 +125,7 @@ export default function ProofInTheMarket() {
             </span>
             <span className="inline-flex items-center gap-2 rounded-lg bg-[#FF6B26] px-4 py-3 text-sm font-bold text-white">
               <img
-                src="/APIs-AI-icon.png"
+                src="/APis-AI-icon.png"
                 alt="API + AI Icon"
                 width="20"
                 height="20"

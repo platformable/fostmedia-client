@@ -18,12 +18,12 @@ export default function Posts() {
   if (isError || !posts) {
     return <div className="text-white">Failed to load posts.</div>
   }
-  if (posts.length === 0) {
+  if (posts.posts.length === 0) {
     return <div className="text-white">No posts found.</div>
   }
   return (
     <div>
-      {posts.map((post: any) => {
+      {posts.posts.map((post: any) => {
         return (
           <div key={post.id}>
             <p className="text-white text-6xl">{post.Title}</p>

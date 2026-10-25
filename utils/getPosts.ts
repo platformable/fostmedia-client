@@ -1,11 +1,12 @@
 import { cache } from "react"
 
-const getPosts = async (page: string) => {
+const getPosts = async (page: string, limit?: number, pageNumber = 1) => {
+  const isPaginated = page === "home" || page === "blog"
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts?sort=publishedAt:desc${page === "home" || page === "blog-page" ? "&pagination[pageSize]=5" : ""}&populate=*`,
+    `${process.env.NEXT_PUBLIC_API_URL}/posts?sort=publishedAt:desc${isPaginated ? `&pagination[pageSize]=${limit ? limit : 5}&pagination[page]=${pageNumber}` : ""}&populate=*`,
   )
   const posts = await response.json()
-  return posts?.data
+  return { posts: posts?.data, meta: posts?.meta }
 }
 const getIndustryPosts = async () => {
   const response = await fetch(
@@ -60,6 +61,7 @@ export {
   getVideos,
   getEvents,
   getIndustryPosts,
+  getPosts,
   getIndustryBySlug,
 }
 

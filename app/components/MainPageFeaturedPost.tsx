@@ -20,7 +20,7 @@ export default function MainPageFeaturedPost({
   description = "",
   href = "/",
   ctaLabel = "Read story →",
-  imageUrl = "https://dummyimage.com/600x400/000/fff",
+  imageUrl = "/social.png",
   section = null,
   page = "",
 }: MainPageFeaturedPostProps) {
@@ -33,16 +33,15 @@ export default function MainPageFeaturedPost({
     queryFn: section === "industry" ? getIndustryPosts : () => getPosts("home"),
   })
 
-  const post = posts?.[0]
+  const post = posts?.posts[0]
 
-  /*   console.log(posts, "posts") */
   if (isPending) {
     return <div>Loading...</div>
   }
   if (isError || !posts) {
     return <div className="text-white">Failed to load posts.</div>
   }
-  if (posts.length === 0) {
+  if (posts?.posts?.length === 0) {
     return <div className="text-white">No posts found.</div>
   }
 

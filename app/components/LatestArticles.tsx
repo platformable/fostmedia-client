@@ -6,7 +6,7 @@ import Tag from "./Tag"
 import { FontSize, fontSizeMap } from "../fontTypes"
 
 import getPosts, { getIndustryPosts } from "@/utils/getPosts"
-import { useQuery } from "@tanstack/react-query"
+import { useInfiniteQuery } from "@tanstack/react-query"
 
 type MainPageFeaturedPostProps = {
   title?: string
@@ -16,6 +16,12 @@ type MainPageFeaturedPostProps = {
   imageUrl?: string
   section: "blog" | "industry" | null
   page?: "blog" | "home"
+  limit?: number
+}
+
+type PostsPage = {
+  posts: unknown[]
+  meta?: { pagination?: { page: number; pageCount: number } }
 }
 
 export default function LatestArticles({
@@ -24,27 +30,49 @@ export default function LatestArticles({
   text = "",
   section = null,
   page = "",
+  limit = 10,
 }: {
   description?: boolean
   textSize?: FontSize
   text?: string
   section?: "blog" | "industry" | null
   page?: "blog" | "home" | ""
+  limit?: number
 }) {
   const {
-    data: posts,
+    data,
     isPending,
     isError,
-  } = useQuery({
-    queryKey: [section === "industry" ? "industryPosts" : "posts", page],
-    queryFn: section === "industry" ? getIndustryPosts : () => getPosts("blog"),
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: [section === "industry" ? "industryPosts" : "posts", page, limit],
+    queryFn: ({ pageParam }) =>
+      section === "industry"
+        ? getIndustryPosts()
+        : getPosts(page, limit, pageParam as number),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      const pagination = (lastPage as PostsPage)?.meta?.pagination
+      if (!pagination) return undefined
+      return pagination.page < pagination.pageCount
+        ? pagination.page + 1
+        : undefined
+    },
   })
 
-  /*   console.log(posts, "posts") */
+  const posts =
+    data?.pages.flatMap((pageData) =>
+      section === "industry"
+        ? (pageData as unknown[])
+        : (pageData as PostsPage).posts,
+    ) ?? []
+
   if (isPending) {
     return <div>Loading...</div>
   }
-  if (isError || !posts) {
+  if (isError || !data) {
     return <div className="text-white">Failed to load posts.</div>
   }
   if (posts.length === 0) {
@@ -64,7 +92,7 @@ export default function LatestArticles({
         if (index === 0) return null
         return (
           <div
-            key={index}
+            key={post?.id ?? index}
             className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2"
           >
             <Tag text={post?.categories[0]?.Title || ""} section={section} />
@@ -99,6 +127,18 @@ export default function LatestArticles({
           </div>
         )
       })}
+      {hasNextPage && page === "blog" && (
+        <button
+          type="button"
+          onClick={() => fetchNextPage()}
+          disabled={isFetchingNextPage}
+          className={`mt-4 flex items-center justify-center rounded-md border border-[#30323B] px-5 py-2 font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50 ${
+            section === "industry" ? "text-[#40D2FF]" : "main-color"
+          }`}
+        >
+          {isFetchingNextPage ? "Loading..." : "More posts"}
+        </button>
+      )}
     </div>
   )
 }
