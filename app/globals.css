@@ -3,7 +3,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0f1c;
+  --background: transparent linear-gradient(180deg, #ffffff 0%, #fff3ed 100%)
+    no-repeat padding-box;
+
   --foreground: #171717;
   --main-orange: #ff863f;
 }
@@ -11,7 +13,9 @@
 @theme {
   --color-background: var(--background);
   --color-main-dark: #0b0f1c;
+  --color-background-light: var(--background);
   --brand-main-color: var(--main-orange);
+  --brand-main-color-light: var(--main-orange);
 }
 
 @utility main-bg {
@@ -25,9 +29,10 @@
   color: var(--brand-main-color);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
+    --background: transparent linear-gradient(180deg, #ffffff 0%, #fff3ed 100%)
+      0% 0% no-repeat padding-box;
     --foreground: #ededed;
   }
 }
@@ -83,7 +88,8 @@ small {
 }
 
 body {
-  background-color: var(--background);
+  background: transparent linear-gradient(180deg, #ffffff 0%, #fff3ed 100%) 0%
+    0% no-repeat padding-box;
   font-size: 1rem;
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
@@ -103,6 +109,21 @@ input::-moz-placeholder {
 }
 input::-ms-input-placeholder {
   font-size: 14px;
+}
+
+/*   TAGS */
+
+.default-tag-bg {
+  background-color: #111525;
+  padding: 5px 15px;
+  border-radius: 9999px;
+}
+
+/* MARQUEE */
+
+.marquee {
+  background: transparent linear-gradient(90deg, #111525 0%, #ff5900 100%) 0% 0%
+    no-repeat padding-box;
 }
 
 .main-orange {

@@ -3,7 +3,7 @@
 import React from "react"
 import BackToBlogBtn from "@/app/components/BackToBlogBtn"
 import BackToBlogFooter from "@/app/components/BackToBlogFooter"
-import LatestArticles from "@/app/components/LatestArticles"
+import LatestArticles from "@/app/components/LatestArticlesX"
 import Tag from "@/app/components/Tag"
 import { getPostsBySlug } from "@/utils/getPosts"
 import { useQuery } from "@tanstack/react-query"

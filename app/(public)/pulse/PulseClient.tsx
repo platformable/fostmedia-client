@@ -1,6 +1,6 @@
 "use client"
 import React, { useActionState, useState } from "react"
-import LatestArticles from "../../components/LatestArticles"
+import LatestArticles from "../../components/LatestArticlesX"
 import handleSearch from "@/utils/searchActions"
 import Loader from "../../components/Loader"
 import ReactPDF from "@react-pdf/renderer"
