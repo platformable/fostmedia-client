@@ -68,25 +68,6 @@ type SectionBadgeProps = {
   label: string
 }
 
-type Badge = {
-  icon: string
-  label: string
-  name: string
-}
-
-const badges: Badge[] = [
-  {
-    name: "The_Big_Stories",
-    icon: "/big-stories-icon.svg",
-    label: "The Big Stories",
-  },
-  {
-    name: "Latest_Articles",
-    icon: "/big-stories-icon.svg",
-    label: "Latest Articles",
-  },
-]
-
 export const sectionBadge = ({ icon, label }: SectionBadgeProps) => (
   <div className="flex w-fit items-center gap-3 mb-8 default-tag-bg ">
     <div>

@@ -13,6 +13,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query"
+import NewsletterBanner from "./components/NewsletterBanner"
 import getPosts, { getIndustryPosts } from "@/utils/getPosts"
 //import MainPageFeaturedPost from "./components/MainPageFeaturedPost"
 import Posts from "./components/Posts"
@@ -72,7 +73,8 @@ export default async function Home() {
           </div>
           <LogoCarousel section="blog" />
           <EventsCarousel />
-          <NewsletterSection />
+          {/* <NewsletterSection /> */}
+          <NewsletterBanner />
           {/*   <LogoCarousel section="blog" /> */}
           <VideoCarousel />
         </section>
