@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react"
 import { getVideos } from "@/utils/getPosts"
 
 import { getYouTubeId } from "@/utils/getYTIds"
-
+import sectionBadge, { SectionBadgeProps as type } from "./SectionBadge"
 const getThumbnailUrl = (
   videoId: string | null,
   quality: string = "hqdefault",
@@ -123,25 +123,14 @@ export default function VideoCarousel() {
   }
 
   return (
-    <section className="bg-black py-12 md:py-20 px-4 md:px-8 lg:px-16">
-      <div className="  font-sans flex flex-col justify-center">
-        <div className=" mx-auto w-full">
+    <section className=" py-12 md:py-10 px-4 md:px-8 lg:px-6">
+      <div className=" mx-auto max-w-screen-xl font-sans flex flex-col justify-center">
+        <div className="  ">
           {/* Header Section */}
-          <div className="flex items-center gap-2 mb-6">
-            <div className=" w-5 h-5 flex items-center justify-center rounded-sm">
-              {/*  <svg
-                className="w-3 h-3 text-white ml-0.5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg> */}
-              <img src="/videos.svg" alt="" />
-            </div>
-            <span className="main-color f text-sm tracking-widest uppercase">
-              Videos & Podcasts
-            </span>
-          </div>
+          {sectionBadge({
+            icon: "/podcasts-icon.svg",
+            label: "VIDEOS & PODCASTS",
+          })}
 
           {/* Carousel Wrapper with Relative Positioning for Arrows */}
           <div className="relative group">
@@ -199,9 +188,9 @@ export default function VideoCarousel() {
                   href={video.Video_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block snap-start shrink-0 w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[calc(25%-12px)] bg-[#171e2e] border border-gray-800 rounded-2xl p-3 hover:bg-[#1f293d] transition-colors duration-300"
+                  className="group block snap-start shrink-0 w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[calc(25%-12px)] "
                 >
-                  <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gray-900 mb-4">
+                  <div className="relative w-full aspect-[16/9]  overflow-hidden bg-gray-900 mb-4">
                     <img
                       src={makeThumbnailUrl(video.Video_url)!}
                       alt={video.Title}
@@ -209,7 +198,7 @@ export default function VideoCarousel() {
                     />
 
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-14 h-14 bg-black/40 border border-white/30 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-black/60 transition-all duration-300">
+                      <div className="w-14 h-14 bg-black/40 border border-white/30 backdrop-blur-sm rounded-full flex items-center justify-center ">
                         <svg
                           className="w-6 h-6 text-white ml-1"
                           fill="currentColor"
@@ -221,9 +210,9 @@ export default function VideoCarousel() {
                     </div>
                   </div>
 
-                  <p className="text-gray-200 font-medium text-[15px] leading-snug px-1 pb-2">
+                  <span className="text-[#111525] font-medium text-[13px] leading-4 px-1 pb-2">
                     {video.Title}
-                  </p>
+                  </span>
                 </a>
               ))}
             </div>
