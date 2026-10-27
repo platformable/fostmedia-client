@@ -138,6 +138,14 @@ input::-ms-input-placeholder {
   font-weight: bold;
   transition: background 0.3s ease;
 }
+
+.buttonGradientOurSponsorsBg {
+  background: linear-gradient(180deg, #fc6200, #dd312a);
+  color: white;
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+}
+
 .buttonGradientBg:hover {
   background: linear-gradient(90deg, #dd312a, #fc6200);
 }
