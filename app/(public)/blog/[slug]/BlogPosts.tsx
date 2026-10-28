@@ -15,6 +15,7 @@ import SponsorCarousel from "@/app/components/LogoCarousel"
 
 import { addHeadingIds } from "@/lib/toc"
 import TableOfContents from "@/app/components/TableOfContents"
+import Loader from "@/app/components/Loader"
 
 interface Props {
   params: Promise<{
@@ -49,7 +50,11 @@ export default function BlogPosts({ params }: Props) {
   }, [html])
 
   if (isPending) {
-    return <div>Loading...</div>
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader />
+      </div>
+    )
   }
 
   if (isError || !postsBySlug) {
@@ -121,6 +126,17 @@ export default function BlogPosts({ params }: Props) {
               {toc.length > 1 && (
                 <TableOfContents items={toc} title={post?.Title || ""} />
               )}
+
+              <img
+                src={`/banners/webinar1.png`}
+                alt=""
+                className="rounded-2xl w-full"
+              />
+              <img
+                src={`/banners/apimaster.png`}
+                alt=""
+                className="rounded-2xl w-full"
+              />
             </div>
           </section>
         </div>
