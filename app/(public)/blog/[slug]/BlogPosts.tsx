@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useEffect, useMemo } from "react"
 import BackToBlogBtn from "@/app/components/BackToBlogBtn"
 import BackToBlogFooter from "@/app/components/BackToBlogFooter"
 import LatestArticles from "@/app/components/LatestArticlesX"
@@ -12,6 +12,9 @@ import Link from "next/link"
 import calculateReadTime from "@/utils/calculateReadTime"
 import ShareWidget from "@/app/components/Share"
 import SponsorCarousel from "@/app/components/LogoCarousel"
+
+import { addHeadingIds } from "@/lib/toc"
+import TableOfContents from "@/app/components/TableOfContents"
 
 interface Props {
   params: Promise<{
@@ -33,6 +36,17 @@ export default function BlogPosts({ params }: Props) {
     gcTime: 0,
     refetchOnMount: "always",
   })
+
+  const { html, toc } = useMemo(
+    () => addHeadingIds(postsBySlug?.[0]?.Content || ""),
+    [postsBySlug],
+  )
+
+  useEffect(() => {
+    if (!html || !window.location.hash) return
+    const id = decodeURIComponent(window.location.hash.slice(1))
+    document.getElementById(id)?.scrollIntoView()
+  }, [html])
 
   if (isPending) {
     return <div>Loading...</div>
@@ -97,13 +111,17 @@ export default function BlogPosts({ params }: Props) {
               />
             </div>
             <div
-              dangerouslySetInnerHTML={{ __html: post?.Content || "" }}
+              dangerouslySetInnerHTML={{ __html: html }}
               id="post-content"
-              className="mt-10"
+              className="mt-10 article"
             />
           </section>
-          <section id="blog-post-sidebar" className="bg-[#0B182F]">
-            HOLA MUNDO
+          <section id="blog-post-sidebar" className="bg-[#0B182F] sticky top-0">
+            <div className="sticky  p-8 sticky top-0">
+              {toc.length > 1 && (
+                <TableOfContents items={toc} title={post?.Title || ""} />
+              )}
+            </div>
           </section>
         </div>
       </div>
