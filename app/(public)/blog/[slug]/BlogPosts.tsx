@@ -120,6 +120,8 @@ export default function BlogPosts({ params }: Props) {
               id="post-content"
               className="mt-10 article"
             />
+
+            <ShareWidget section="blog" />
           </section>
           <section id="blog-post-sidebar" className="bg-[#0B182F] sticky top-0">
             <div className="sticky  p-8 sticky top-0">
