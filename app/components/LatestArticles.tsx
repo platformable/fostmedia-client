@@ -4,6 +4,7 @@ import Link from "next/link"
 import { FontSize } from "../fontTypes"
 import getPosts, { getIndustryPosts } from "@/utils/getPosts"
 import calculateReadTime from "@/utils/calculateReadTime"
+import Tag from "./Tag"
 
 type Post = {
   Title: string
@@ -16,7 +17,7 @@ type Post = {
   ReadTime: string
   categories: {
     Title: string
-  }
+  }[]
 }
 
 type PostsPage = {
@@ -132,6 +133,8 @@ export default function LatestArticles({
         : (pageData as PostsPage).posts,
     ) ?? []
 
+  console.log("posts", posts)
+
   if (isPending) {
     return <div>Loading...</div>
   }
@@ -205,6 +208,10 @@ export default function LatestArticles({
 
                   {/* Article Content */}
                   <div className="w-full md:w-[65%] p-6 md:p-8 flex flex-col justify-center">
+                    <Tag
+                      text={article?.categories[0]?.Title || "category"}
+                      section="blog"
+                    />
                     <Link href={`/blog/${article.Slug}`}>
                       <h3 className="text-xl md:text-[22px] font-bold text-gray-900 mb-3 tracking-tight line-clamp-2">
                         {article.Title}

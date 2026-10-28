@@ -4,6 +4,7 @@ import { FontSize } from "../fontTypes"
 import getPosts, { getIndustryPosts } from "@/utils/getPosts"
 import calculateReadTime from "@/utils/calculateReadTime"
 import Link from "next/link"
+import Tag from "./Tag"
 
 const stories = [
   {
@@ -149,7 +150,7 @@ export default function TheBigStories({
               className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow duration-300 cursor-pointer"
             >
               <Link
-                href={`/posts/${post?.Slug}`}
+                href={`/blog/${post?.Slug}`}
                 className="flex h-full flex-col"
               >
                 {/* Card Image */}
@@ -168,13 +169,10 @@ export default function TheBigStories({
                 {/* Card Content */}
                 <div className="p-6 lg:p-8 flex flex-col flex-grow">
                   {/* Category Pill */}
-                  <div className="mb-4">
-                    <span
-                      className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider `}
-                    >
-                      {post.categories[0]?.Title}
-                    </span>
-                  </div>
+                  <Tag
+                    text={post?.categories[0]?.Title || "category"}
+                    section="blog"
+                  />
 
                   {/* Title */}
                   <h3 className=" font-bold leading-tight mb-4 text-gray-900 ">
