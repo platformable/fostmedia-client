@@ -9,7 +9,7 @@ export default function Navbar() {
   const isTechPulse = pathname.includes("pulse")
 
   return (
-    <nav className="bg-white   z-20 top-0 start-0 ">
+    <nav className="bg-white   z-20 top-0 start-0  border border-b">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 gap-3 md:gap-0">
         <Link
           href="#"
