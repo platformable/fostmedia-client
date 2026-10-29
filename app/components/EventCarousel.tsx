@@ -178,7 +178,7 @@ export default function EventCarousel() {
   }
 
   return (
-    <section className=" py-8 md:py-10 px-4 md:px-8 lg:px-16">
+    <section className=" py-8 md:py-10 px-4 md:px-8 lg:px-16 bg-white">
       <div className=" mb-12">
         {sectionBadge({
           icon: "/community-icon.svg",

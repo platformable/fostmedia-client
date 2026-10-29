@@ -177,7 +177,7 @@ export default function LatestArticles({
         </div>
 
         {/* Main Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-1">
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5">
           {/* Left Column: Articles Stack */}
           <div className=" flex flex-col gap-4">
             {posts.map((article, index) => {
@@ -227,32 +227,33 @@ export default function LatestArticles({
           </div>
 
           {/* Right Column: Promotional Banners */}
-          <div className="">
-            {/* Banner 1: FOST Pulse */}
+          <div className=" flex flex-col gap-5">
             <div className="">
-              {/* Subtle background swoosh effect */}
-              <img
-                src="/banners/pulse.png"
-                alt="FOST Pulse Background"
-                className=""
-              />
+              <Link href="https://joinfost.io/events/" target="_blank">
+                <img
+                  src="/banners/webinar1.png"
+                  alt="Webinar Background"
+                  className=""
+                />
+              </Link>
             </div>
-
-            {/* Banner 2: boomi */}
             <div className="">
-              <img
-                src="/banners/apimaster.png"
-                alt="APIMaster Background"
-                className=""
-              />
+              <Link href="https://joinfost.io/events/" target="_blank">
+                <img
+                  src="/banners/apimasters.png"
+                  alt="APIMaster Background"
+                  className=""
+                />
+              </Link>
             </div>
-            {/* Banner 2: boomi */}
             <div className="">
-              <img
-                src="/banners/webinar1.png"
-                alt="Webinar Background"
-                className=""
-              />
+              <Link href="/pulse">
+                <img
+                  src="/banners/pulse.png"
+                  alt="FOST Pulse Background"
+                  className=""
+                />
+              </Link>
             </div>
           </div>
         </div>

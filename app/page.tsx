@@ -13,6 +13,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query"
+import FostLogoMarquee from "./components/FostLogoMarquee"
 import NewsletterBanner from "./components/NewsletterBanner"
 import getPosts, { getIndustryPosts } from "@/utils/getPosts"
 //import MainPageFeaturedPost from "./components/MainPageFeaturedPost"
@@ -71,7 +72,8 @@ export default async function Home() {
           <div className="bg-[#40D2FF]">
             <IndustryTrends />
           </div>
-          <LogoCarousel section="blog" />
+          {/* <LogoCarousel section="blog" /> */}
+          <FostLogoMarquee title="Our Partners" />
           <EventsCarousel />
           {/* <NewsletterSection /> */}
           <NewsletterBanner />

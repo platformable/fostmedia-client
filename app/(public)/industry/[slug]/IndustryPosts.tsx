@@ -122,7 +122,7 @@ export default function IndustryPost({ params }: Props) {
               className="mt-10 article"
             />
 
-            <ShareWidget section="blog" />
+            <ShareWidget section="industry" />
           </section>
           <section id="blog-post-sidebar" className="bg-[#0B182F] sticky top-0">
             <div className="sticky  p-8 sticky top-0">
@@ -130,16 +130,35 @@ export default function IndustryPost({ params }: Props) {
                 <TableOfContents items={toc} title={post?.Title || ""} />
               )}
 
-              <img
-                src={`/banners/webinar1.png`}
-                alt=""
-                className="rounded-2xl w-full"
-              />
-              <img
-                src={`/banners/apimaster.png`}
-                alt=""
-                className="rounded-2xl w-full"
-              />
+              <div className=" flex flex-col gap-5">
+                <div className="">
+                  <Link href="https://joinfost.io/events/" target="_blank">
+                    <img
+                      src="/banners/webinar1.png"
+                      alt="Webinar Background"
+                      className=""
+                    />
+                  </Link>
+                </div>
+                <div className="">
+                  <Link href="https://joinfost.io/events/" target="_blank">
+                    <img
+                      src="/banners/apimasters.png"
+                      alt="APIMaster Background"
+                      className=""
+                    />
+                  </Link>
+                </div>
+                <div className="">
+                  <Link href="/pulse">
+                    <img
+                      src="/banners/pulse.png"
+                      alt="FOST Pulse Background"
+                      className=""
+                    />
+                  </Link>
+                </div>
+              </div>
             </div>
           </section>
         </div>
