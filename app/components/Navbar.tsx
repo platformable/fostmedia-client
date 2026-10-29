@@ -9,7 +9,7 @@ export default function Navbar() {
   const isTechPulse = pathname.includes("pulse")
 
   return (
-    <nav className="bg-white   z-20 top-0 start-0  border border-b">
+    <nav className="bg-white   z-20 top-0 start-0   border-b">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 gap-3 md:gap-0">
         <Link
           href="#"
@@ -36,7 +36,7 @@ export default function Navbar() {
           )}
         </Link>
         <div className="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
-          <Link
+          {/*  <Link
             href="https://docs.google.com/presentation/d/1uDo8zgdkozcezAHq_CLHIjulrm9GMHddgt38RXj82h4/edit?slide=id.g329b9af018a_1_0#slide=id.g329b9af018a_1_0"
             target="_blank"
             className="hidden sm:inline-flex text-white bg-[#111525] hover:ring-3 ring-[#fc60004d] focus:ring-3 focus:ring-[#fc60004d]  font-medium leading-5 rounded-lg text-md px-5 py-2 focus:outline-none hover:shadow-md cursor-pointer border border-[#F65B06]"
@@ -49,7 +49,7 @@ export default function Navbar() {
             className="hidden sm:inline-flex text-white brand-bg hover:ring-3 ring-[#fc60004d] focus:ring-3 focus:ring-[#fc60004d]  font-medium leading-5 rounded-lg text-md px-5 py-2 focus:outline-none hover:shadow-md cursor-pointer"
           >
             Events
-          </Link>
+          </Link> */}
           <button
             type="button"
             onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -107,6 +107,15 @@ export default function Navbar() {
             </li>
             <li>
               <Link
+                href="https://joinfost.io/events/"
+                target="_blank"
+                className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+              >
+                Events
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="https://digitalswag.joinfost.io"
                 target="_blank"
                 className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
@@ -116,11 +125,38 @@ export default function Navbar() {
             </li>
             <li>
               <Link
+                href="https://joinfost.io/newsletter"
+                target="_blank"
+                className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+              >
+                Newsletter
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://joinfost.io/tutorials"
+                target="_blank"
+                className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+              >
+                Tutorials
+              </Link>
+            </li>
+            {/*  <li>
+              <Link
                 href="https://joinfost.io"
                 target="_blank"
                 className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 Join Fost
+              </Link>
+            </li> */}
+            <li>
+              <Link
+                href="https://joinfost.io"
+                target="_blank"
+                className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+              >
+                FOSTmasters
               </Link>
             </li>
           </ul>

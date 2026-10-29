@@ -74,7 +74,7 @@ export default function BlogPosts({ params }: Props) {
           <section className="mt-5" id="blog-post-content">
             <div>
               <Tag text={post?.categories?.[0]?.Title || ""} section="blog" />
-              <h1 className="text-black text-base leading-tight my-5">
+              <h1 className="text-black text-base leading-10 my-5 font-bold">
                 {post?.Title || "FOST "}
               </h1>
 

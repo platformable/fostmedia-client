@@ -5,6 +5,7 @@ import LatestArticles from "../../components/LatestArticlesX"
 import BackToBlogBtn from "../../components/BackToBlogBtn"
 import LogoCarousel from "../../components/LogoCarousel"
 import createShareMetadata from "@/lib/metadata"
+import getPosts from "@/utils/getPosts"
 
 export const metadata: Metadata = createShareMetadata({
   title: "Blog",
@@ -17,9 +18,7 @@ export default function page() {
   return (
     <>
       <div className="mx-auto  max-w-screen-xl ">
-        <MainPageFeaturedPost section="blog" />
-        <LatestArticles section="blog" page="blog" limit={10} />
-        <BackToBlogBtn section="blog" />
+        <LatestArticles section="blog" page="blog" limit={9} />
       </div>
       <LogoCarousel section="blog" />
     </>

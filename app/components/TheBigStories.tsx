@@ -1,4 +1,5 @@
 "use client"
+import Loader from "./Loader"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { FontSize } from "../fontTypes"
 import getPosts, { getIndustryPosts } from "@/utils/getPosts"
@@ -124,7 +125,11 @@ export default function TheBigStories({
     ) ?? []
 
   if (isPending) {
-    return <div>Loading...</div>
+    return (
+      <div className="flex justify-center my-10">
+        <Loader />
+      </div>
+    )
   }
   if (isError || !data) {
     return <div className="text-white">Failed to load posts.</div>

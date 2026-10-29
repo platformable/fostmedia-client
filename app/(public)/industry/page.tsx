@@ -17,7 +17,7 @@ export default function page() {
   return (
     <>
       <div className="mx-auto  max-w-screen-xl ">
-        <MainPageFeaturedPost section="industry" />
+        {/* <MainPageFeaturedPost section="industry" /> */}
         <LatestArticles section="industry" />
         <BackToBlogBtn section="industry" />
       </div>

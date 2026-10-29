@@ -114,10 +114,10 @@ export default function PulseClient() {
 
   return (
     <div className="mx-auto max-w-screen-xl px-4 pt-10 bg-tech-pulse">
-      <h1 className="text-white text-base leading-10 my-5">
+      <h1 className="text-black text-base leading-10 my-5">
         {"Ask the conference anything"}
       </h1>
-      <p className=" text-[#BCBCBC]">
+      <p className=" text-black">
         An AI assistant trained on every talk, transcript and session across all
         FOST events. Every answer cites its source.
       </p>
@@ -133,11 +133,11 @@ export default function PulseClient() {
           defaultValue={question}
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="e.g., What did speakers say about agent reliability?"
-          className="w-full p-5 rounded-xl bg-[#0B0F1C] text-white border border-[#747271] focus:outline-none focus:ring-2 focus:ring-[#FC6200]"
+          className="w-full p-5 rounded-xl bg-white text-black border border-[#747271] focus:outline-none focus:ring-2 focus:ring-[#FC6200]"
         />
         <button
           type="submit"
-          className={`ask-btn py-2 px-4 rounded-full text-white bg-purple-300 cursor-pointer hover:opacity-90 transition-opacity duration-300`}
+          className={`py-2 px-4 rounded-full text-white buttonGradientBg cursor-pointer hover:opacity-90 transition-opacity duration-300`}
           disabled={isPending}
         >
           {isPending ? "Searching..." : "Ask →"}
@@ -149,7 +149,7 @@ export default function PulseClient() {
           {state.results?.answer?.length > 0 ? (
             <div className="flex items-center gap-2 mb-5">
               <img src="/file.svg" width={20} height={20} alt="File Icon" />
-              <h6 className="text-[#A18EFF] uppercase">QUOTES</h6>
+              <h6 className="main-color uppercase">QUOTES</h6>
             </div>
           ) : (
             ""
@@ -209,8 +209,8 @@ export default function PulseClient() {
             state.results.answer.length > 0 && (
               <PDFDownloadLink
                 document={<MyDocument />}
-                fileName="somename.pdf"
-                className="ask-btn py-2 px-4 rounded-full text-white bg-purple-300 cursor-pointer hover:opacity-90 transition-opacity duration-300"
+                fileName="FostPulseQuotes.pdf"
+                className="ask-btn py-2 px-4 rounded-full text-white buttonGradientBg cursor-pointer hover:opacity-90 transition-opacity duration-300"
               >
                 {({ blob, url, loading, error }) =>
                   loading ? "Loading document..." : "Download .pdf"

@@ -7,6 +7,9 @@ import { FontSize, fontSizeMap } from "../fontTypes"
 
 import getPosts, { getIndustryPosts } from "@/utils/getPosts"
 import { useInfiniteQuery } from "@tanstack/react-query"
+import calculateReadTime from "@/utils/calculateReadTime"
+import { sectionBadge } from "./TheBigStories"
+import Loader from "./Loader"
 
 type MainPageFeaturedPostProps = {
   title?: string
@@ -70,7 +73,11 @@ export default function LatestArticles({
     ) ?? []
 
   if (isPending) {
-    return <div>Loading...</div>
+    return (
+      <div className="flex justify-center my-10">
+        <Loader />
+      </div>
+    )
   }
   if (isError || !data) {
     return <div className="text-white">Failed to load posts.</div>
@@ -80,64 +87,83 @@ export default function LatestArticles({
   }
   return (
     <div className="my-10">
-      <div className="flex items-center gap-2">
-        <img src="/file.svg" width={20} height={20} alt="File Icon" />
-        <h6
-          className={`uppercase ${section === "industry" ? "text-[#40D2FF]" : "main-color"}`}
-        >
-          {text || "Latest Articles"}
-        </h6>
-      </div>
-      {posts.map((post: any, index: number) => {
-        if (index === 0) return null
-        return (
-          <div
-            key={post?.id ?? index}
-            className="bg-[#161A29] border border-[#30323B] p-4 rounded-xl mt-4 flex flex-col gap-2"
-          >
-            <Tag text={post?.categories[0]?.Title || ""} section={section} />
-            <div className="grid md:grid-cols-[1fr_3fr] gap-4">
-              <img
-                src={post?.Featured_Image?.url || "/placeholder.png"}
-                alt={post?.Title || "Post Image"}
-                className=" h-auto rounded-md"
-              />
-              <div>
-                <h4 className={`${fontSizeMap[textSize]}  text-white`}>
-                  {post?.Title ||
-                    post?.title ||
-                    "APIs as the backbone of modern AI systems"}
-                </h4>
-                {description && (
-                  <p className="text-[#BCC4D0]">
-                    {post?.Excerpt.substring(0, 100) + "..." ||
-                      "A short overview of how APIs enable AI models to access, share, and process data across platforms. It explains why APIs are essential for scaling AI applications."}
-                  </p>
-                )}
+      <section className=" py-5 px-4 md:px-0 ">
+        <div className="max-w-screen-xl mx-auto">
+          {/* Section Header */}
+          {sectionBadge({
+            icon: "/latest-articles-icon.svg",
+            label: "Latest Articles",
+          })}
+
+          {/* Stories Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 ">
+            {posts?.map((post: any, index: number) => (
+              <article
+                key={index}
+                className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow duration-300 cursor-pointer"
+              >
                 <Link
-                  href={`/${section}/${post?.Slug || "#"}`}
-                  className={`py-2 flex items-center  rounded-md mt-2 ${
-                    section === "industry" ? "text-[#40D2FF]" : "main-color"
-                  }`}
+                  href={`/${section}/${post?.Slug}`}
+                  className="flex h-full flex-col"
                 >
-                  Read story →
+                  {/* Card Image */}
+                  <div className="h-[220px] w-full overflow-hidden">
+                    <img
+                      src={
+                        post?.Featured_Image?.url
+                          ? post?.Featured_Image?.url
+                          : "/social.png"
+                      }
+                      alt={post?.Title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="p-6 lg:p-8 flex flex-col flex-grow">
+                    {/* Category Pill */}
+                    <Tag
+                      text={post?.categories[0]?.Title || "category"}
+                      section={section}
+                    />
+
+                    {/* Title */}
+                    <h3 className=" font-bold leading-tight mb-4 text-gray-900 ">
+                      {post.Title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-600 mb-4 text-[14px] leading-5">
+                      {post.Excerpt.substring(0, 120) + "..."}
+                    </p>
+
+                    {/* Footer / Meta */}
+                    <div className="mt-auto flex items-center text-gray-500 text-xs font-medium">
+                      <span>{post.authors?.Name} </span>
+                      <span> &nbsp;{post.authors?.Lastname}</span>
+                      <span className="mx-1.5 font-bold">·</span>
+                      <span>{calculateReadTime(post.Excerpt)}</span>
+                    </div>
+                  </div>
                 </Link>
-              </div>
-            </div>
+              </article>
+            ))}
           </div>
-        )
-      })}
+        </div>
+      </section>
       {hasNextPage && page === "blog" && (
-        <button
-          type="button"
-          onClick={() => fetchNextPage()}
-          disabled={isFetchingNextPage}
-          className={`mt-4 flex items-center justify-center rounded-md border border-[#30323B] px-5 py-2 font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50 ${
-            section === "industry" ? "text-[#40D2FF]" : "main-color"
-          }`}
-        >
-          {isFetchingNextPage ? "Loading..." : "More posts"}
-        </button>
+        <div className="flex justify-center">
+          <button
+            type="button"
+            onClick={() => fetchNextPage()}
+            disabled={isFetchingNextPage}
+            className={`mt-4 flex items-center cursor-pointer justify-center rounded-md bg-[#FE8540] px-5 py-2 font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50 ${
+              section === "industry" ? "text-[#40D2FF]" : "main-color"
+            }`}
+          >
+            {isFetchingNextPage ? "Loading..." : "More posts"}
+          </button>
+        </div>
       )}
     </div>
   )
