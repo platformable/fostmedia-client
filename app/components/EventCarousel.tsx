@@ -95,9 +95,7 @@ const apiData = [
 // --- EVENT CARD COMPONENT ---
 const EventCard = ({ event }: { event: EventData }) => {
   return (
-    // Width is calculated to show exactly 4 items per view on large screens, accounting for the 16px (gap-4) gap.
-    // On medium screens it shows 2 per view, and 1 per view on mobile.
-    <div className="relative flex flex-col shrink-0 w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[320px]   bg-[#102942] overflow-hidden snap-start transition-transform hover:scale-[1.02]">
+    <div className="relative flex flex-col shrink-0 w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[320px]   bg-[#102942] overflow-hidden snap-start transition-transform  rounded-xl border border-[#FF5900]">
       {/* Background Image */}
 
       <div
@@ -178,26 +176,24 @@ export default function EventCarousel() {
   }
 
   return (
-    <section className=" py-8 md:py-10 px-4 md:px-8 lg:px-16 bg-white">
-      <div className=" mb-12">
-        {sectionBadge({
-          icon: "/community-icon.svg",
-          label: "IN-PERSON AT FOST",
-        })}
-
-        <h2 className="text-[#111525] font-semibold text-3xl md:text-4xl ">
-          Join us in-person at our global community events
-        </h2>
-      </div>
-
+    <section className=" py-8 md:py-10 px-4 md:px-8 lg:px-16 bg-black">
       <div className="w-full   flex justify-center overflow-hidden">
         <div className="relative w-full max-w-[1280px] 2">
-          {" "}
+          <div className=" mb-12">
+            {sectionBadge({
+              icon: "/community-icon.svg",
+              label: "IN-PERSON AT FOST",
+            })}
+
+            <h2 className="text-white font-semibold text-3xl md:text-4xl ">
+              Join us in-person at our global community events
+            </h2>
+          </div>{" "}
           {/* Increased padding to make room for arrows */}
           {/* Left Arrow */}
           <button
             onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors backdrop-blur-sm"
+            className="absolute left-0 top-2/3 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors backdrop-blur-sm"
             aria-label="Scroll left"
           >
             <svg
@@ -227,7 +223,7 @@ export default function EventCarousel() {
           {/* Right Arrow */}
           <button
             onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors backdrop-blur-sm"
+            className="absolute right-0 top-2/3 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors backdrop-blur-sm"
             aria-label="Scroll right"
           >
             <svg

@@ -240,7 +240,7 @@ export default function LatestArticles({
             <div className="">
               <Link href="https://joinfost.io/events/" target="_blank">
                 <img
-                  src="/banners/apimasters.png"
+                  src="/banners/apimasters-ad.png"
                   alt="APIMaster Background"
                   className=""
                 />

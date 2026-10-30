@@ -28,15 +28,15 @@ export default function Navbar() {
           {isTechPulse && (
             <>
               <img
-                src="/FOSTPulse_logo.svg"
-                className="h-10 "
+                src="/pulse-logo.svg"
+                className="h-12 pr-3"
                 alt="FOSTPulse Logo"
               />
             </>
           )}
         </Link>
         <div className="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
-          {/*  <Link
+          <Link
             href="https://docs.google.com/presentation/d/1uDo8zgdkozcezAHq_CLHIjulrm9GMHddgt38RXj82h4/edit?slide=id.g329b9af018a_1_0#slide=id.g329b9af018a_1_0"
             target="_blank"
             className="hidden sm:inline-flex text-white bg-[#111525] hover:ring-3 ring-[#fc60004d] focus:ring-3 focus:ring-[#fc60004d]  font-medium leading-5 rounded-lg text-md px-5 py-2 focus:outline-none hover:shadow-md cursor-pointer border border-[#F65B06]"
@@ -49,7 +49,7 @@ export default function Navbar() {
             className="hidden sm:inline-flex text-white brand-bg hover:ring-3 ring-[#fc60004d] focus:ring-3 focus:ring-[#fc60004d]  font-medium leading-5 rounded-lg text-md px-5 py-2 focus:outline-none hover:shadow-md cursor-pointer"
           >
             Events
-          </Link> */}
+          </Link>
           <button
             type="button"
             onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -152,11 +152,11 @@ export default function Navbar() {
             </li> */}
             <li>
               <Link
-                href="https://joinfost.io"
+                href="https://www.apimasters.io/"
                 target="_blank"
                 className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
-                FOSTmasters
+                APIMasters
               </Link>
             </li>
           </ul>

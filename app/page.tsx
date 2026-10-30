@@ -23,12 +23,13 @@ import EventCarousel from "./components/Blogcarousel"
 import EventsCarousel from "./components/EventCarousel"
 import NewsletterSection from "./components/NewsletterSection"
 import VideoCarousel from "./components/VideoCarousel"
+import Resources from "./components/Resources"
 
 export async function generateMetadata(): Promise<Metadata> {
   return createShareMetadata({
-    title: "FOST Media - Your Source for Industry Insights and Trends",
+    title: "FOSTBeat - Tracking the Future of Software",
     description:
-      "FOST Media is the leading source for conference intelligence and knowledge discovery. We provide insights, analysis, and commentary on the latest trends and developments in the conference industry.",
+      "FOSTBeat is a clear signal for digital business decision-makers who need to hear from a trusted source on what is happening in the software industry and how to prepare for the future.",
     url: "/",
     image: "/social.png",
   })
@@ -48,15 +49,15 @@ export default async function Home() {
   })
 
   const metadata = createShareMetadata({
-    title: "FOST Media - Your Source for Industry Insights and Trends",
+    title: "FOSTBeat - Tracking the Future of Software",
     description:
-      "FOST Media is the leading source for conference intelligence and knowledge discovery. We provide insights, analysis, and commentary on the latest trends and developments in the conference industry.",
+      "FOSTBeat is a clear signal for digital business decision-makers who need to hear from a trusted source on what is happening in the software industry and how to prepare for the future.",
     url: "https://joinfost.io",
     image: "/social.png",
   })
 
   return (
-    <section>
+    <section className="bg-[#FEE0D0]">
       {" "}
       <HydrationBoundary state={dehydrate(queryClient)}>
         {/*  <MainPageFeaturedPost section="blog" page="home" /> */}
@@ -65,16 +66,16 @@ export default async function Home() {
         <VideoCarousel />
 
         <div className="mx-auto  max-w-screen-xl  px-4 md:px-0 py-6 lg:py-4  gap-8  ">
-          <LatestArticles section="blog" page="home" limit={8} />
+          <LatestArticles section="blog" page="home" limit={9} />
         </div>
 
-        <div className="bg-[#40D2FF]">
+        {/*    <div className="bg-[#40D2FF]">
           <IndustryTrends />
-        </div>
+        </div> */}
 
         <FostLogoMarquee title="Our Partners" />
         <EventsCarousel />
-
+        <Resources />
         <NewsletterBanner />
       </HydrationBoundary>
     </section>
