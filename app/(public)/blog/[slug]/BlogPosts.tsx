@@ -106,14 +106,17 @@ export default function BlogPosts({ params }: Props) {
               </div>
             </div>
 
-            <div className="relative h-64 w-full overflow-hidden rounded-2xl  mt-10 mb-3">
-              <img
-                src={
-                  post?.Featured_Image?.url ||
-                  `https://dummyimage.com/1920x1080/000/fff&text=FOST`
-                }
-                alt={slug}
-              />
+            <div className="relative h-64 w-full overflow-hidden  mt-10 mb-3">
+              <div className="flex justify-center">
+                <img
+                  src={
+                    post?.Featured_Image?.url ||
+                    `https://dummyimage.com/1920x1080/000/fff&text=FOST`
+                  }
+                  alt={slug}
+                  className="object-cover w-full h-full"
+                />
+              </div>
             </div>
             <div
               dangerouslySetInnerHTML={{ __html: html }}
