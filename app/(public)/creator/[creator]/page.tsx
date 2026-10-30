@@ -1,7 +1,7 @@
 import React from "react"
 import type { Metadata } from "next"
 import ShareWidget from "@/app/components/Share"
-import LatestArticles from "@/app/components/LatestArticles"
+import LatestArticles from "@/app/components/LatestArticlesX"
 import createShareMetadata from "@/lib/metadata"
 
 interface PageProps {

@@ -9,7 +9,7 @@ export default function Navbar() {
   const isTechPulse = pathname.includes("pulse")
 
   return (
-    <nav className="bg-[#111525]   z-20 top-0 start-0 border-b border-[#393939]">
+    <nav className="bg-white   z-20 top-0 start-0   border-b">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 gap-3 md:gap-0">
         <Link
           href="#"
@@ -18,22 +18,18 @@ export default function Navbar() {
           {!isTechPulse && (
             <>
               <img
-                src="/logo_fost.svg"
-                className="h-7 border-r border-[#FC6200] pr-3"
+                src="/fostbeat.png"
+                className="h-12 pr-3"
                 alt="FOSTBeat Logo"
               />
-              <span className="self-center text-sm md:text-xl text-heading font-semibold whitespace-nowrap text-white">
-                <span className="main-color text-sm md:text-xl">FOST</span>
-                Beat
-              </span>
             </>
           )}
 
           {isTechPulse && (
             <>
               <img
-                src="/FOSTPulse_logo.svg"
-                className="h-10 "
+                src="/pulse-logo.svg"
+                className="h-12 pr-3"
                 alt="FOSTPulse Logo"
               />
             </>
@@ -88,7 +84,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/blog"
-                className="block py-2 px-3 text-heading  text-[#BABABA] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+                className="block py-2 px-3 text-heading  text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 Blog
               </Link>
@@ -96,7 +92,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/industry"
-                className="block py-2 px-3 text-heading text-[#BABABA]  rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+                className="block py-2 px-3 text-heading text-[#111525]  rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 Industry
               </Link>
@@ -104,27 +100,63 @@ export default function Navbar() {
             <li>
               <Link
                 href="/pulse"
-                className="block py-2 px-3 text-heading text-[#BABABA] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+                className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 Pulse
               </Link>
             </li>
             <li>
               <Link
+                href="https://joinfost.io/events/"
+                target="_blank"
+                className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+              >
+                Events
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="https://digitalswag.joinfost.io"
                 target="_blank"
-                className="block py-2 px-3 text-heading text-[#BABABA] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+                className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 Digital Swag
               </Link>
             </li>
             <li>
               <Link
+                href="https://joinfost.io/newsletter"
+                target="_blank"
+                className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+              >
+                Newsletter
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://joinfost.io/tutorials"
+                target="_blank"
+                className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+              >
+                Tutorials
+              </Link>
+            </li>
+            {/*  <li>
+              <Link
                 href="https://joinfost.io"
                 target="_blank"
-                className="block py-2 px-3 text-heading text-[#BABABA] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+                className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 Join Fost
+              </Link>
+            </li> */}
+            <li>
+              <Link
+                href="https://www.apimasters.io/"
+                target="_blank"
+                className="block py-2 px-3 text-heading text-[#111525] rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+              >
+                APIMasters
               </Link>
             </li>
           </ul>

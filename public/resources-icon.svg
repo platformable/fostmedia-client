@@ -1,0 +1,26 @@
+<svg id="Component_102_1" data-name="Component 102 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="22" viewBox="0 0 25 22">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff863f"/>
+      <stop offset="1" stop-color="#dd322a"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_63790" data-name="Group 63790" transform="translate(0 0.403)">
+    <g id="Rectangle_7723" data-name="Rectangle 7723" transform="translate(0 -0.403)" fill="#fff" stroke="#fff" stroke-width="1">
+      <rect width="16" height="17" rx="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="15" height="16" rx="0.5" fill="none"/>
+    </g>
+    <line id="Line_962" data-name="Line 962" x2="8.162" transform="translate(4.081 4.081)" fill="none" stroke="#0b0f1c" stroke-width="1"/>
+    <line id="Line_963" data-name="Line 963" x2="8.162" transform="translate(4.081 8.162)" fill="none" stroke="#0b0f1c" stroke-width="1"/>
+    <line id="Line_964" data-name="Line 964" x2="8.162" transform="translate(4.081 12.244)" fill="none" stroke="#0b0f1c" stroke-width="1"/>
+  </g>
+  <g id="Group_63791" data-name="Group 63791" transform="translate(8.639 5.802)">
+    <g id="Rectangle_7723-2" data-name="Rectangle 7723" transform="translate(0.361 0.198)" stroke="#111525" stroke-width="1" fill="url(#linear-gradient)">
+      <rect width="16" height="16" rx="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="15" height="15" rx="0.5" fill="none"/>
+    </g>
+    <line id="Line_962-2" data-name="Line 962" x2="8.162" transform="translate(4.281 4.116)" fill="none" stroke="#111525" stroke-width="1"/>
+    <line id="Line_963-2" data-name="Line 963" x2="8.162" transform="translate(4.281 8.197)" fill="none" stroke="#111525" stroke-width="1"/>
+    <line id="Line_964-2" data-name="Line 964" x2="8.162" transform="translate(4.281 12.279)" fill="none" stroke="#111525" stroke-width="1"/>
+  </g>
+</svg>
