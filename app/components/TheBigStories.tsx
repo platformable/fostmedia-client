@@ -139,7 +139,7 @@ export default function TheBigStories({
   }
 
   return (
-    <section className=" py-10 px-4 md:px-8 ">
+    <section className=" py-10 px-4 md:px-8 bg-[#FFF4EE]">
       <div className="max-w-screen-xl mx-auto">
         {/* Section Header */}
         {sectionBadge({

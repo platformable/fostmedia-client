@@ -192,7 +192,7 @@ export default function VideoCarousel() {
                   href={video.Video_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block snap-start shrink-0 w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[calc(25%-12px)] "
+                  className="group block snap-start shrink-0 w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[calc(25%-12px)] bg-white pb-10 rounded-b-md shadow-lg"
                 >
                   <div className="relative w-full aspect-[16/9]  overflow-hidden bg-gray-900 mb-4">
                     <img
@@ -214,9 +214,16 @@ export default function VideoCarousel() {
                     </div>
                   </div>
 
-                  <span className="text-[#111525] font-medium text-[13px] leading-4 px-1 pb-2">
-                    {video.Title}
-                  </span>
+                  <div className="px-8">
+                    <span
+                      className={` uppercase  px-4 py-2 rounded-full self-start text-[10px] mb-2 bg-[#FFE7DD] main-color inline-block`}
+                    >
+                      Event
+                    </span>
+                    <h6 className="text-[#111525] text-[13px] leading-5 mt-2  pb-2 inline-block">
+                      {video.Title}
+                    </h6>
+                  </div>
                 </a>
               ))}
             </div>
