@@ -62,24 +62,20 @@ export default async function Home() {
         {/*  <MainPageFeaturedPost section="blog" page="home" /> */}
         <Marquee />
         <TheBigStories section="blog" page="home" limit={3} />
+        <VideoCarousel />
 
-        <section>
-          <div className="mx-auto  max-w-screen-xl  px-4 md:px-0 py-6 lg:py-4  gap-8  ">
-            <LatestArticles section="blog" page="home" limit={8} />
-          </div>
-        </section>
-        <section>
-          <div className="bg-[#40D2FF]">
-            <IndustryTrends />
-          </div>
-          {/* <LogoCarousel section="blog" /> */}
-          <FostLogoMarquee title="Our Partners" />
-          <EventsCarousel />
-          {/* <NewsletterSection /> */}
-          <NewsletterBanner />
-          {/*   <LogoCarousel section="blog" /> */}
-          <VideoCarousel />
-        </section>
+        <div className="mx-auto  max-w-screen-xl  px-4 md:px-0 py-6 lg:py-4  gap-8  ">
+          <LatestArticles section="blog" page="home" limit={8} />
+        </div>
+
+        <div className="bg-[#40D2FF]">
+          <IndustryTrends />
+        </div>
+
+        <FostLogoMarquee title="Our Partners" />
+        <EventsCarousel />
+
+        <NewsletterBanner />
       </HydrationBoundary>
     </section>
   )

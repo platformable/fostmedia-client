@@ -3,7 +3,7 @@ import React from "react"
 
 export default function NewsletterBanner() {
   return (
-    <div className=" bg-[#fff8f3] flex items-center justify-center p-4 md:p-0 md:mb-10 ">
+    <div className=" flex items-center justify-center p-4 md:p-0 md:mb-10 ">
       {/* Banner Container */}
       <div className="w-full max-w-screen-xl bg-gradient-to-r from-[#e33b26] via-[#f06129] to-[#f89036] rounded-[32px] shadow-[0_20px_40px_rgba(240,97,41,0.2)] px-6 py-8 md:py-10 flex flex-col items-center text-center">
         {/* Overline */}

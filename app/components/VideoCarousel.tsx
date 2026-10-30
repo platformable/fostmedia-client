@@ -123,8 +123,8 @@ export default function VideoCarousel() {
   }
 
   return (
-    <section className=" py-12 md:py-10 px-4 md:px-8 lg:px-6">
-      <div className=" mx-auto max-w-screen-xl font-sans flex flex-col justify-center">
+    <section className="bg-[#FFE0D0] py-12 md:py-10 px-4 md:px-8 lg:px-6">
+      <div className=" mx-auto max-w-screen-xl  flex flex-col justify-center">
         <div className="  ">
           {/* Header Section */}
           {sectionBadge({
@@ -132,12 +132,16 @@ export default function VideoCarousel() {
             label: "VIDEOS & PODCASTS",
           })}
 
+          <h2 className="text-[#111525] font-semibold text-3xl md:text-4xl mb-4">
+            Expert insights and conversations on tech trends
+          </h2>
+
           {/* Carousel Wrapper with Relative Positioning for Arrows */}
           <div className="relative group">
             {/* Left Arrow */}
             <button
               onClick={scrollPrev}
-              className="absolute left-2 sm:-left-4 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black border border-gray-700 text-white w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto"
+              className="absolute left-2 sm:-left-4 top-1/3 -translate-y-1/2 z-10 bg-black/60 hover:bg-black border border-gray-700 text-white w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto"
               aria-label="Scroll left"
             >
               <svg
@@ -158,7 +162,7 @@ export default function VideoCarousel() {
             {/* Right Arrow */}
             <button
               onClick={scrollNext}
-              className="absolute right-2 sm:-right-4 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black border border-gray-700 text-white w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto"
+              className="absolute right-2 sm:-right-4 top-1/3 -translate-y-1/2 z-10 bg-black/60 hover:bg-black border border-gray-700 text-white w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto"
               aria-label="Scroll right"
             >
               <svg
@@ -219,7 +223,7 @@ export default function VideoCarousel() {
           </div>
 
           {/* Pagination Dots */}
-          <div className="flex justify-center items-center gap-2 mt-6">
+          {/*        <div className="flex justify-center items-center gap-2 mt-6">
             {Array.from({ length: totalDots }).map((_, idx) => (
               <button
                 key={idx}
@@ -232,7 +236,7 @@ export default function VideoCarousel() {
                 aria-label={`Go to page ${idx + 1}`}
               />
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

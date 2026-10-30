@@ -8,7 +8,7 @@ type TagProps = {
 
 export default function Tag({ text, section }: TagProps) {
   const category = categories.find((c) => c.title === text)
-  console.log("category active", category)
+
   return (
     <span
       className={` uppercase  px-4 py-2 rounded-full self-start text-[10px] mb-2 ${category?.bgColor ? `bg-[${category?.bgColor}]` : "bg-orange-300"} ${category?.textColor ? `text-[${category?.textColor}]` : "text-black"}`}
