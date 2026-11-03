@@ -12,7 +12,7 @@ export default function Navbar() {
     <nav className="bg-white   z-20 top-0 start-0   border-b">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 gap-3 md:gap-0">
         <Link
-          href="#"
+          href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           {!isTechPulse && (
@@ -94,7 +94,7 @@ export default function Navbar() {
                 href="/industry"
                 className="block py-2 px-3 text-heading text-[#111525]  rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
-                Industry
+                Industries
               </Link>
             </li>
             <li>
@@ -123,7 +123,7 @@ export default function Navbar() {
                 Digital Swag
               </Link>
             </li>
-            <li>
+            {/*   <li>
               <Link
                 href="https://joinfost.io/newsletter"
                 target="_blank"
@@ -140,7 +140,7 @@ export default function Navbar() {
               >
                 Tutorials
               </Link>
-            </li>
+            </li> */}
             {/*  <li>
               <Link
                 href="https://joinfost.io"

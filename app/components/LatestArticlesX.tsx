@@ -112,29 +112,31 @@ export default function LatestArticles({
 
   return (
     <section className="pb-10">
-      <div className="py-5 px-4 md:px-0 bg-white">
-        <div className="mx-auto max-w-screen-xl">
-          <p className="text-[12px] mb-2">EXPLORE CATEGORIES</p>
-          {categories.map((category) => (
-            <div key={category.title} className="inline-block mr-2 mb-2">
-              <CategoryTag
-                category={category.title}
-                active={selected.includes(category.title)}
-                onClick={() => toggleCategory(category.title)}
-              />
-            </div>
-          ))}
-          {selected.length > 0 && (
-            <button
-              type="button"
-              onClick={() => setSelected([])}
-              className="text-[12px] underline ml-2"
-            >
-              Clear filters
-            </button>
-          )}
+      {section !== "industry" && (
+        <div className="py-5 px-4 md:px-0 bg-white">
+          <div className="mx-auto max-w-screen-xl">
+            <p className="text-[12px] mb-2">EXPLORE CATEGORIES</p>
+            {categories.map((category) => (
+              <div key={category.title} className="inline-block mr-2 mb-2">
+                <CategoryTag
+                  category={category.title}
+                  active={selected.includes(category.title)}
+                  onClick={() => toggleCategory(category.title)}
+                />
+              </div>
+            ))}
+            {selected.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setSelected([])}
+                className="text-[12px] underline ml-2"
+              >
+                Clear filters
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      )}
       <div className=" mx-auto  max-w-screen-xl ">
         <section className=" py-5 px-4 md:px-0 ">
           <div className="max-w-screen-xl mx-auto">
@@ -177,7 +179,7 @@ export default function LatestArticles({
                             ? post?.Featured_Image?.url
                             : "/social.png"
                         }
-                        alt={post?.Title}
+                        alt={post?.Title || post?.title}
                         className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                       />
                     </div>
@@ -192,12 +194,12 @@ export default function LatestArticles({
 
                       {/* Title */}
                       <h3 className=" font-bold leading-tight mb-4 text-gray-900 ">
-                        {post?.Title}
+                        {post?.Title || post?.title}
                       </h3>
 
                       {/* Description */}
                       <p className="text-gray-600 mb-4 text-[14px] leading-5">
-                        {post?.Excerpt?.substring(0, 120) + "..."}
+                        {post?.Excerpt?.substring(0, 120) + "..." || ""}
                       </p>
 
                       {/* Footer / Meta */}

@@ -19,9 +19,9 @@ export default function page() {
       <div className="mx-auto  max-w-screen-xl ">
         {/* <MainPageFeaturedPost section="industry" /> */}
         <LatestArticles section="industry" />
-        <BackToBlogBtn section="industry" />
+        {/*         <BackToBlogBtn section="industry" /> */}
       </div>
-      <LogoCarousel section="industry" />
+      {/*       <LogoCarousel section="industry" /> */}
     </>
   )
 }

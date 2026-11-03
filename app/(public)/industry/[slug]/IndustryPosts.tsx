@@ -107,14 +107,17 @@ export default function IndustryPost({ params }: Props) {
               </div>
             </div>
 
-            <div className="relative h-64 w-full overflow-hidden rounded-2xl  mt-10 mb-3">
-              <img
-                src={
-                  post?.Featured_Image?.url ||
-                  `https://dummyimage.com/1920x1080/000/fff&text=FOST`
-                }
-                alt={slug}
-              />
+            <div className="relative h-64 w-full overflow-hidden  mt-10 mb-3">
+              <div className="flex justify-center">
+                <img
+                  src={
+                    post?.Featured_Image?.url ||
+                    `https://dummyimage.com/1920x1080/000/fff&text=FOST`
+                  }
+                  alt={slug}
+                  className="object-cover w-full h-full"
+                />
+              </div>
             </div>
             <div
               dangerouslySetInnerHTML={{ __html: html }}
@@ -132,7 +135,7 @@ export default function IndustryPost({ params }: Props) {
 
               <div className=" flex flex-col gap-5">
                 <div className="">
-                  <Link href="https://joinfost.io/events/" target="_blank">
+                  <Link href="/webinars">
                     <img
                       src="/banners/webinar1.png"
                       alt="Webinar Background"
@@ -141,7 +144,10 @@ export default function IndustryPost({ params }: Props) {
                   </Link>
                 </div>
                 <div className="">
-                  <Link href="https://joinfost.io/events/" target="_blank">
+                  <Link
+                    href="https://www.home.apimasters.io/learn/learning-plans/4/leveraging-apis-strategically-by-marjukka-niinioja"
+                    target="_blank"
+                  >
                     <img
                       src="/banners/apimasters-ad.png"
                       alt="APIMaster Background"
