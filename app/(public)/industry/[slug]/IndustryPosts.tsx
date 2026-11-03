@@ -74,7 +74,16 @@ export default function IndustryPost({ params }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-[8fr_4fr] gap-8  ">
           <section className="mt-5" id="blog-post-content">
             <div>
-              <Tag text={post?.categories?.[0]?.Title || ""} section="blog" />
+              {post?.categories?.map(
+                (category: { ID: string; Title: string }, index: number) => (
+                  <Tag
+                    key={category?.ID || index}
+                    text={category?.Title || ""}
+                    section="industry"
+                  />
+                ),
+              )}
+
               <h1 className="text-black text-base leading-10 my-5 font-bold">
                 {post?.Title || "FOST "}
               </h1>
