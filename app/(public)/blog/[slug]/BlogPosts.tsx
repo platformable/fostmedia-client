@@ -134,7 +134,7 @@ export default function BlogPosts({ params }: Props) {
               <div>
                 <div className=" flex flex-col gap-5">
                   <div className="">
-                    <Link href="https://joinfost.io/events/" target="_blank">
+                    <Link href="/webinars">
                       <img
                         src="/banners/webinar1.png"
                         alt="Webinar Background"
@@ -143,7 +143,10 @@ export default function BlogPosts({ params }: Props) {
                     </Link>
                   </div>
                   <div className="">
-                    <Link href="https://joinfost.io/events/" target="_blank">
+                    <Link
+                      href="https://www.home.apimasters.io/learn/learning-plans/4/leveraging-apis-strategically-by-marjukka-niinioja"
+                      target="_blank"
+                    >
                       <img
                         src="/banners/apimasters-ad.png"
                         alt="APIMaster Background"

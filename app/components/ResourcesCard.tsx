@@ -9,6 +9,7 @@ type Post = {
   Excerpt: string
   authors: { Name: string; Lastname: string }
   categories: { Title: string }[]
+  url: string
 }
 
 export default function ResourcesCard({
@@ -23,7 +24,7 @@ export default function ResourcesCard({
       key={index}
       className="flex flex-col bg-white  overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow duration-300 cursor-pointer"
     >
-      <Link href={`/blog/${post?.Slug}`} className="flex h-full flex-col">
+      <Link href={post?.url} className="flex h-full flex-col" target="_blank">
         {/* Card Image */}
         <div className="h-[220px] w-full overflow-hidden">
           <img

@@ -14,6 +14,7 @@ export default function Resources() {
       Excerpt: "State of the Market Report",
       authors: { Name: "", Lastname: "" },
       categories: [{ Title: "REPORT" }],
+      url: "https://apidays.global/report-download/api-state-of-the-market-2026",
     },
     {
       Slug: "the-ai-enabled-api-lifecycle-2026",
@@ -22,6 +23,7 @@ export default function Resources() {
       Excerpt: "Humans Steer · Rules Run · AI Assists",
       authors: { Name: "", Lastname: "" },
       categories: [{ Title: "WHITE PAPER" }],
+      url: "https://apidays.global/report-download/the-ai-enabled-api-lifecycle-2026",
     },
     {
       Slug: "harnessing-api-intelligence-2025",
@@ -30,6 +32,7 @@ export default function Resources() {
       Excerpt: "From observability to governance to cultivate a new mindset",
       authors: { Name: "", Lastname: "" },
       categories: [{ Title: "BEST PRACTICES REPORT" }],
+      url: "https://apidays.global/report-download/harnessing-api-intelligence-2025",
     },
     {
       Slug: "the-4-pillars-of-api-security-2025",
@@ -38,6 +41,7 @@ export default function Resources() {
       Excerpt: "Implementing a Strategy for API Security",
       authors: { Name: "", Lastname: "" },
       categories: [{ Title: "BEST PRACTICES REPORT" }],
+      url: "https://apidays.global/report-download/the-4-pillars-of-api-security-implementing-a-strategy-for-api-security-in-2025",
     },
   ]
   return (

@@ -21,7 +21,7 @@ export default function page() {
     <>
       <div className="">
         <LatestArticles section="blog" page="blog" limit={9} />
-        <NewsletterBanner />
+        {/*         <NewsletterBanner /> */}
       </div>
     </>
   )
