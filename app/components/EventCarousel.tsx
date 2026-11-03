@@ -97,29 +97,31 @@ const EventCard = ({ event }: { event: EventData }) => {
   return (
     <div className="relative flex flex-col shrink-0 w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[320px]   bg-[#102942] overflow-hidden snap-start transition-transform  rounded-xl border border-[#FF5900]">
       {/* Background Image */}
+      <a href={event.Event_url} target="_blank" rel="noopener noreferrer">
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-bottom bg-no-repeat z-0"
+          style={{
+            backgroundImage: `url(${event.Background_image?.formats?.medium?.url})`,
+          }}
+        />
 
-      <div
-        className="absolute inset-0 w-full h-full bg-cover bg-bottom bg-no-repeat z-0"
-        style={{
-          backgroundImage: `url(${event.Background_image?.formats?.medium?.url})`,
-        }}
-      />
+        {/* Top Section: Date & Title */}
+        <div className="relative z-10 flex items-start gap-4 p-6 pointer-events-none">
+          <div className="flex flex-col text-[#F4F4F5] font-light tracking-wide">
+            <span className="text-xl leading-tight">{event.Date}</span>
+            <span className="text-sm leading-tight mt-1">
+              {event.dateMonths}
+            </span>
+          </div>
 
-      {/* Top Section: Date & Title */}
-      <div className="relative z-10 flex items-start gap-4 p-6 pointer-events-none">
-        <div className="flex flex-col text-[#F4F4F5] font-light tracking-wide">
-          <span className="text-xl leading-tight">{event.Date}</span>
-          <span className="text-sm leading-tight mt-1">{event.dateMonths}</span>
+          <div className="w-[1px] h-10 bg-white/20 mt-1"></div>
+
+          <div className="flex flex-col main-color font-semibold tracking-wide">
+            <span className="text-lg leading-tight">{event.Title}</span>
+            <span className="text-lg leading-tight">{event.eventLocation}</span>
+          </div>
         </div>
-
-        <div className="w-[1px] h-10 bg-white/20 mt-1"></div>
-
-        <div className="flex flex-col main-color font-semibold tracking-wide">
-          <span className="text-lg leading-tight">{event.Title}</span>
-          <span className="text-lg leading-tight">{event.eventLocation}</span>
-        </div>
-      </div>
-
+      </a>
       {/* Bottom Footer */}
       <a
         href={event.Event_url}

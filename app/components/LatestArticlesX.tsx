@@ -187,10 +187,20 @@ export default function LatestArticles({
                     {/* Card Content */}
                     <div className="p-6 lg:p-8 flex flex-col flex-grow">
                       {/* Category Pill */}
-                      <Tag
-                        text={post?.categories[0]?.Title || "category"}
-                        section={section}
-                      />
+                      <div className="flex flex-wrap gap-2">
+                        {post?.categories?.map(
+                          (
+                            category: { ID: string; Title: string },
+                            index: number,
+                          ) => (
+                            <Tag
+                              key={category?.ID || index}
+                              text={category?.Title || ""}
+                              section="industry"
+                            />
+                          ),
+                        )}
+                      </div>
 
                       {/* Title */}
                       <h3 className=" font-bold leading-tight mb-4 text-gray-900 ">
