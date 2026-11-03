@@ -9,6 +9,20 @@ interface ShareProps {
   section: "blog" | "industry"
 }
 
+type SectionBadgeProps = {
+  icon: string
+  label: string
+}
+
+export const sectionBadge = ({ icon, label }: SectionBadgeProps) => (
+  <div className="flex w-fit items-center gap-3  bg-[#FC6200] px-5 py-2 rounded-full">
+    <div>
+      <img src={icon} alt="big-stories-icon" width="18" />
+    </div>
+    <span className="text-sm uppercase text-white tracking-wider">{label}</span>
+  </div>
+)
+
 export default function ShareWidget({
   url = window!.location!.href!,
   title = document.title,
@@ -78,10 +92,9 @@ export default function ShareWidget({
   const encodedTitle = encodeURIComponent(currentTitle)
 
   return (
-    <div className="share">
-      <div className={`share__heading main-color-${section}`}>
-        <FiShare2 size={20} strokeWidth={2} />
-        <span className={`main-color-${section}`}>SHARE</span>
+    <div className="share my-10">
+      <div className={`share__heading main-color-${section} `}>
+        {sectionBadge({ icon: "/share-icon.svg", label: "SHARE THIS ARTICLE" })}
       </div>
 
       <div className="share__buttons">

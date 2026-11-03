@@ -1,13 +1,34 @@
 import { cache } from "react"
 
-const getPosts = async (page: string, limit?: number, pageNumber = 1) => {
+const getPosts = async (
+  page: string,
+  limit?: number,
+  pageNumber = 1,
+  categories: string[] = [],
+) => {
   const isPaginated = page === "home" || page === "blog"
+
+  const params = new URLSearchParams()
+  params.append("sort", "publishedAt:desc")
+
+  if (isPaginated) {
+    params.append("pagination[pageSize]", String(limit ?? 5))
+    params.append("pagination[page]", String(pageNumber))
+  }
+
+  categories.forEach((title, i) => {
+    params.append(`filters[categories][Title][$in][${i}]`, title)
+  })
+
+  params.append("populate", "*")
+
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts?sort=publishedAt:desc${isPaginated ? `&pagination[pageSize]=${limit ? limit : 5}&pagination[page]=${pageNumber}` : ""}&populate=*`,
+    `${process.env.NEXT_PUBLIC_API_URL}/posts?${params.toString()}`,
   )
   const posts = await response.json()
   return { posts: posts?.data, meta: posts?.meta }
 }
+
 const getIndustryPosts = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/industries?populate=*`,

@@ -4,9 +4,9 @@ import Providers from "./providers"
 import Script from "next/script"
 import "./globals.css"
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://joinfost.io"
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://beat.joinfost.io"
 const DEFAULT_DESCRIPTION =
-  "FOST Media is the leading source for conference intelligence and knowledge discovery. We provide insights, analysis, and commentary on the latest trends and developments in the conference industry."
+  "FOSTBeat is a clear signal for digital business decision-makers who need to hear from a trusted source on what is happening in the software industry and how to prepare for the future."
 
 // Site-wide fallback metadata. Any route without its own `generateMetadata`/
 // `metadata` export inherits this, so every shared page always shows a
@@ -14,12 +14,12 @@ const DEFAULT_DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "FOST Media - Your Source for Industry Insights and Trends",
+    default: "FOSTBeat - Tracking the Future of Software",
     template: "%s | FOST Media",
   },
   description: DEFAULT_DESCRIPTION,
   openGraph: {
-    title: "FOST Media - Your Source for Industry Insights and Trends",
+    title: "FOSTBeat - Tracking the Future of Software",
     description: DEFAULT_DESCRIPTION,
     url: SITE_URL,
     siteName: "FOST Media",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FOST Media - Your Source for Industry Insights and Trends",
+    title: "FOSTBeat - Tracking the Future of Software",
     description: DEFAULT_DESCRIPTION,
     images: ["/social.png"],
   },
@@ -60,17 +60,17 @@ export default function RootLayout({
         {/* Matomo */}
         <Script id="matomo">
           {`
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="https://joinfost.matomo.cloud/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src='https://cdn.matomo.cloud/joinfost.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
+            var _paq = window._paq = window._paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+              var u="https://joinfost.matomo.cloud/";
+              _paq.push(['setTrackerUrl', u+'matomo.php']);
+              _paq.push(['setSiteId', '1']);
+              var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+              g.async=true; g.src='https://cdn.matomo.cloud/joinfost.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+            })();
   `}
         </Script>
       </body>

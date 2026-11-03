@@ -1,0 +1,16 @@
+<svg id="porcasts" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33" height="21.001" viewBox="0 0 33 21.001">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1.191" y1="1" x2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff863f"/>
+      <stop offset="1" stop-color="#dd322a"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_63473" data-name="Group 63473" transform="translate(-142.268 -971.59)">
+    <rect id="Rectangle_27052" data-name="Rectangle 27052" width="16" height="13" rx="2" transform="translate(142.268 979.59)" fill="#fff" opacity="0.453"/>
+    <path id="Polygon_1" data-name="Polygon 1" d="M2.636,1.481a1,1,0,0,1,1.728,0L6.123,4.5A1,1,0,0,1,5.259,6H1.741A1,1,0,0,1,.877,4.5Z" transform="translate(154.268 982.59) rotate(90)" fill="#fff"/>
+  </g>
+  <g id="Group_63479" data-name="Group 63479" transform="translate(-129.268 -979.591)">
+    <rect id="Rectangle_27052-2" data-name="Rectangle 27052" width="20" height="16" rx="3" transform="translate(142.268 979.591)" fill="url(#linear-gradient)"/>
+    <path id="Polygon_1-2" data-name="Polygon 1" d="M3.132,1.519a1,1,0,0,1,1.736,0L7.145,5.5A1,1,0,0,1,6.277,7H1.723A1,1,0,0,1,.855,5.5Z" transform="translate(157.268 983.591) rotate(90)" fill="#fff"/>
+  </g>
+</svg>

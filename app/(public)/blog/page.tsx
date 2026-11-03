@@ -1,10 +1,13 @@
 import React from "react"
 import type { Metadata } from "next"
 import MainPageFeaturedPost from "../../components/MainPageFeaturedPost"
-import LatestArticles from "../../components/LatestArticles"
+import LatestArticles from "../../components/LatestArticlesX"
 import BackToBlogBtn from "../../components/BackToBlogBtn"
 import LogoCarousel from "../../components/LogoCarousel"
 import createShareMetadata from "@/lib/metadata"
+import getPosts from "@/utils/getPosts"
+
+import NewsletterBanner from "@/app/components/NewsletterBanner"
 
 export const metadata: Metadata = createShareMetadata({
   title: "Blog",
@@ -16,12 +19,10 @@ export const metadata: Metadata = createShareMetadata({
 export default function page() {
   return (
     <>
-      <div className="mx-auto  max-w-screen-xl ">
-        <MainPageFeaturedPost section="blog" />
-        <LatestArticles section="blog" page="blog" limit={10} />
-        <BackToBlogBtn section="blog" />
+      <div className="">
+        <LatestArticles section="blog" page="blog" limit={9} />
+        <NewsletterBanner />
       </div>
-      <LogoCarousel section="blog" />
     </>
   )
 }

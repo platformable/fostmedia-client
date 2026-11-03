@@ -1,0 +1,12 @@
+<svg id="latest_articles" data-name="latest articles" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="19.5" viewBox="0 0 24 19.5">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.147" y1="0.185" x2="0.749" y2="0.866" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#dd322a"/>
+      <stop offset="1" stop-color="#fe8540"/>
+    </linearGradient>
+  </defs>
+  <circle id="Ellipse_2331" data-name="Ellipse 2331" cx="3" cy="3" r="3" transform="translate(18)" fill="url(#linear-gradient)"/>
+  <rect id="Rectangle_27034" data-name="Rectangle 27034" width="17" height="5" rx="2" transform="translate(0 0.5)" fill="#fff"/>
+  <rect id="Rectangle_27035" data-name="Rectangle 27035" width="23" height="5" rx="2" transform="translate(0 7.5)" fill="#fff" opacity="0.604"/>
+  <rect id="Rectangle_27036" data-name="Rectangle 27036" width="23" height="5" rx="2" transform="translate(0 14.5)" fill="#fff" opacity="0.332"/>
+</svg>

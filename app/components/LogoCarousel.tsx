@@ -8,13 +8,71 @@ const sponsors = Array.from({ length: 15 }, (_, i) => ({
   name: `Sponsor ${i + 1}`,
 }))
 
+const sponsorsLogos = [
+  {
+    id: 1,
+    logo: "/logos/broadcom-logo.png",
+    name: "Broadcom",
+  },
+  {
+    id: 2,
+    logo: "/logos/google-logo.png",
+    name: "Google",
+  },
+  {
+    id: 3,
+    logo: "/logos/gravitee-logo.svg",
+    name: "Gravitee",
+  },
+  {
+    id: 4,
+    logo: "/logos/ibm-logo.png",
+    name: "IBM",
+  },
+  {
+    id: 5,
+    logo: "/logos/postman-logo.png",
+    name: "Postman",
+  },
+  {
+    id: 6,
+    logo: "/logos/solace-logo.png",
+    name: "Solace",
+  },
+  {
+    id: 7,
+    logo: "/logos/treblle-logo.png",
+    name: "Treblle",
+  },
+  {
+    id: 8,
+    logo: "/logos/mulesoft-logo.png",
+    name: "Mulesoft",
+  },
+  {
+    id: 9,
+    logo: "/logos/radpi-logo.png",
+    name: "Radpi",
+  },
+  {
+    id: 10,
+    logo: "/logos/solo-logo.png",
+    name: "Solo",
+  },
+  {
+    id: 11,
+    logo: "/logos/traefik-logo.png",
+    name: "Traefik",
+  },
+]
+
 type SponsorCarouselProps = {
   section: "blog" | "industry" | null
 }
 export default function SponsorCarousel({ section }: SponsorCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const itemsPerPage = 5
+  const itemsPerPage = 10
 
   const maxIndex = Math.max(0, sponsors.length - itemsPerPage)
 
@@ -35,14 +93,14 @@ export default function SponsorCarousel({ section }: SponsorCarouselProps) {
   }, [maxIndex, itemsPerPage])
 
   return (
-    <div className="w-full  bg-[#0e1224] py-5 px-8 flex flex-col items-center justify-center ">
+    <div className="w-full  bg-[#0e1224] py-10 px-8 flex flex-col items-center justify-center ">
       {/* Encabezado */}
       <div className="text-center mb-12">
-        <h3
-          className={`${section === "industry" ? "main-color-industry" : "main-color-blog"} text-xs md:text-sm   uppercase mb-4`}
+        <span
+          className={`${section === "industry" ? "main-color-industry" : "buttonGradientOurSponsorsBg inline-block"} text-xs md:text-sm px-5 py-1  uppercase mb-4`}
         >
           Our Sponsors
-        </h3>
+        </span>
         <h2 className="text-white text-3xl md:text-4xl font-medium tracking-wide">
           Thanks to our sponsors who make FOST possible
         </h2>
@@ -53,18 +111,20 @@ export default function SponsorCarousel({ section }: SponsorCarouselProps) {
           className="flex transition-transform duration-700 ease-in-out gap-4 md:gap-6"
           style={{
             transform: `translateX(calc(-${currentIndex * (100 / itemsPerPage)}% - ${
-              (currentIndex * 24) / itemsPerPage // 24px es el gap (gap-6)
+              (currentIndex * 20) / itemsPerPage // 24px es el gap (gap-6)
             }px))`,
           }}
         >
-          {sponsors.map((sponsor) => (
+          {sponsorsLogos.map((sponsor) => (
             <div
               key={sponsor.id}
-              className="w-[calc(50%-8px)] md:w-[calc(33.333%-16px)] lg:w-[calc(20%-19.2px)] flex-shrink-0 aspect-rectangle py-5 bg-[#1C2038] rounded-xl border border-white/5 flex flex-col items-center justify-center transition-transform hover:scale-105 hover:bg-[#1C2038]"
+              className="w-[calc(50%-8px)] md:w-[calc(33.333%-16px)] lg:w-[calc(16.666%-19.2px)] flex-shrink-0   rounded-xl  flex flex-col items-center justify-center transition-transform hover:scale-105 "
             >
-              <span className="text-white/30 text-lg font-medium uppercase tracking-widest">
-                {sponsor.name}
-              </span>
+              <img
+                src={sponsor.logo}
+                alt={sponsor.name}
+                className="w-3/4  object-contain"
+              />
             </div>
           ))}
         </div>
