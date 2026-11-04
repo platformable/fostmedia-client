@@ -187,20 +187,22 @@ export default function LatestArticles({
                     {/* Card Content */}
                     <div className="p-6 lg:p-8 flex flex-col flex-grow">
                       {/* Category Pill */}
-                      <div className="flex flex-wrap gap-2">
-                        {post?.categories?.map(
-                          (
-                            category: { ID: string; Title: string },
-                            index: number,
-                          ) => (
-                            <Tag
-                              key={category?.ID || index}
-                              text={category?.Title || ""}
-                              section="industry"
-                            />
-                          ),
-                        )}
-                      </div>
+                      {section !== "industry" && (
+                        <div className="flex flex-wrap gap-2">
+                          {post?.categories?.map(
+                            (
+                              category: { ID: string; Title: string },
+                              index: number,
+                            ) => (
+                              <Tag
+                                key={category?.ID || index}
+                                text={category?.Title || ""}
+                                section="industry"
+                              />
+                            ),
+                          )}
+                        </div>
+                      )}
 
                       {/* Title */}
                       <h3 className=" font-bold leading-tight mb-4 text-gray-900 ">
