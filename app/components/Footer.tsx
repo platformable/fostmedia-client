@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="mb-6 md:mb-0">
             <Link
               href="/"
-              className="flex items-center"
+              className="flex items-center mb-2"
               /*   target="_blank" */
               rel="noopener noreferrer"
             >
@@ -25,17 +25,21 @@ export default function Footer() {
               inbox.
             </p>
 
-            <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="flex flex-col md:flex-row items-center gap-4 mt-2">
               <input
                 type="email"
                 placeholder="EMAIL ADDRESS"
+                disabled
                 className="w-full  p-3 rounded-md bg-[#0E1224] text-white border border-[#F36017] focus:outline-none focus:ring-2 focus:ring-[#695BE0]"
               />
-              <button className="subscribe-btn text-white px-6 py-3 hover:bg-[#5a4fcf] rounded-md transition-colors inline-flex items-center justify-center px-7 py-3  font-semibold transition-opacity hover:opacity-90 uppercase cursor-pointer ">
+              <button
+                disabled
+                className="subscribe-btn text-white px-6 py-3 hover:bg-[#5a4fcf] rounded-md transition-colors inline-flex items-center justify-center px-7 py-3  font-semibold transition-opacity hover:opacity-90 uppercase cursor-pointer "
+              >
                 Subscribe
               </button>
             </div>
-            <span className="text-xs text-[#BCC4D0] text-center flex justify-center mt-4 block">
+            <span className="text-xs text-[#BCC4D0]   mt-4 block">
               FOST does not sell your information or share it with unaffiliated
               third parties.
             </span>
@@ -53,7 +57,10 @@ export default function Footer() {
                   Blog
                 </Link>
                 <li className="mb-4 mt-4">
-                  <Link href="/industry" className="">
+                  <Link
+                    href="/industry"
+                    className="text-sm font-semibold text-heading"
+                  >
                     Industry Trends
                   </Link>
                 </li>
@@ -65,7 +72,7 @@ export default function Footer() {
                 <li className="mb-4 mt-4">
                   <Link
                     href="https://digitalswag.joinfost.io/"
-                    className=""
+                    className="text-sm font-semibold text-heading"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -90,7 +97,7 @@ export default function Footer() {
                 <li className="mb-4 mt-4">
                   <Link
                     href="https://apidays.typeform.com/speak?typeform-source=joinfost.io"
-                    className=""
+                    className="text-sm font-semibold text-heading"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -105,24 +112,24 @@ export default function Footer() {
               </span>
               <ul className="text-body font-medium mt-5">
                 <Link
-                  href="/terms-conditions"
+                  href="/code-of-conduct"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mb-6 text-sm font-semibold text-heading "
                 >
-                  Terms & Conditions
+                  Code of conduct
                 </Link>
                 <li className="mb-4 mt-4">
                   <Link
                     href="/privacy-policy"
-                    className=""
+                    className="text-sm font-semibold text-heading"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Privacy Policy
                   </Link>
                 </li>
-                <li className="mb-4 mt-4">
+                {/*      <li className="mb-4 mt-4">
                   <Link
                     href="/cookie-setting"
                     className=""
@@ -131,7 +138,7 @@ export default function Footer() {
                   >
                     Cookie Setting
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
 
@@ -151,7 +158,7 @@ export default function Footer() {
                 <li className="mb-4 mt-4">
                   <Link
                     href="https://joinfost.io/events"
-                    className=""
+                    className="text-sm font-semibold text-heading"
                     target="_blank"
                   >
                     Events
@@ -161,9 +168,18 @@ export default function Footer() {
                   <Link
                     href="https://docs.google.com/presentation/d/1uDo8zgdkozcezAHq_CLHIjulrm9GMHddgt38RXj82h4/edit?slide=id.g329b9af018a_1_0#slide=id.g329b9af018a_1_0"
                     target="_blank"
-                    className=""
+                    className="text-sm font-semibold text-heading"
                   >
                     Become a sponsor
+                  </Link>
+                </li>
+                <li className="mb-4 mt-4">
+                  <Link
+                    href="mailto:contact@joinfost.io"
+                    target="_blank"
+                    className="text-sm font-semibold text-heading"
+                  >
+                    Contact Us
                   </Link>
                 </li>
               </ul>
