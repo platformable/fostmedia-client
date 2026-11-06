@@ -14,9 +14,9 @@ export default function Footer() {
               rel="noopener noreferrer"
             >
               <img
-                src="/logo_fost.svg"
+                src="/fostBeatLogo.svg"
                 className="h-7 border-r border-[#FC6200] pr-3 mr-3"
-                alt="Digital Swag Marketplace Logo"
+                alt="FOSTBeat Logo"
               />
               <span className="main-color">FOST</span>Beat
             </Link>
