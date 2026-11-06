@@ -2,49 +2,10 @@
 import Loader from "./Loader"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { FontSize } from "../fontTypes"
-import getPosts, { getIndustryPosts } from "@/utils/getPosts"
+import { getFeaturedPosts, getIndustryPosts } from "@/utils/getPosts"
 import calculateReadTime from "@/utils/calculateReadTime"
 import Link from "next/link"
 import Tag from "./Tag"
-
-const stories = [
-  {
-    id: 1,
-    category: "DIGITAL RESILIENCE",
-    categoryTheme: "bg-emerald-50 text-emerald-600",
-    title: "Data center moratorium tracker",
-    description:
-      "A new generation of tools is changing how we build and connect.",
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&q=80",
-    author: "FOST Editorial",
-    readTime: "6 min read",
-  },
-  {
-    id: 2,
-    category: "AI AND APIS",
-    categoryTheme: "bg-indigo-50 text-indigo-500",
-    title: "Data center moratorium tracker",
-    description:
-      "A new generation of tools is changing how we build and connect.",
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&q=80",
-    author: "FOST Editorial",
-    readTime: "6 min read",
-  },
-  {
-    id: 3,
-    category: "DIGITAL RESILIENCE",
-    categoryTheme: "bg-orange-100 text-orange-600",
-    title: "Data center moratorium tracker",
-    description:
-      "A new generation of tools is changing how we build and connect.",
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80",
-    author: "FOST Editorial",
-    readTime: "6 min read",
-  },
-]
 
 type Post = {
   Title: string
@@ -104,9 +65,7 @@ export default function TheBigStories({
   } = useInfiniteQuery({
     queryKey: [section === "industry" ? "industryPosts" : "posts", page, limit],
     queryFn: ({ pageParam }) =>
-      section === "industry"
-        ? getIndustryPosts()
-        : getPosts(page, limit, pageParam as number),
+      section === "industry" ? getIndustryPosts() : getFeaturedPosts(),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       const pagination = (lastPage as PostsPage)?.meta?.pagination
@@ -137,6 +96,8 @@ export default function TheBigStories({
   if (posts.length === 0) {
     return <div className="text-white">No posts found.</div>
   }
+
+  console.log("posts", posts)
 
   return (
     <section className=" py-10 px-4 md:px-8 bg-[#FFF4EE]">
@@ -181,20 +142,20 @@ export default function TheBigStories({
 
                   {/* Title */}
                   <h3 className=" font-bold leading-tight mb-4 text-gray-900 ">
-                    {post.Title}
+                    {post?.Title}
                   </h3>
 
                   {/* Description */}
                   <p className="text-gray-600 mb-4 text-[14px] leading-5">
-                    {post.Excerpt.substring(0, 120) + "..."}
+                    {post?.Excerpt?.substring(0, 120) + "..."}
                   </p>
 
                   {/* Footer / Meta */}
                   <div className="mt-auto flex items-center text-gray-500 text-xs font-medium">
-                    <span>{post.authors?.Name} </span>
-                    <span> &nbsp;{post.authors?.Lastname}</span>
+                    <span>{post?.authors?.Name} </span>
+                    <span> &nbsp;{post?.authors?.Lastname}</span>
                     <span className="mx-1.5 font-bold">·</span>
-                    <span>{calculateReadTime(post.Excerpt)}</span>
+                    <span>{calculateReadTime(post?.Excerpt)}</span>
                   </div>
                 </div>
               </Link>

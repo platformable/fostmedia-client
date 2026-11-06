@@ -1,5 +1,14 @@
 import { cache } from "react"
 
+const getFeaturedPosts = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/posts?filters[Is_Featured]=true&sort=publishedAt:desc&pagination[pageSize]=3&pagination[page]=1&populate=*`,
+  )
+  const posts = await response.json()
+
+  return { posts: posts?.data, meta: posts?.meta }
+}
+
 const getPosts = async (
   page: string,
   limit?: number,
@@ -84,6 +93,7 @@ export {
   getIndustryPosts,
   getPosts,
   getIndustryBySlug,
+  getFeaturedPosts,
 }
 
 export default getPosts
