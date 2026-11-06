@@ -18,7 +18,7 @@ export default function Navbar() {
           {!isTechPulse && (
             <>
               <img
-                src="/fostbeat.png"
+                src="/fostBeatLogo.svg"
                 className="h-12 pr-3"
                 alt="FOSTBeat Logo"
               />
