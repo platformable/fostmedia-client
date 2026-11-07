@@ -97,7 +97,6 @@ export default function TheBigStories({
     return <div className="text-white">No posts found.</div>
   }
 
-  console.log("posts", posts)
 
   return (
     <section className=" py-10 px-4 md:px-8 bg-[#FFF4EE]">
