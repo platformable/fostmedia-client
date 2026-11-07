@@ -5,7 +5,7 @@ import Tag from "./Tag"
 
 import { FontSize, fontSizeMap } from "../fontTypes"
 
-import getPosts, { getIndustryPosts } from "@/utils/getPosts"
+import getPosts, { getIndustries } from "@/utils/getPosts"
 import { useInfiniteQuery, keepPreviousData } from "@tanstack/react-query"
 import calculateReadTime from "@/utils/calculateReadTime"
 import { sectionBadge } from "./TheBigStories"
@@ -86,11 +86,10 @@ export default function LatestArticles({
       limit,
       selected,
     ],
-    queryFn: ({ pageParam }) => {
-      return section === "industry"
-        ? getIndustryPosts()
-        : getPosts(page, limit, pageParam as number, selected)
-    },
+    queryFn: ({ pageParam }) =>
+      section === "industry"
+        ? getIndustries(limit, pageParam as number, selected)
+        : getPosts(page, limit, pageParam as number, selected),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       const pagination = (lastPage as PostsPage)?.meta?.pagination
@@ -102,11 +101,7 @@ export default function LatestArticles({
   })
 
   const posts =
-    data?.pages.flatMap((pageData) =>
-      section === "industry"
-        ? (pageData as unknown[])
-        : (pageData as PostsPage).posts,
-    ) ?? []
+    data?.pages.flatMap((pageData) => (pageData as PostsPage).posts) ?? []
 
   return (
     <section className="pb-10">
@@ -185,22 +180,20 @@ export default function LatestArticles({
                     {/* Card Content */}
                     <div className="p-6 lg:p-8 flex flex-col flex-grow">
                       {/* Category Pill */}
-                      {section !== "industry" && (
-                        <div className="flex flex-wrap gap-2">
-                          {post?.categories?.map(
-                            (
-                              category: { ID: string; Title: string },
-                              index: number,
-                            ) => (
-                              <Tag
-                                key={category?.ID || index}
-                                text={category?.Title || ""}
-                                section="industry"
-                              />
-                            ),
-                          )}
-                        </div>
-                      )}
+                      <div className="flex flex-wrap gap-2">
+                        {post?.categories?.map(
+                          (
+                            category: { ID: string; Title: string },
+                            index: number,
+                          ) => (
+                            <Tag
+                              key={category?.ID || index}
+                              text={category?.Title || ""}
+                              section="industry"
+                            />
+                          ),
+                        )}
+                      </div>
 
                       {/* Title */}
                       <h3 className=" font-bold leading-tight mb-4 text-gray-900 ">
@@ -226,7 +219,7 @@ export default function LatestArticles({
             </div>
           </div>
         </section>
-        {hasNextPage && page === "blog" && (
+        {hasNextPage && (page === "blog" || section === "industry") && (
           <div className="flex justify-center">
             <button
               type="button"

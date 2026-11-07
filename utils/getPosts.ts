@@ -38,6 +38,29 @@ const getPosts = async (
   return { posts: posts?.data, meta: posts?.meta }
 }
 
+const getIndustries = async (
+  limit?: number,
+  pageNumber = 1,
+  categories: string[] = [],
+) => {
+  const params = new URLSearchParams()
+  params.append("sort", "publishedAt:desc")
+  params.append("pagination[pageSize]", String(limit ?? 5))
+  params.append("pagination[page]", String(pageNumber))
+
+  categories.forEach((title, i) => {
+    params.append(`filters[categories][Title][$in][${i}]`, title)
+  })
+
+  params.append("populate", "*")
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/industries?${params.toString()}`,
+  )
+  const posts = await response.json()
+  return { posts: posts?.data, meta: posts?.meta }
+}
+
 const getIndustryPosts = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/industries?populate=*`,
@@ -91,6 +114,7 @@ export {
   getVideos,
   getEvents,
   getIndustryPosts,
+  getIndustries,
   getPosts,
   getIndustryBySlug,
   getFeaturedPosts,

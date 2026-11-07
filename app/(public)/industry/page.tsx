@@ -1,9 +1,6 @@
 import React from "react"
 import type { Metadata } from "next"
-import MainPageFeaturedPost from "../../components/MainPageFeaturedPost"
 import LatestArticles from "../../components/LatestArticlesX"
-import BackToBlogBtn from "../../components/BackToBlogBtn"
-import LogoCarousel from "../../components/LogoCarousel"
 import createShareMetadata from "@/lib/metadata"
 
 export const metadata: Metadata = createShareMetadata({
@@ -16,12 +13,9 @@ export const metadata: Metadata = createShareMetadata({
 export default function page() {
   return (
     <>
-      <div className="mx-auto  max-w-screen-xl ">
-        {/* <MainPageFeaturedPost section="industry" /> */}
-        <LatestArticles section="industry" />
-        {/*         <BackToBlogBtn section="industry" /> */}
+      <div className="">
+        <LatestArticles section="industry" page="blog" limit={9} />
       </div>
-      {/*       <LogoCarousel section="industry" /> */}
     </>
   )
 }

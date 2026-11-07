@@ -15,7 +15,7 @@ export async function generateMetadata({
   const { slug } = await params
 
   const posts = await getIndustryBySlug(slug)
-  const post = posts?.[0]
+  const post = posts?.[posts.length - 1] || posts?.[0]
 
   if (!post) {
     return {}
