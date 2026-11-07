@@ -133,7 +133,6 @@ export default function LatestArticles({
         : (pageData as PostsPage).posts,
     ) ?? []
 
-  console.log("posts", posts)
 
   if (isPending) {
     return <div>Loading...</div>

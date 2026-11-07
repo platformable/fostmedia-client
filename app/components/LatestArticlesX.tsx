@@ -67,7 +67,6 @@ export default function LatestArticles({
   const [selected, setSelected] = useState<string[]>([])
 
   const toggleCategory = (title: string) => {
-    console.log("toggle", title)
     setSelected((prev) =>
       prev.includes(title) ? prev.filter((t) => t !== title) : [...prev, title],
     )
@@ -88,7 +87,6 @@ export default function LatestArticles({
       selected,
     ],
     queryFn: ({ pageParam }) => {
-      console.log("queryFn", { pageParam, selected })
       return section === "industry"
         ? getIndustryPosts()
         : getPosts(page, limit, pageParam as number, selected)
