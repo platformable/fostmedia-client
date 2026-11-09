@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useMemo } from "react"
+import React, { useEffect, useMemo, useRef } from "react"
 import BackToBlogBtn from "@/app/components/BackToBlogBtn"
 import BackToBlogFooter from "@/app/components/BackToBlogFooter"
 import LatestArticles from "@/app/components/LatestArticlesX"
@@ -26,6 +26,8 @@ interface Props {
 export default function BlogPosts({ params }: Props) {
   const { slug } = React.use(params)
 
+  const articleRef = useRef<HTMLDivElement>(null)
+
   const {
     data: postsBySlug,
     isPending,
@@ -47,6 +49,22 @@ export default function BlogPosts({ params }: Props) {
     if (!html || !window.location.hash) return
     const id = decodeURIComponent(window.location.hash.slice(1))
     document.getElementById(id)?.scrollIntoView()
+  }, [html])
+
+  useEffect(() => {
+    if (!articleRef.current) return
+
+    const paragraphs =
+      articleRef.current.querySelectorAll<HTMLParagraphElement>("p")
+
+    for (const pElement of paragraphs) {
+      const text = pElement.textContent
+
+      if (text && text.trim() !== "") {
+        pElement.classList.add("firstP")
+        break
+      }
+    }
   }, [html])
 
   if (isPending) {
@@ -119,6 +137,7 @@ export default function BlogPosts({ params }: Props) {
               </div>
             </div>
             <div
+              ref={articleRef}
               dangerouslySetInnerHTML={{ __html: html }}
               id="post-content"
               className="mt-10 article"
