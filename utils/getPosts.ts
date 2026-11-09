@@ -38,6 +38,29 @@ const getPosts = async (
   return { posts: posts?.data, meta: posts?.meta }
 }
 
+const getIndustries = async (
+  limit?: number,
+  pageNumber = 1,
+  categories: string[] = [],
+) => {
+  const params = new URLSearchParams()
+  params.append("sort", "publishedAt:desc")
+  params.append("pagination[pageSize]", String(limit ?? 5))
+  params.append("pagination[page]", String(pageNumber))
+
+  categories.forEach((title, i) => {
+    params.append(`filters[categories][Title][$in][${i}]`, title)
+  })
+
+  params.append("populate", "*")
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/industries?${params.toString()}`,
+  )
+  const posts = await response.json()
+  return { posts: posts?.data, meta: posts?.meta }
+}
+
 const getIndustryPosts = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/industries?populate=*`,
@@ -71,7 +94,9 @@ const getIndustryBySlug = async (slug: string) => {
 }
 
 const getVideos = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/videos`)
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/videos?sort=publishedAt:desc`,
+  )
   const posts = await response.json()
 
   return posts?.data
@@ -79,7 +104,7 @@ const getVideos = async () => {
 
 const getEvents = async () => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/events?populate=*`,
+    `${process.env.NEXT_PUBLIC_API_URL}/events?sort=publishedAt:desc&populate=*`,
   )
   const posts = await response.json()
 
@@ -91,6 +116,7 @@ export {
   getVideos,
   getEvents,
   getIndustryPosts,
+  getIndustries,
   getPosts,
   getIndustryBySlug,
   getFeaturedPosts,

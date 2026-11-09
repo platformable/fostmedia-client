@@ -90,7 +90,12 @@ small {
 html {
   scroll-behavior: smooth;
 }
-
+figcaption {
+  font-size: 12px;
+  margin: 2px 2px;
+  font-style: italic;
+  text-align: center;
+}
 body {
   background: transparent linear-gradient(360deg, #ffffff 0%, #fff3ed 100%) 0%
     0% no-repeat padding-box;
