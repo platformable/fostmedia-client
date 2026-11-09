@@ -94,7 +94,9 @@ const getIndustryBySlug = async (slug: string) => {
 }
 
 const getVideos = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/videos`)
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/videos?sort=publishedAt:desc`,
+  )
   const posts = await response.json()
 
   return posts?.data
@@ -102,7 +104,7 @@ const getVideos = async () => {
 
 const getEvents = async () => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/events?populate=*`,
+    `${process.env.NEXT_PUBLIC_API_URL}/events?sort=publishedAt:desc&populate=*`,
   )
   const posts = await response.json()
 

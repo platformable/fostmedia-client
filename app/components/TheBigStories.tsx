@@ -97,7 +97,6 @@ export default function TheBigStories({
     return <div className="text-white">No posts found.</div>
   }
 
-
   return (
     <section className=" py-10 px-4 md:px-8 bg-[#FFF4EE]">
       <div className="max-w-screen-xl mx-auto">
@@ -146,7 +145,7 @@ export default function TheBigStories({
 
                   {/* Description */}
                   <p className="text-gray-600 mb-4 text-[14px] leading-5">
-                    {post?.Excerpt?.substring(0, 120) + "..."}
+                    {post?.Excerpt?.substring(0, 160) + " "}
                   </p>
 
                   {/* Footer / Meta */}
