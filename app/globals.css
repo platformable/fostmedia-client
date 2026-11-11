@@ -900,3 +900,21 @@ article h3 {
   background: transparent linear-gradient(90deg, #fffdf8 0%, #ffeee6 100%) 0% 0%
     no-repeat padding-box;
 }
+
+/* SPONSORS CARDS */
+
+.categories-bg {
+  background: transparent
+    linear-gradient(87deg, #ffffff 0%, #fff4eb 31%, #fff3ea 89%, #fff1e7 100%)
+    0% 0% no-repeat padding-box;
+}
+
+.apidays-card {
+  background: transparent linear-gradient(54deg, #111525 60%, #fc6200 100%) 0%
+    0% no-repeat padding-box;
+}
+
+.bg-blog-page {
+  background: transparent linear-gradient(1deg, #ffe0d0 0%, #ffffff 100%) 0% 0%
+    no-repeat padding-box;
+}
