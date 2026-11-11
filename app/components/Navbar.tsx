@@ -37,7 +37,8 @@ export default function Navbar() {
         </Link>
         <div className="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
           <Link
-            href="https://docs.google.com/presentation/d/1uDo8zgdkozcezAHq_CLHIjulrm9GMHddgt38RXj82h4/edit?slide=id.g329b9af018a_1_0#slide=id.g329b9af018a_1_0"
+            href="https://datasetstorage.ams3.cdn.digitaloceanspaces.com/fost-media/FOST%20Sponsorship%202027.pdf"
+            download
             target="_blank"
             className="hidden sm:inline-flex text-white bg-[#111525] hover:ring-3 ring-[#fc60004d] focus:ring-3 focus:ring-[#fc60004d]  font-medium leading-5 rounded-lg text-md px-5 py-2 focus:outline-none hover:shadow-md cursor-pointer border border-[#F65B06]"
           >
