@@ -19,7 +19,7 @@ export default function CategoryDescriptionData({
       {categoryDescription?.Description && (
         <h4 className="mb-4">{categoryDescription?.Description}</h4>
       )}
-      {sponsor && <div>Sponsored by: {sponsor}</div>}
+      {/*   {sponsor && <div>Sponsored by: {sponsor}</div>} */}
     </div>
   )
 }
