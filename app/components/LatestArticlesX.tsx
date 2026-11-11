@@ -1,41 +1,47 @@
-"use client"
-import Link from "next/link"
-import React, { useState } from "react"
-import Tag from "./Tag"
+"use client";
+import Link from "next/link";
+import React, { useMemo, useState } from "react";
+import Tag from "./Tag";
 
-import { FontSize, fontSizeMap } from "../fontTypes"
+import { FontSize, fontSizeMap } from "../fontTypes";
 
-import getPosts, { getIndustries } from "@/utils/getPosts"
-import { useInfiniteQuery, keepPreviousData } from "@tanstack/react-query"
-import calculateReadTime from "@/utils/calculateReadTime"
-import { sectionBadge } from "./TheBigStories"
-import Loader from "./Loader"
+import getPosts, { getIndustries } from "@/utils/getPosts";
+import { getCategories } from "@/utils/getCategories";
+import {
+  useInfiniteQuery,
+  useQuery,
+  keepPreviousData,
+} from "@tanstack/react-query";
+import calculateReadTime from "@/utils/calculateReadTime";
+import { sectionBadge } from "./TheBigStories";
+import Loader from "./Loader";
 
-import categories from "@/utils/categories"
+import categories from "@/utils/categories";
+import CategoryDescriptionData from "./CategoryDescription";
 
 type MainPageFeaturedPostProps = {
-  title?: string
-  description?: string
-  href?: string
-  ctaLabel?: string
-  imageUrl?: string
-  section: "blog" | "industry" | null
-  page?: "blog" | "home"
-  limit?: number
-}
+  title?: string;
+  description?: string;
+  href?: string;
+  ctaLabel?: string;
+  imageUrl?: string;
+  section: "blog" | "industry" | null;
+  page?: "blog" | "home";
+  limit?: number;
+};
 
 type PostsPage = {
-  posts: unknown[]
-  meta?: { pagination?: { page: number; pageCount: number } }
-}
+  posts: unknown[];
+  meta?: { pagination?: { page: number; pageCount: number } };
+};
 export const CategoryTag = ({
   category,
   active = false,
   onClick,
 }: {
-  category: string
-  active?: boolean
-  onClick?: () => void
+  category: string;
+  active?: boolean;
+  onClick?: () => void;
 }) => (
   <button
     type="button"
@@ -47,7 +53,7 @@ export const CategoryTag = ({
   >
     {category || "category"}
   </button>
-)
+);
 
 export default function LatestArticles({
   description = true,
@@ -57,20 +63,19 @@ export default function LatestArticles({
   page = "",
   limit = 10,
 }: {
-  description?: boolean
-  textSize?: FontSize
-  text?: string
-  section?: "blog" | "industry" | null
-  page?: "blog" | "home" | ""
-  limit?: number
+  description?: boolean;
+  textSize?: FontSize;
+  text?: string;
+  section?: "blog" | "industry" | null;
+  page?: "blog" | "home" | "";
+  limit?: number;
 }) {
-  const [selected, setSelected] = useState<string[]>([])
-
-  const toggleCategory = (title: string) => {
-    setSelected((prev) =>
-      prev.includes(title) ? prev.filter((t) => t !== title) : [...prev, title],
-    )
-  }
+  // Single selection: null means "All"
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const selected = useMemo(
+    () => (selectedCategory ? [selectedCategory] : []),
+    [selectedCategory],
+  );
 
   const {
     data,
@@ -92,16 +97,26 @@ export default function LatestArticles({
         : getPosts(page, limit, pageParam as number, selected),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
-      const pagination = (lastPage as PostsPage)?.meta?.pagination
-      if (!pagination) return undefined
+      const pagination = (lastPage as PostsPage)?.meta?.pagination;
+      if (!pagination) return undefined;
       return pagination.page < pagination.pageCount
         ? pagination.page + 1
-        : undefined
+        : undefined;
     },
-  })
+  });
 
   const posts =
-    data?.pages.flatMap((pageData) => (pageData as PostsPage).posts) ?? []
+    data?.pages.flatMap((pageData) => (pageData as PostsPage).posts) ?? [];
+
+  const {
+    data: categoryData,
+    isError: isCategoryError,
+    isPending: isCategoryPending,
+  } = useQuery({
+    queryKey: ["categoryDescription", selectedCategory],
+    queryFn: async () => (await getCategories(selectedCategory as string))[0] ?? null,
+    enabled: !!selectedCategory,
+  });
 
   return (
     <section className="pb-10">
@@ -109,27 +124,49 @@ export default function LatestArticles({
         <div className="py-5 px-4 md:px-0 bg-white">
           <div className="mx-auto max-w-screen-xl">
             <p className="text-[12px] mb-2">EXPLORE CATEGORIES</p>
+            <div className="inline-block mr-2 mb-2">
+              <CategoryTag
+                category="All"
+                active={selectedCategory === null}
+                onClick={() => setSelectedCategory(null)}
+              />
+            </div>
             {categories.map((category) => (
               <div key={category.title} className="inline-block mr-2 mb-2">
                 <CategoryTag
                   category={category.title}
-                  active={selected.includes(category.title)}
-                  onClick={() => toggleCategory(category.title)}
+                  active={selectedCategory === category.title}
+                  onClick={() => setSelectedCategory(category.title)}
                 />
               </div>
             ))}
-            {selected.length > 0 && (
-              <button
-                type="button"
-                onClick={() => setSelected([])}
-                className="text-[12px] underline ml-2"
-              >
-                Clear filters
-              </button>
-            )}
           </div>
         </div>
       )}
+
+      {section !== "industry" && selectedCategory && (
+        <section className="bg-gray-100 py-10">
+          {isCategoryPending ? (
+            <p className="mx-auto max-w-screen-xl">
+              Loading category description...
+            </p>
+          ) : isCategoryError ? (
+            <p className="mx-auto max-w-screen-xl">
+              Failed to load category description.
+            </p>
+          ) : categoryData ? (
+            <CategoryDescriptionData
+              categoryDescription={categoryData}
+              sponsor="FOST"
+            />
+          ) : (
+            <p className="mx-auto max-w-screen-xl">
+              Category description not found.
+            </p>
+          )}
+        </section>
+      )}
+
       <div className=" mx-auto  max-w-screen-xl ">
         <section className=" py-5 px-4 md:px-0 ">
           <div className="max-w-screen-xl mx-auto">
@@ -235,5 +272,5 @@ export default function LatestArticles({
         )}
       </div>
     </section>
-  )
+  );
 }

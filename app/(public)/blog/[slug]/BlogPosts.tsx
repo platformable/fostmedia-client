@@ -112,7 +112,11 @@ export default function BlogPosts({ params }: Props) {
                       {post?.authors?.Lastname || "Author"}{" "}
                     </span>
                     <p className="text-[12px]">
-                      FUTURE OF SOFTWARE TECHNOLOGIES
+                      {post?.authors?.Role || ""}{" "}
+                      {"-" +
+                        " " +
+                        (post?.authors?.Company ||
+                          "FUTURE OF SOFTWARE TECHNOLOGIES")}
                     </p>
                   </div>
                   <div className="flex items-end justify-end gap-2 ">
