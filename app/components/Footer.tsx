@@ -87,7 +87,7 @@ export default function Footer() {
               </span>
               <ul className="text-body font-medium mt-5">
                 <Link
-                  href="https://docs.google.com/presentation/d/1uDo8zgdkozcezAHq_CLHIjulrm9GMHddgt38RXj82h4/edit?slide=id.g329b9af018a_1_0#slide=id.g329b9af018a_1_0"
+                  href="https://datasetstorage.ams3.cdn.digitaloceanspaces.com/fost-media/FOST%20Sponsorship%202027.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mb-6 text-sm font-semibold text-heading "
@@ -166,7 +166,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="https://docs.google.com/presentation/d/1uDo8zgdkozcezAHq_CLHIjulrm9GMHddgt38RXj82h4/edit?slide=id.g329b9af018a_1_0#slide=id.g329b9af018a_1_0"
+                    href="https://datasetstorage.ams3.cdn.digitaloceanspaces.com/fost-media/FOST%20Sponsorship%202027.pdf"
                     target="_blank"
                     className="text-sm font-semibold text-heading"
                   >

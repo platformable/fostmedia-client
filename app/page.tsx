@@ -66,7 +66,7 @@ export default async function Home() {
         <VideoCarousel />
 
         <div className="mx-auto  max-w-screen-xl  px-4 md:px-0 py-6 lg:py-4  gap-8  ">
-          <LatestArticles section="blog" page="home" limit={9} />
+          <LatestArticles section="blog" page="home" limit={5} />
         </div>
 
         {/*    <div className="bg-[#40D2FF]">

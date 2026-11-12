@@ -14,11 +14,15 @@ const getPosts = async (
   limit?: number,
   pageNumber = 1,
   categories: string[] = [],
+  excludeFeatured = false,
 ) => {
   const isPaginated = page === "home" || page === "blog"
 
   const params = new URLSearchParams()
   params.append("sort", "publishedAt:desc")
+  if (excludeFeatured) {
+    params.append("filters[Is_Featured][$ne]", "true")
+  }
 
   if (isPaginated) {
     params.append("pagination[pageSize]", String(limit ?? 5))
