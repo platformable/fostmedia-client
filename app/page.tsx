@@ -76,7 +76,7 @@ export default async function Home() {
         <FostLogoMarquee title="Our Partners" />
         <EventsCarousel />
         <Resources />
-        {/*    <NewsletterBanner /> */}
+        <NewsletterBanner />
       </HydrationBoundary>
     </section>
   )
