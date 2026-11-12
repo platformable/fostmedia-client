@@ -94,7 +94,13 @@ export default function LatestArticles({
     queryFn: ({ pageParam }) =>
       section === "industry"
         ? getIndustries(limit, pageParam as number, selected)
-        : getPosts(page, limit, pageParam as number, selected),
+        : getPosts(
+            page,
+            limit,
+            pageParam as number,
+            selected,
+            section === "blog" && (page === "home" || page === "blog"),
+          ),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       const pagination = (lastPage as PostsPage)?.meta?.pagination

@@ -115,7 +115,13 @@ export default function LatestArticles({
     queryFn: ({ pageParam }) =>
       section === "industry"
         ? getIndustryPosts()
-        : getPosts(page, limit, pageParam as number),
+        : getPosts(
+            page,
+            limit,
+            pageParam as number,
+            [],
+            section === "blog" && (page === "home" || page === "blog"),
+          ),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       const pagination = (lastPage as PostsPage)?.meta?.pagination
@@ -180,7 +186,6 @@ export default function LatestArticles({
           {/* Left Column: Articles Stack */}
           <div className=" flex flex-col gap-4">
             {posts.map((article, index) => {
-              if (index <= 3) return null
               return (
                 <article
                   key={index}
