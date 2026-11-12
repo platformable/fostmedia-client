@@ -1,7 +1,39 @@
 "use client"
-import React from "react"
+import React, { useState } from "react"
+
+type Status = "idle" | "loading" | "success" | "error"
 
 export default function NewsletterBanner() {
+  const [email, setEmail] = useState("")
+  const [status, setStatus] = useState<Status>("idle")
+  const [message, setMessage] = useState("")
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    if (status === "loading") return
+    setStatus("loading")
+    setMessage("")
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data?.error || "Something went wrong.")
+      setStatus("success")
+      setMessage(
+        data?.alreadySubscribed
+          ? "You're already subscribed. Thanks for being part of FOST!"
+          : "Thanks for subscribing! Check your inbox to confirm."
+      )
+      setEmail("")
+    } catch (err) {
+      setStatus("error")
+      setMessage(err instanceof Error ? err.message : "Something went wrong.")
+    }
+  }
+
   return (
     <div className=" flex items-center justify-center  md:p-10  bg-[#FFF4EE]">
       {/* Banner Container */}
@@ -24,24 +56,40 @@ export default function NewsletterBanner() {
         {/* Form Container */}
         <form
           className="w-full max-w-[640px] flex flex-col sm:flex-row gap-3 md:gap-4 mb-8"
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
         >
           {/* Email Input */}
           <input
             type="email"
             placeholder="EMAIL ADDRESS"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={status === "loading"}
+            aria-label="Email address"
             className="flex-1 bg-white rounded-xl px-6 py-4 text-[13px] font-semibold text-gray-800 placeholder:text-gray-700 tracking-wide focus:outline-none focus:ring-2 focus:ring-white/50 shadow-inner"
           />
 
           {/* Subscribe Button */}
           <button
             type="submit"
-            className="bg-[#101423] text-white rounded-full px-10 py-4 text-[13px] font-bold uppercase tracking-[0.1em] hover:bg-black transition-colors duration-200 whitespace-nowrap"
+            disabled={status === "loading"}
+            className="disabled:opacity-60 bg-[#101423] text-white rounded-full px-10 py-4 text-[13px] font-bold uppercase tracking-[0.1em] hover:bg-black transition-colors duration-200 whitespace-nowrap"
           >
-            Subscribe
+            {status === "loading" ? "Subscribing..." : "Subscribe"}
           </button>
         </form>
+
+        {message && (
+          <p
+            role="status"
+            className={`mb-4 text-sm font-semibold ${
+              status === "error" ? "text-[#101423]" : "text-white"
+            }`}
+          >
+            {message}
+          </p>
+        )}
 
         {/* Footer Text */}
         <p className="text-white/70 text-[13px] font-light">

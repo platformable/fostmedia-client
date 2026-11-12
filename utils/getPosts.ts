@@ -115,6 +115,15 @@ const getEvents = async () => {
   return posts?.data
 }
 
+const getRelatedPosts = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/posts?sort(() => 0.5 - Math.random()).slice(0, 2)&pagination[pageSize]=2&pagination[page]=1&populate=*`,
+  )
+  const posts = await response.json()
+
+  return { posts: posts?.data, meta: posts?.meta }
+}
+
 export {
   getPostsBySlug,
   getVideos,
@@ -124,6 +133,7 @@ export {
   getPosts,
   getIndustryBySlug,
   getFeaturedPosts,
+  getRelatedPosts,
 }
 
 export default getPosts

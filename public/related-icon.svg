@@ -1,0 +1,11 @@
+<svg id="industry_trends" data-name="industry trends" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.316" height="19.754" viewBox="0 0 23.316 19.754">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.066" y1="0.5" x2="0.881" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#006c8e"/>
+      <stop offset="1" stop-color="#40d2ff"/>
+    </linearGradient>
+  </defs>
+  <rect id="Rectangle_27047" data-name="Rectangle 27047" width="18.077" height="5.317" rx="2" transform="translate(9 19.754) rotate(-90)" fill="#fff"/>
+  <rect id="Rectangle_27048" data-name="Rectangle 27048" width="19.754" height="5.317" rx="2" transform="translate(23.316) rotate(90)" fill="url(#linear-gradient)"/>
+  <rect id="Rectangle_27049" data-name="Rectangle 27049" width="11.697" height="5.317" rx="2" transform="translate(0 19.754) rotate(-90)" fill="#fff" opacity="0.604"/>
+</svg>

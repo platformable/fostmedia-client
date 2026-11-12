@@ -5,7 +5,7 @@ import BackToBlogBtn from "@/app/components/BackToBlogBtn"
 import BackToBlogFooter from "@/app/components/BackToBlogFooter"
 import LatestArticles from "@/app/components/LatestArticlesX"
 import Tag from "@/app/components/Tag"
-import { getPostsBySlug } from "@/utils/getPosts"
+import { getPostsBySlug, getRelatedPosts } from "@/utils/getPosts"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
 import Link from "next/link"
@@ -16,6 +16,8 @@ import SponsorCarousel from "@/app/components/LogoCarousel"
 import { addHeadingIds } from "@/lib/toc"
 import TableOfContents from "@/app/components/TableOfContents"
 import Loader from "@/app/components/Loader"
+import NewsletterBanner from "@/app/components/NewsletterBanner"
+import LatestArticlesHorizontalCard from "@/app/components/LatestArticlesHorizontalCard"
 
 interface Props {
   params: Promise<{
@@ -23,8 +25,32 @@ interface Props {
   }>
 }
 
+export type SectionBadgeProps = {
+  icon: string
+  label: string
+}
+
+export const sectionBadge = ({ icon, label }: SectionBadgeProps) => (
+  <div className="flex w-fit items-center gap-3 mb-4 default-tag-bg ">
+    <div>
+      <img src={icon} alt="big-stories-icon" width="18" />
+    </div>
+    <span className="text-sm uppercase text-white tracking-wider">{label}</span>
+  </div>
+)
+
 export default function BlogPosts({ params }: Props) {
   const { slug } = React.use(params)
+
+  const relatedPostsQuery = useQuery({
+    queryKey: ["relatedPosts"],
+    queryFn: getRelatedPosts,
+    staleTime: 0,
+    gcTime: 0,
+    refetchOnMount: "always",
+  })
+
+  const relatedPosts = relatedPostsQuery.data?.posts || []
 
   const articleRef = useRef<HTMLDivElement>(null)
 
@@ -191,6 +217,33 @@ export default function BlogPosts({ params }: Props) {
             </div>
           </section>
         </div>
+      </div>
+      <div className="bg-[#FFF4EE]">
+        <div className="mx-auto max-w-screen-xl ">
+          <div className="pt-10">
+            {sectionBadge({
+              icon: "/related-icon.svg",
+              label: "Related Articles",
+            })}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-5 pb-10 bg-[#FFF4EE] ">
+            {relatedPosts?.map((post: any) => (
+              <LatestArticlesHorizontalCard
+                key={post?.id}
+                article={{
+                  Title: post?.Title || "",
+                  Excerpt: post?.Excerpt || "",
+                  Featured_Image: { url: post?.Featured_Image?.url || "" },
+                  Slug: post?.Slug || "",
+                  categories: post?.categories || [{ Title: "category" }],
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div>
+        <NewsletterBanner />
       </div>
     </section>
   )

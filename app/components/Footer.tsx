@@ -1,5 +1,6 @@
 import Link from "next/link"
 import React from "react"
+import FooterSubscribeForm from "./FooterSubscribeForm"
 
 export default function Footer() {
   return (
@@ -25,20 +26,7 @@ export default function Footer() {
               inbox.
             </p>
 
-            <div className="flex flex-col md:flex-row items-center gap-4 mt-2">
-              <input
-                type="email"
-                placeholder="EMAIL ADDRESS"
-                disabled
-                className="w-full  p-3 rounded-md bg-[#0E1224] text-white border border-[#F36017] focus:outline-none focus:ring-2 focus:ring-[#695BE0]"
-              />
-              <button
-                disabled
-                className="subscribe-btn text-white px-6 py-3 hover:bg-[#5a4fcf] rounded-md transition-colors inline-flex items-center justify-center px-7 py-3  font-semibold transition-opacity hover:opacity-90 uppercase cursor-pointer "
-              >
-                Subscribe
-              </button>
-            </div>
+            <FooterSubscribeForm />
             <span className="text-xs text-[#BCC4D0]   mt-4 block">
               FOST does not sell your information or share it with unaffiliated
               third parties.
