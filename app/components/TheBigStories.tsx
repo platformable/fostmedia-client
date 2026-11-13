@@ -111,7 +111,7 @@ export default function TheBigStories({
           {posts?.map((post: any, index: number) => (
             <article
               key={index}
-              className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow duration-300 cursor-pointer"
+              className="flex flex-col bg-white rounded-2xl dark:bg-(--dark-surface) dark:border dark:border-(--dark-border) dark:hover:border-white/20 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow duration-300 cursor-pointer"
             >
               <Link
                 href={`/blog/${post?.Slug}`}

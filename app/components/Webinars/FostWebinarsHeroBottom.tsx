@@ -88,7 +88,7 @@ export default function FostWebinarBannerBottom({
                     {s.role.map((line) => (
                       <div
                         key={line}
-                        className="text-[#000000] text-lg leading-5 text-center uppercase"
+                        className="text-[#000000] dark:text-[#e6e8ee] text-lg leading-5 text-center uppercase"
                       >
                         {line}
                       </div>
@@ -145,10 +145,9 @@ export default function FostWebinarBannerBottom({
           </div>
 
           <p
-            className="py-10"
+            className="py-10 text-black dark:text-[#e6e8ee]"
             style={{
               fontSize: 13,
-              color: "black",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

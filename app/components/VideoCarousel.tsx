@@ -192,7 +192,7 @@ export default function VideoCarousel() {
                   href={video.Video_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block snap-start shrink-0 w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[calc(25%-12px)] bg-white pb-10 rounded-b-md shadow-lg"
+                  className="group block snap-start shrink-0 w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[calc(25%-12px)] bg-white pb-10 rounded-b-md shadow-lg dark:bg-(--dark-surface) dark:border dark:border-(--dark-border) dark:hover:border-white/20"
                 >
                   <div className="relative w-full aspect-[16/9]  overflow-hidden bg-gray-900 mb-4">
                     <img

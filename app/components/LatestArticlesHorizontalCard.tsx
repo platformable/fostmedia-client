@@ -14,7 +14,7 @@ const LatestArticlesHorizontalCard: React.FC<{ article: ArticleProps }> = ({
   article,
 }) => {
   return (
-    <article className=" flex flex-col md:flex-row md:h-[220px]  bg-white rounded-2xl shadow-[0_2px_15px_rgba(0,0,0,0.03)] hover:shadow-lg transition-shadow duration-300 overflow-hidden cursor-pointer shadow-lg">
+    <article className=" flex flex-col md:flex-row md:h-[220px]  bg-white rounded-2xl dark:bg-(--dark-surface) dark:border dark:border-(--dark-border) dark:hover:border-white/20 shadow-[0_2px_15px_rgba(0,0,0,0.03)] hover:shadow-lg transition-shadow duration-300 overflow-hidden cursor-pointer shadow-lg">
       {/* Article Image */}
 
       <div className="relative w-full md:w-[35%] h-[200px] md:h-full overflow-hidden bg-gray-100 flex-shrink-0">

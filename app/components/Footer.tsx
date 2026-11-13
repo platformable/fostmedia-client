@@ -15,7 +15,7 @@ export default function Footer() {
               rel="noopener noreferrer"
             >
               <img
-                src="/fostBeatLogo.svg"
+                src="/fostBeatLogo-dark.svg"
                 className="h-7 border-r border-[#FC6200] pr-3 mr-3"
                 alt="FOSTBeat Logo"
               />
