@@ -163,13 +163,13 @@ const standards = [
 
 export default function RegulationsMap() {
   return (
-    <section className=" bg-gradient-to-b from-[#FEEBE2] via-white to-white px-6 py-10 font-sans md:px-[72px]">
+    <section className=" bg-gradient-to-b from-[#FEEBE2] via-white to-white dark:from-[#0b0f1c] dark:via-[#0b0f1c] dark:to-[#0b0f1c] px-6 py-10 font-sans md:px-[72px]">
       <div className="mx-auto max-w-screen-xl">
         {/* Heading */}
         <p className="text-xs font-bold uppercase  text-[#FF6B26]">
           Regulations mandating APIs
         </p>
-        <h2 className="mt-4 text-2xl font-extrabold leading-[1.2] tracking-tight text-[#0F2C59] md:text-[34px]">
+        <h2 className="mt-4 text-2xl font-extrabold leading-[1.2] tracking-tight text-[#0F2C59] dark:text-white md:text-[34px]">
           From the EU and Brazil to Australia, Canada and Saudi Arabia,
           regulators are writing APIs into banking law.
         </h2>
@@ -182,7 +182,7 @@ export default function RegulationsMap() {
             aria-label="World map highlighting the EU, United States, Canada, Brazil, Saudi Arabia and Australia"
             className="block h-auto w-full"
           >
-            <path d={BASE_PATH} className="fill-[#EDE7E3]" />
+            <path d={BASE_PATH} className="fill-[#EDE7E3] dark:fill-[#2a2f45]" />
             <path d={HIGHLIGHT_PATH} className="fill-[#FF6B26]" />
           </svg>
 

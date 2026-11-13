@@ -2,6 +2,7 @@
 import Link from "next/link"
 import React from "react"
 import { usePathname } from "next/navigation"
+import ThemeToggle from "../ThemeToggle"
 
 export default function WebinarsNavbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
@@ -28,6 +29,7 @@ export default function WebinarsNavbar() {
           </>
         </Link>
         <div className="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
+          <ThemeToggle variant="onDark" />
           <Link
             href="https://docs.google.com/presentation/d/1uDo8zgdkozcezAHq_CLHIjulrm9GMHddgt38RXj82h4/edit?slide=id.g329b9af018a_1_0#slide=id.g329b9af018a_1_0"
             target="_blank"
