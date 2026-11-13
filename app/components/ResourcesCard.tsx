@@ -22,7 +22,7 @@ export default function ResourcesCard({
   return (
     <article
       key={index}
-      className="flex flex-col bg-white  overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow duration-300 cursor-pointer"
+      className="flex flex-col bg-white dark:bg-(--dark-surface) dark:border dark:border-(--dark-border) dark:hover:border-white/20 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow duration-300 cursor-pointer"
     >
       <Link href={post?.url} className="flex h-full flex-col" target="_blank">
         {/* Card Image */}

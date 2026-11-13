@@ -2,6 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap");
 @import "tailwindcss";
 
+/* Class/attribute based dark mode: <html data-theme="dark"> enables `dark:` utilities */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
   --background: transparent linear-gradient(180deg, #ffffff 0%, #fff3ed 100%)
     no-repeat padding-box;
@@ -917,4 +920,96 @@ article h3 {
 .bg-blog-page {
   background: transparent linear-gradient(1deg, #ffe0d0 0%, #ffffff 100%) 0% 0%
     no-repeat padding-box;
+}
+
+/* ============================================================
+   DARK MODE (test)
+   Toggled by <html data-theme="dark"> (see ThemeToggle + layout.tsx).
+   Components hardcode light colors, so the main light surfaces
+   are remapped here. Prefer `dark:` utilities for new code.
+   ============================================================ */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --foreground: #e6e8ee;
+  --dark-bg: #0b0f1c;
+  --dark-surface: #131929;
+  --dark-surface-2: #1b2236;
+  --dark-border: #2a2f45;
+  --dark-text: #e6e8ee;
+  --dark-text-muted: #a3abba;
+}
+
+[data-theme="dark"] body {
+  background: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+/* Light page/section backgrounds -> dark.
+   Elements that declare their own `dark:bg-*` / `dark:text-*` classes
+   opt out of these remaps so component-level dark styles win. */
+[data-theme="dark"] .bg-white:not([class*="dark:bg"]),
+[data-theme="dark"] .bg-\[\#FEE0D0\]:not([class*="dark:bg"]),
+[data-theme="dark"] .bg-\[\#FFF4EE\]:not([class*="dark:bg"]),
+[data-theme="dark"] .bg-\[\#FFE0D0\]:not([class*="dark:bg"]),
+[data-theme="dark"] .bg-gray-100:not([class*="dark:bg"]),
+[data-theme="dark"] .categories-bg:not([class*="dark:bg"]),
+[data-theme="dark"] .sponsors-bg:not([class*="dark:bg"]),
+[data-theme="dark"] .bg-blog-page:not([class*="dark:bg"]),
+[data-theme="dark"] .webinars-profit-bg:not([class*="dark:bg"]),
+[data-theme="dark"] .webinars-hero-speakers-bg-over:not([class*="dark:bg"]) {
+  background: var(--dark-bg);
+}
+
+/* Dark text on light backgrounds -> light text */
+[data-theme="dark"] .text-black:not([class*="dark:text"]),
+[data-theme="dark"] .text-\[\#000000\]:not([class*="dark:text"]),
+[data-theme="dark"] .text-\[\#111525\]:not([class*="dark:text"]),
+[data-theme="dark"] .text-\[\#0F2C59\]:not([class*="dark:text"]),
+[data-theme="dark"] .text-gray-900:not([class*="dark:text"]) {
+  color: var(--dark-text);
+}
+[data-theme="dark"] .text-gray-600:not([class*="dark:text"]),
+[data-theme="dark"] .text-gray-500:not([class*="dark:text"]) {
+  color: var(--dark-text-muted);
+}
+
+/* Category pills (inactive) */
+[data-theme="dark"] .category-tag.bg-\[\#FFE9DC\] {
+  background: var(--dark-surface-2);
+  color: var(--dark-text);
+}
+
+/* Partner/sponsor logo marquee: monochrome white so dark logos stay visible */
+[data-theme="dark"] .fost-marquee__item img {
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+}
+[data-theme="dark"] .fost-marquee__item:hover img {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+}
+
+/* Navbar */
+[data-theme="dark"] nav.border-b {
+  border-color: var(--dark-border);
+}
+[data-theme="dark"] #navbar-sticky ul {
+  border-color: var(--dark-border);
+}
+
+/* Article body */
+[data-theme="dark"] .article {
+  color: #d6dae0;
+}
+[data-theme="dark"] .article .subtitle {
+  color: var(--dark-text-muted);
+}
+
+/* Smooth switch */
+html.theme-transition,
+html.theme-transition * {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease !important;
 }

@@ -128,13 +128,13 @@ export default function SevenSystems() {
           {cards.map(({ title, body, gradient, Icon }) => (
             <article
               key={title}
-              className={`flex min-h-[310px] flex-col rounded-2xl bg-gradient-to-b ${gradient} p-6 text-[#0F2C59]`}
+              className={`flex min-h-[310px] flex-col rounded-2xl bg-gradient-to-b ${gradient} p-6 text-[#0F2C59] dark:text-[#0F2C59]`}
             >
               <img src={Icon} alt={title} className="h-8 w-8" />
               <h4 className="mt-5 max-w-[220px] text-2xl font-bold leading-tight">
                 {title}
               </h4>
-              <p className="mt-8 text-base leading-relaxed text-[#011B3D]">
+              <p className="mt-8 text-base leading-relaxed text-[#011B3D] dark:text-[#011B3D]">
                 {body}
               </p>
             </article>

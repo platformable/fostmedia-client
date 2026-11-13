@@ -189,7 +189,7 @@ export default function LatestArticles({
               return (
                 <article
                   key={index}
-                  className="flex flex-col md:flex-row md:h-[220px] bg-white rounded-2xl shadow-[0_2px_15px_rgba(0,0,0,0.03)] hover:shadow-lg transition-shadow duration-300 overflow-hidden cursor-pointer shadow-md"
+                  className="flex flex-col md:flex-row md:h-[220px] bg-white rounded-2xl dark:bg-(--dark-surface) dark:border dark:border-(--dark-border) dark:hover:border-white/20 shadow-[0_2px_15px_rgba(0,0,0,0.03)] hover:shadow-lg transition-shadow duration-300 overflow-hidden cursor-pointer shadow-md"
                 >
                   {/* Article Image */}
 

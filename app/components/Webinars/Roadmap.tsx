@@ -56,7 +56,7 @@ const RoadmapCaards = () => {
               </div>
             </div>
 
-            <div className="bg-white flex-grow p-8 text-[#0F2E58] font-bold text-xl">
+            <div className="bg-white flex-grow p-8 text-[#0F2E58] dark:bg-[#131929] dark:text-[#e6e8ee] font-bold text-xl">
               {card.description}
             </div>
           </div>

@@ -2,6 +2,7 @@
 import Link from "next/link"
 import React from "react"
 import { usePathname } from "next/navigation"
+import ThemeToggle from "./ThemeToggle"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
@@ -19,7 +20,12 @@ export default function Navbar() {
             <>
               <img
                 src="/fostBeatLogo.svg"
-                className="h-12 pr-3"
+                className="h-12 pr-3 dark:hidden"
+                alt="FOSTBeat Logo"
+              />
+              <img
+                src="/fostBeatLogo-dark.svg"
+                className="h-12 pr-3 hidden dark:block"
                 alt="FOSTBeat Logo"
               />
             </>
@@ -29,13 +35,19 @@ export default function Navbar() {
             <>
               <img
                 src="/pulse-logo.svg"
-                className="h-12 pr-3"
+                className="h-12 pr-3 dark:hidden"
+                alt="FOSTPulse Logo"
+              />
+              <img
+                src="/pulse-logo-dark.svg"
+                className="h-12 pr-3 hidden dark:block"
                 alt="FOSTPulse Logo"
               />
             </>
           )}
         </Link>
         <div className="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
+          <ThemeToggle />
           <Link
             href="https://datasetstorage.ams3.cdn.digitaloceanspaces.com/fost-media/FOST%20Sponsorship%202027.pdf"
             download
@@ -54,7 +66,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-neutral-secondary-soft focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#111525] dark:text-white rounded-lg md:hidden hover:bg-neutral-secondary-soft focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
             aria-controls="navbar-sticky"
             aria-expanded={isMenuOpen}
           >
