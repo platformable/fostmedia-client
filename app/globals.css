@@ -634,6 +634,14 @@ input::-ms-input-placeholder {
   font-weight: 700;
 }
 
+.article figcaption {
+  margin-top: 15px;
+}
+
+.article iframe {
+  max-width: 100%;
+  height: auto;
+}
 /* Quote component */
 .article .component-quote {
   display: grid;
