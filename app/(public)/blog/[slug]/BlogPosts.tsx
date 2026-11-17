@@ -23,6 +23,7 @@ interface Props {
   params: Promise<{
     slug: string
   }>
+  status: "draft" | "published"
 }
 
 export type SectionBadgeProps = {
@@ -39,7 +40,7 @@ export const sectionBadge = ({ icon, label }: SectionBadgeProps) => (
   </div>
 )
 
-export default function BlogPosts({ params }: Props) {
+export default function BlogPosts({ params, status }: Props) {
   const { slug } = React.use(params)
 
   const relatedPostsQuery = useQuery({
@@ -59,8 +60,8 @@ export default function BlogPosts({ params }: Props) {
     isPending,
     isError,
   } = useQuery({
-    queryKey: ["postsBySlug", slug],
-    queryFn: () => getPostsBySlug(slug),
+    queryKey: ["postsBySlug", slug, status],
+    queryFn: () => getPostsBySlug(slug, status),
     staleTime: 0,
     gcTime: 0,
     refetchOnMount: "always",

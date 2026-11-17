@@ -73,12 +73,20 @@ const getIndustryPosts = async () => {
   return posts?.data
 }
 
-const getPostsBySlug = async (slug: string) => {
+const getPostsBySlug = async (
+  slug: string,
+  status: "draft" | "published" = "published",
+) => {
+  const params = new URLSearchParams({
+    "filters[Slug][$eq]": slug,
+    "populate[Featured_Image]": "true",
+    "populate[categories]": "true",
+    "populate[authors][populate]": "Avatar",
+    status,
+  })
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts?filters[Slug][$eq]=${slug}&populate[Featured_Image]=true&populate[categories]=true&populate[authors][populate]=Avatar`,
-    {
-      cache: "no-store",
-    },
+    `${process.env.NEXT_PUBLIC_API_URL}/posts?${params.toString()}`,
+    { cache: "no-store" },
   )
   const posts = await response.json()
 
