@@ -3,6 +3,8 @@ import { getPostsBySlug } from "@/utils/getPosts"
 import createShareMetadata from "@/lib/metadata"
 import BlogPosts from "./BlogPosts"
 
+import { draftMode } from "next/headers"
+
 interface PageProps {
   params: Promise<{
     slug: string
@@ -13,8 +15,10 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params
+  const { isEnabled: isDraftMode } = await draftMode()
+  const status = isDraftMode ? "draft" : "published"
 
-  const posts = await getPostsBySlug(slug)
+  const posts = await getPostsBySlug(slug, status)
   const post = posts[posts.length - 1] || posts[0]
 
   if (!post) {
@@ -29,6 +33,9 @@ export async function generateMetadata({
   })
 }
 
-export default function Page({ params }: PageProps) {
-  return <BlogPosts params={params} />
+export default async function Page({ params }: PageProps) {
+  const { isEnabled: isDraftMode } = await draftMode()
+  const status = isDraftMode ? "draft" : "published"
+
+  return <BlogPosts params={params} status={status} />
 }
