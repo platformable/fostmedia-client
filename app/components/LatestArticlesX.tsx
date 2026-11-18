@@ -99,7 +99,7 @@ export default function LatestArticles({
             limit,
             pageParam as number,
             selected,
-            section === "blog" && (page === "home" || page === "blog"),
+            section === "blog" && page === "home",
           ),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {

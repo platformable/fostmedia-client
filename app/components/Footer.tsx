@@ -16,10 +16,9 @@ export default function Footer() {
             >
               <img
                 src="/fostBeatLogo-dark.svg"
-                className="h-7 border-r border-[#FC6200] pr-3 mr-3"
+                className="h-7 "
                 alt="FOSTBeat Logo"
               />
-              <span className="main-color">FOST</span>Beat
             </Link>
             <p className="mt-4 text-sm text-white w-3/4">
               Get a weekly roundup of FOST articles,talks, and events in your
