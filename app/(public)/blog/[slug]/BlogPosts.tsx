@@ -155,7 +155,7 @@ export default function BlogPosts({ params, status }: Props) {
               </div>
             </div>
 
-            <div className="relative h-64 w-full overflow-hidden  mt-10 mb-3">
+            <div className="relative  w-full overflow-hidden  mt-10 mb-3">
               <div className="flex justify-center">
                 <img
                   src={
