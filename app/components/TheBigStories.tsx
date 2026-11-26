@@ -32,7 +32,7 @@ type SectionBadgeProps = {
 }
 
 export const sectionBadge = ({ icon, label }: SectionBadgeProps) => (
-  <div className="flex w-fit items-center gap-3 mb-8 default-tag-bg ">
+  <div className="flex w-fit items-center gap-3 mb-5 default-tag-bg ">
     <div>
       <img src={icon} alt="big-stories-icon" width="18" />
     </div>
@@ -98,7 +98,7 @@ export default function TheBigStories({
   }
 
   return (
-    <section className=" py-10 px-4 md:px-8 bg-[#FFF4EE]">
+    <section className="py-8 px-4 md:px-8 bg-[#FFF4EE]">
       <div className="max-w-screen-xl mx-auto">
         {/* Section Header */}
         {sectionBadge({
@@ -145,7 +145,7 @@ export default function TheBigStories({
 
                   {/* Description */}
                   <p className="text-gray-600 mb-4 text-[14px] leading-5">
-                    {post?.Excerpt?.substring(0, 160) + " "}
+                    {post?.Excerpt}
                   </p>
 
                   {/* Footer / Meta */}
@@ -153,7 +153,7 @@ export default function TheBigStories({
                     <span>{post?.authors?.Name} </span>
                     <span> &nbsp;{post?.authors?.Lastname}</span>
                     <span className="mx-1.5 font-bold">·</span>
-                    <span>{calculateReadTime(post?.Excerpt)}</span>
+                    <span>{calculateReadTime(post?.Content)}</span>
                   </div>
                 </div>
               </Link>

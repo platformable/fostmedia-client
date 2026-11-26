@@ -45,7 +45,7 @@ export default function Resources() {
     },
   ]
   return (
-    <section className=" py-10 px-4 md:px-8 ">
+    <section className="py-8 px-4 md:px-8">
       <div className="max-w-screen-xl mx-auto">
         {/* Section Header */}
         {sectionBadge({

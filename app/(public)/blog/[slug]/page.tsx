@@ -19,7 +19,7 @@ export async function generateMetadata({
   const status = isDraftMode ? "draft" : "published"
 
   const posts = await getPostsBySlug(slug, status)
-  const post = posts[posts.length - 1] || posts[0]
+  const post = posts[posts?.length - 1] || posts[0]
 
   if (!post) {
     return {}

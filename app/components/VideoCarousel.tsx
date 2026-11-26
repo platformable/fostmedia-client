@@ -12,49 +12,6 @@ const getThumbnailUrl = (
   return `https://img.youtube.com/vi/${videoId}/${quality}.jpg`
 }
 
-const mockVideos = [
-  {
-    id: 1,
-    title: "FOST Munich – HapiDays 2026",
-    thumbnail: getThumbnailUrl(
-      getYouTubeId("https://www.youtube.com/watch?v=btmnaigNNvA&t=2s"),
-    ),
-    url: "https://www.youtube.com/watch?v=btmnaigNNvA&t=2s",
-  },
-  {
-    id: 2,
-    title: "FOST Amsterdam – Apidays 2026",
-    thumbnail: getThumbnailUrl(
-      getYouTubeId("https://www.youtube.com/watch?v=pYp5mDzQ3js"),
-    ),
-    url: "https://www.youtube.com/watch?v=pYp5mDzQ3js",
-  },
-  {
-    id: 3,
-    title: "FOST (Future of Software Technologies) 2026",
-    thumbnail: getThumbnailUrl(
-      getYouTubeId("https://www.youtube.com/watch?v=btmnaigNNvA&t=2s"),
-    ),
-    url: "https://www.youtube.com/watch?v=btmnaigNNvA&t=2s",
-  },
-  {
-    id: 4,
-    title: "FOST New York – AI Collective 2026",
-    thumbnail: getThumbnailUrl(
-      getYouTubeId("https://www.youtube.com/watch?v=pYp5mDzQ3js"),
-    ),
-    url: "https://www.youtube.com/watch?v=pYp5mDzQ3js",
-  },
-  {
-    id: 5,
-    title: "FOST Global – Future Tech 2027",
-    thumbnail: getThumbnailUrl(
-      getYouTubeId("https://www.youtube.com/watch?v=pYp5mDzQ3js"),
-    ),
-    url: "https://www.youtube.com/watch?v=pYp5mDzQ3js",
-  },
-]
-
 export default function VideoCarousel() {
   const [videos, setVideos] = useState<any[]>([])
   const [activePage, setActivePage] = useState(0)
@@ -115,7 +72,7 @@ export default function VideoCarousel() {
   }
 
   const itemsPerPage = 4
-  const totalDots = Math.ceil(videos.length / itemsPerPage)
+  const totalDots = Math.ceil(videos?.length / itemsPerPage)
 
   const makeThumbnailUrl = (videoUrl: string) => {
     const videoId = getYouTubeId(videoUrl)
@@ -123,7 +80,7 @@ export default function VideoCarousel() {
   }
 
   return (
-    <section className="bg-[#FFE0D0] py-12 md:py-10 px-4 md:px-8 lg:px-6">
+    <section className="bg-[#FFE0D0] py-8 px-4 md:px-8">
       <div className=" mx-auto max-w-screen-xl  flex flex-col justify-center">
         <div className="  ">
           {/* Header Section */}
@@ -186,19 +143,19 @@ export default function VideoCarousel() {
               onScroll={handleScroll}
               className="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4"
             >
-              {videos.map((video) => (
+              {videos?.map((video) => (
                 <a
                   key={video.id}
                   href={video.Video_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block snap-start shrink-0 w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[calc(25%-12px)] bg-white pb-10 rounded-b-md shadow-lg dark:bg-(--dark-surface) dark:border dark:border-(--dark-border) dark:hover:border-white/20"
+                  className="group block snap-start shrink-0 w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[calc(25%-12px)] bg-white pb-2 rounded-b-md shadow-lg dark:bg-(--dark-surface) dark:border dark:border-(--dark-border) dark:hover:border-white/20"
                 >
-                  <div className="relative w-full aspect-[16/9]  overflow-hidden bg-gray-900 mb-4">
+                  <div className="relative w-full aspect-[16/9]  overflow-hidden bg-gray-900 mb-2">
                     <img
                       src={makeThumbnailUrl(video.Video_url)!}
                       alt={video.Title}
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-300"
+                      className="w-full h-full object-cover  transition-opacity duration-300"
                     />
 
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -215,13 +172,8 @@ export default function VideoCarousel() {
                   </div>
 
                   <div className="px-8">
-                    <span
-                      className={` uppercase  px-4 py-2 rounded-full self-start text-[10px] mb-2 bg-[#FFE7DD] main-color inline-block`}
-                    >
-                      Event
-                    </span>
-                    <h6 className="text-[#111525] text-[13px] leading-5 mt-2  pb-2 inline-block">
-                      {video.Title}
+                    <h6 className="text-[#111525] text-[13px] leading-6 mt-2   inline-block line-clamp-4 min-h-24">
+                      {video.Title.substring(0, 90)}
                     </h6>
                   </div>
                 </a>
