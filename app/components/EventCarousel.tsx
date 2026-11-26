@@ -178,10 +178,10 @@ export default function EventCarousel() {
   }
 
   return (
-    <section className=" py-8 md:py-10 px-4 md:px-8 lg:px-16 bg-black">
+    <section className="py-8 px-4 md:px-8 bg-black">
       <div className="w-full   flex justify-center overflow-hidden">
         <div className="relative w-full max-w-[1280px] 2">
-          <div className=" mb-12">
+          <div className="mb-8">
             {sectionBadge({
               icon: "/community-icon.svg",
               label: "IN-PERSON AT FOST",
@@ -218,7 +218,7 @@ export default function EventCarousel() {
             ref={scrollContainerRef}
             className="flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4"
           >
-            {events.map((event) => (
+            {events?.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
           </div>

@@ -254,7 +254,7 @@ export default function LatestArticles({
                           <span>{post?.authors?.Name} </span>
                           <span> &nbsp;{post?.authors?.Lastname}</span>
                           <span className="mx-1.5 font-bold">·</span>
-                          <span>{calculateReadTime(post?.Excerpt)}</span>
+                          <span>{calculateReadTime(post?.Content)}</span>
                         </div>
                       </div>
                     </Link>

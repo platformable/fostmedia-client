@@ -57,12 +57,12 @@ export default function FostLogoMarquee({
 }) {
   return (
     <section
-      className="fost-marquee sponsors-bg py-10"
+      className="fost-marquee sponsors-bg py-8"
       aria-label="Companies at FOST"
     >
       <div className="text-center mb-12">
         <span
-          className={`buttonGradientOurSponsorsBg inline-block text-xs md:text-sm px-5 py-1  uppercase mb-4`}
+          className={`buttonGradientOurSponsorsBg inline-block text-xs md:text-sm px-5 py-1  uppercase mb-6`}
         >
           Our Sponsors
         </span>

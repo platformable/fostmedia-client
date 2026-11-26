@@ -4,7 +4,7 @@ export type SectionBadgeProps = {
 }
 
 export const sectionBadge = ({ icon, label }: SectionBadgeProps) => (
-  <div className="flex w-fit items-center gap-3 mb-4 default-tag-bg ">
+  <div className="flex w-fit items-center gap-3 mb-6 default-tag-bg ">
     <div>
       <img src={icon} alt="big-stories-icon" width="18" />
     </div>

@@ -17,6 +17,7 @@ import { addHeadingIds } from "@/lib/toc"
 import TableOfContents from "@/app/components/TableOfContents"
 import Loader from "@/app/components/Loader"
 import NewsletterBanner from "@/app/components/NewsletterBanner"
+import AuthorAvatar from "@/app/components/AuthorAvatar"
 
 interface Props {
   params: Promise<{
@@ -83,10 +84,10 @@ export default function IndustryPost({ params }: Props) {
               </h1>
 
               <div className="flex gap-x-2 items-center">
-                <img
-                  src={`${post?.authors?.Avatar?.url || "/avatar.jpg"}`}
-                  alt=""
-                  className="rounded-full border border-[#40D2FF] h-14 w-14"
+                <AuthorAvatar
+                  url={post?.authors?.Avatar?.url}
+                  name={post?.authors?.Name}
+                  lastname={post?.authors?.Lastname}
                 />
                 <div className="flex justify-between w-full">
                   <div>
@@ -136,38 +137,8 @@ export default function IndustryPost({ params }: Props) {
                 <TableOfContents items={toc} title={post?.Title || ""} />
               )}
 
-              <div className=" flex flex-col gap-5">
-                <div className="">
-                  <Link href="/webinars">
-                    <img
-                      src="/banners/webinar1.png"
-                      alt="Webinar Background"
-                      className=""
-                    />
-                  </Link>
-                </div>
-                <div className="">
-                  <Link
-                    href="https://www.home.apimasters.io/learn/learning-plans/4/leveraging-apis-strategically-by-marjukka-niinioja"
-                    target="_blank"
-                  >
-                    <img
-                      src="/banners/apimasters-ad.png"
-                      alt="APIMaster Background"
-                      className=""
-                    />
-                  </Link>
-                </div>
-                <div className="">
-                  <Link href="/pulse">
-                    <img
-                      src="/banners/pulse.png"
-                      alt="FOST Pulse Background"
-                      className=""
-                    />
-                  </Link>
-                </div>
-              </div>
+              {/* ADDS SECTION */}
+              <div className=" flex flex-col gap-5"></div>
             </div>
           </section>
         </div>

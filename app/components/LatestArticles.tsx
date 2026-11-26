@@ -1,8 +1,8 @@
 "use client"
-import { useInfiniteQuery } from "@tanstack/react-query"
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
 import Link from "next/link"
 import { FontSize } from "../fontTypes"
-import getPosts, { getIndustryPosts } from "@/utils/getPosts"
+import getPosts, { getIndustryPosts, getHomepageAds } from "@/utils/getPosts"
 import calculateReadTime from "@/utils/calculateReadTime"
 import Tag from "./Tag"
 
@@ -132,13 +132,17 @@ export default function LatestArticles({
     },
   })
 
+  const { data: ads = [] } = useQuery({
+    queryKey: ["homepageAds"],
+    queryFn: getHomepageAds,
+  })
+
   const posts =
     data?.pages.flatMap((pageData) =>
       section === "industry"
         ? (pageData as Post[])
         : (pageData as PostsPage).posts,
     ) ?? []
-
 
   if (isPending) {
     return <div>Loading...</div>
@@ -150,10 +154,10 @@ export default function LatestArticles({
     return <div className="text-white">No posts found.</div>
   }
   return (
-    <section className=" py-5 px-4 md:px-0 ">
+    <section className="py-8 px-4 md:px-8">
       <div className="max-w-screen-xl mx-auto">
         {/* Header Section */}
-        <div className="flex justify-between items-center mb-8 ">
+        <div className="flex justify-between items-center mb-6">
           {sectionBadge({
             icon: "/latest-articles-icon.svg",
             label: "Latest Articles",
@@ -221,7 +225,7 @@ export default function LatestArticles({
                         {article.Title}
                       </h3>
                       <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
-                        {article.Excerpt.substring(0, 120)}
+                        {article.Excerpt}
                       </p>
                     </Link>
                   </div>
@@ -232,36 +236,24 @@ export default function LatestArticles({
 
           {/* Right Column: Promotional Banners */}
           <div className=" flex flex-col gap-5">
-            <div className="">
-              <Link href="/webinars">
-                <img
-                  src="/banners/webinar1.png"
-                  alt="Webinar Background"
-                  className=""
-                />
-              </Link>
-            </div>
-            <div className="">
-              <Link
-                href="https://www.home.apimasters.io/learn/learning-plans/4/leveraging-apis-strategically-by-marjukka-niinioja"
-                target="_blank"
-              >
-                <img
-                  src="/banners/apimasters-ad.png"
-                  alt="APIMaster Background"
-                  className=""
-                />
-              </Link>
-            </div>
-            <div className="">
-              <Link href="/pulse">
-                <img
-                  src="/banners/pulse.png"
-                  alt="FOST Pulse Background"
-                  className=""
-                />
-              </Link>
-            </div>
+            {ads?.map((ad) => {
+              const href = (ad.Ad_url as string) || "#"
+              const imageUrl = (ad.Image as { url?: string } | null)?.url
+              if (!imageUrl) return null
+              const external = /^https?:\/\//.test(href)
+              return (
+                <div key={ad.documentId}>
+                  <Link
+                    href={href}
+                    {...(external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    <img src={imageUrl} alt={(ad.Title as string) || "Ad"} />
+                  </Link>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
