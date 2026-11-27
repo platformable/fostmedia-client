@@ -196,9 +196,15 @@ export default function BlogPosts({ params, status }: Props) {
                         }
                         key={ad.id}
                       >
-                        <div key={ad.id} className="flex justify-center my-5">
+                        <Link
+                          href={ad.Ad_url || "#"}
+                          key={ad.id}
+                          className="flex justify-center my-5"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <img src={ad.Image?.url || ""} alt={ad.Title || ""} />
-                        </div>
+                        </Link>
                       </Suspense>
                     ))}
                   </div>
